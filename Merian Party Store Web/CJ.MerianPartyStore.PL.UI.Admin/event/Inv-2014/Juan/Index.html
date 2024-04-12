@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta id="rootUrl" content="" />
+    <title>Juan | Invitación</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet" />
+    <link href="https://localhost:44385/css/Site.css" rel="stylesheet">
+    <link href="https://localhost:44385/css/Enhanced.css" rel="stylesheet" media="screen and (min-width: 65em)">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://localhost:44385//Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://localhost:44385/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://localhost:44385/Favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="https://localhost:44385//Favicon/favicon.ico" />
+
+</head>
+<body style="overflow:hidden">
+
+    <section class="invitaciones-pdf" style="background-image: url(https://localhost:44385/Images/Invitacion/Fondo/bfd1edce-e1f7-46e1-9020-56859e2d99d8.png);">
+        <input id="FechaEvento" type="hidden" value="2023-10-31" />
+        <input id="HoraEvento" type="hidden" value="05:00:00" />
+        <input id="DireccionArchivoPDF" type="hidden" value="https://localhost:44385/Images/Invitacion/PDF/8c5de01d-a8aa-496f-ac42-d2c3ae6b45fd.pdf" />
+        <div class="fondo relative">
+            <div id="pdf-viewer" class="pdf-viewer">
+                <canvas id="pdf-canvas" class="pdf-canvas" width="200" height="200"></canvas>
+                <div id="pdf-annotations" class="pdf-annotations"></div>
+            </div>
+            <div class="contenido-invitacion" style="height:0 !important">
+                <div class="audio-content">
+                    <div class="audio-controllers flex-center" style="background-color: #000;">
+                        <a id="audioIcon" class="ic-pause-white play-pause inactive" onclick="turnOffAudio();"></a>
+                        <a class="ic-music-white"></a>
+                    </div>
+                    <div class="audio hidden">
+                        <audio id="audioInvitacion" controls autoplay loop>
+                            <source src="https://localhost:44385/Images/Invitacion/Audio/6ae41b75-ab23-4a8f-8c4d-6caafe5f2bb5.mp3" type="audio/mpeg" />
+                        </audio>
+                    </div>
+                </div>
+                <div class="countdown flex-center">
+                    <div class="date align-center">
+                        <label id="days" class="date-number block" style="color: #000;">--</label>
+                        <label class="date-label block" style="color: #000;">DÍAS</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="hours" class="date-number block" style="color: #000;">--</label>
+                        <label class="date-label block" style="color: #000;">HORAS</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="min" class="date-number block" style="color: #000;" #000")">--</label>
+                        <label class="date-label block" style="color: #000;">MIN</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="seg" class="date-number block" style="color: #000;">--</label>
+                        <label class="date-label block" style="color: #000;">SEG</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="popup white" id="popupIntroInvitacion">
+        <a class="letter-spacing button text-color-white  position-center ver-invitacion" style="background-color: #000;" onclick="turnOffAudio(); popupIntroInvitacion.hide();">Ver invitación</a>
+    </div>
+</body>
+</html>
+
+<script src="https://localhost:44385/Scripts/jquery-3.6.4.min.js"></script>
+<script src="https://localhost:44385/Scripts/jquery-3.6.4.slim.min.js"></script>
+<script src="https://localhost:44385/Scripts/libreria.popup.js"></script>
+<script src="https://localhost:44385/Scripts/libreria.loading.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf_viewer.min.js"></script>
+<script>
+
+    var popupIntroInvitacion = new Popup('popupIntroInvitacion');
+
+    $(document).ready(function () {
+        popupIntroInvitacion.show();
+        coutdown();
+        setTimeout(function () {
+            $(".invitaciones-pdf").css('height', $("#pdf-canvas").height());
+            $(".pdf-annotations")[0].style.setProperty('height', $("#pdf-canvas").height() + 'px', 'important');
+        }, 3000);
+        startLoading();
+    });
+
+    $(window).resize(function () {
+        $(".invitaciones-pdf").css('height', $("#pdf-canvas").height());
+        $(".pdf-annotations")[0].style.setProperty('height', $("#pdf-canvas").height() + 'px', 'important');
+    });
+
+    window.onload = function () {
+        setTimeout(function () {
+            stopLoading();
+        }, 3000);
+    };
+
+    ////PARA EVITAR PRESIONAR CUALQUEIR BOTON
+    //document.onkeydown = function () { return false };
+
+    //////PARA EVITAR HACER CLICK DERECHO
+    //$(function () {
+    //    $(document).bind("contextmenu", function (e) {
+    //        return false;
+    //    });
+    //});
+
+    //VOLUMEN DEL AUDIO
+    document.getElementById("audioInvitacion").volume = 0.2;
+
+    //APAGAR AUDIO
+    function turnOffAudio() {
+        $('body').css('overflow','')
+        if ($('#audioIcon').hasClass('inactive')) {
+            $('#audioIcon').removeClass('inactive');
+            document.getElementById("audioInvitacion").play();
+        }
+        else {
+            $('#audioIcon').addClass('inactive');
+            document.getElementById("audioInvitacion").pause();
+        }
+    }
+
+    //PDF
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
+    const pdfViewer = document.querySelector("#pdf-viewer");
+    const canvas = document.querySelector("#pdf-canvas");
+    const annotationsContainer = document.querySelector("#pdf-annotations");
+    const context = canvas.getContext('2d');
+    const linkService = new pdfjsViewer.PDFLinkService({
+        externalLinkTarget: pdfjsViewer.LinkTarget.SELF
+    });
+
+    async function renderPage(pdf, pageNumber, scale) {
+        const page = await pdf.getPage(pageNumber);
+        const annotations = await page.getAnnotations();
+        if (!scale) scale = 1;
+        const viewport = page.getViewport({ scale: scale });
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        pdfViewer.style.width = canvas.width + "px";
+        pdfViewer.style.height = canvas.height + "px";
+        page.render({
+            canvasContext: context, viewport: viewport
+        });
+        annotationsContainer.style.left = canvas.offsetLeft + "px";
+        annotationsContainer.style.top = canvas.offsetRight + "px";
+        pdfjsLib.AnnotationLayer.render({
+            viewport: viewport.clone({ dontFlip: true }),
+            div: annotationsContainer,
+            annotations: annotations,
+            page: page,
+            linkService: linkService,
+        });
+    }
+
+    // If no URL params are passed, this page tries to
+    // load a PDF called test.pdf and render its first page at scale 1
+    function start() {
+        let direccionArchivoPDF = $('#DireccionArchivoPDF').val();
+        let pdfFile = direccionArchivoPDF;
+
+        let scale = 0.8;
+        let pageNumber = 1;
+        let params = new URLSearchParams(window.location.search.substring(1));
+        params.has("f") && (pdfFile = params.get("f"));
+        params.has("n") && (pageNumber = Math.abs(parseInt(params.get("n"))) || 1);
+        pdfjsLib.getDocument(pdfFile).promise.then((pdf) => {
+            if (pdf.numPages < pageNumber) {
+                pageNumber = pdf.numPages;
+            }
+            renderPage(pdf, pageNumber, scale);
+
+        });
+    }
+    start();
+
+    //COUTDOWN
+    function coutdown() {
+        // Establecer la fecha y hora objetivo
+
+        let fechaEvento = $('#FechaEvento').val();
+        let horaEvento = $('#HoraEvento').val();
+        var endDate = new Date(fechaEvento + "T" + horaEvento);
+        // Actualizar el countdown cada segundo
+        var interval = setInterval(function () {
+            var currentDate = new Date().getTime();
+            var timeRemaining = endDate - currentDate;
+
+            // Calcular días, horas, minutos y segundos restantes
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+
+            // Mostrar el countdown en el elemento con el id "countdown"
+            $("#days").text(days);
+            $("#hours").text(hours);
+            $("#min").text(minutes);
+            $("#seg").text(seconds);
+
+            // Si el countdown llega a cero, detenerlo
+            if (timeRemaining < 0) {
+                clearInterval(interval);
+                $("#days").text('0');
+                $("#hours").text('0');
+                $("#min").text('0');
+                $("#seg").text('0');
+            }
+        }, 1000);
+    }
+
+</script>

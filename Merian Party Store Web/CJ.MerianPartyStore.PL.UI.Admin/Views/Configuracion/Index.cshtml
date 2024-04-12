@@ -1,0 +1,134 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model  ConfiguracionModel
+@{
+    ViewBag.Title = "Configuración";
+    ViewBag.NavigationAction = Constants.NavigationAction.MENU;
+    ViewBag.Section = Constants.Section.CONFIGURACION;
+}
+
+<section class="configuracion">
+    <form id="frmConfiguracion" action="@Url.Action("GuardarConfiguracion", "Configuracion")" method="post" onsubmit="return guardarConfiguracion(this);" enctype="multipart/form-data">
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-menu">Contenidos</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="form-field">
+                        <label>Banners para el home <span class="text-color01">*</span> (1200 x 300px)</label>
+                        <div class="banners flex-list left">
+                            @if (Model.Banners != null)
+                            {
+                                foreach (BannerModel objBannerModel in Model.Banners)
+                                {
+                                    Html.RenderPartial("BannerHome", objBannerModel);
+                                }
+                            }
+                            <input type="file" id="newBanner" name="BannerFile" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-tipo-cambio">Tipo de cambio</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="form-field">
+                        <label>Valor <span class="text-color01">*</span></label>
+                        <input type="text" placeholder="Valor del tipo de cambio" name="TipoCambio" id="tipoCambio" value="@Model.TipoCambio.ToString("0.00")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions section-actions">
+            <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="history.back();">Cancelar</a>
+            <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="startGuardarConfiguracion();">Guardar</a>
+        </div>
+    </form>
+</section>
+
+@section scripts {
+    <script>
+        var extensionesValidas = ".png, .gif, .jpeg, .jpg";
+        //Primera carga de la página
+        $(document).ready(function () {
+            loadImageInput();
+            setValidations();
+        });
+
+        //Validaciones
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#tipoCambio', name: 'Tipo de cambio', type: 'D', required: true },
+            ];
+            validator = new Validator(fields, 'error');
+        }
+
+        //Funcionalidad de "Nuevo banner"
+        function loadImageInput() {
+            new ImageInput('newBanner', 'banner add', null, function (imageUrl) {
+                
+                var container = $('#newBanner').parent();
+                var banner = $('#newBanner').val();
+                if (!validarExtension(banner)) {
+                    $('#newBanner').val("");
+                    showMessage("¡El Banner no es de formato: png, gif, jpeg o jpg.!", null);
+                } else {
+                    $.post('@Url.Action("BannerHome")', { IdBanner: 0, Imagen: imageUrl }, function (data) {
+                        container.addClass('hidden');
+                        $('#newBanner').attr('id', '');
+                        container.parent().append(data);
+                        loadImageInput();
+                    });
+                }
+            });
+        }
+        function validarExtension(datos) {
+
+            var ruta = datos;
+            var extension = ruta.substring(ruta.lastIndexOf('.') + 1).toLowerCase();
+            var extensionValida = extensionesValidas.indexOf(extension);
+
+            if (extensionValida < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        //Guardado de configuración
+        function startGuardarConfiguracion() {
+            var result = validator.validate();
+
+            if (result == null)
+                showConfirmation('¿Deseas guardar los datos de la configuración?', 'Guardar', 'background-color03', 'ic-ok-white', function () {
+                    $('#frmConfiguracion').submit();
+                });
+            else
+                showMessage(result, null);
+        }
+
+        function guardarConfiguracion(formData) {
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    window.location.reload();
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+    </script>
+}

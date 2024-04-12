@@ -1,0 +1,240 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_No_Menu.cshtml";
+    ViewBag.Title = "Invitación";
+}
+
+<section class="invitaciones-animadas" style="background-image: url(../../Images/Invitacion/Fondo/background_invitacion.png)">
+    <div class="fondo relative">
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/1.gif" />
+            <div class="contenido-invitacion">
+                <div class="countdown flex-center">
+                    <div class="date align-center">
+                        <label id="days" class="date-number block" style="color: #000">--</label>
+                        <label class="date-label block" style="color: #000">DÍAS</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="hours" class="date-number block" style="color: #000">--</label>
+                        <label class="date-label block" style="color: #000">HORAS</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="min" class="date-number block" style="color: #000">--</label>
+                        <label class="date-label block" style="color: #000">MIN</label>
+                    </div>
+                    <div class="date align-center">
+                        <label id="seg" class="date-number block" style="color: #000">--</label>
+                        <label class="date-label block" style="color: #000">SEG</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/2.gif" />
+            <div class="contenido-invitacion">
+                <div class="audio-content">
+                    <div class="audio-controllers flex-center" style="background-color: #000;">
+                        <a id="audioIcon" class="ic-play-white play-pause inactive" onclick="turnOffAudio();"></a>
+                        <a class="ic-music-white"></a>
+                    </div>
+                    <div class="audio hidden">
+                        <audio id="audioInvitacion" controls autoplay loop>
+                            <source src="" type="audio/mpeg" />
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/3.gif" />
+            <div class="contenido-invitacion"></div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/4.gif" />
+            <div class="contenido-invitacion"></div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/5.gif" />
+            <div class="contenido-invitacion"></div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/6.gif" />
+            <div class="contenido-invitacion"></div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/7.gif" />
+            <div class="contenido-invitacion">
+                <a class="opcion-animada boda-religiosa" onclick="showMap('51.5, -0.09');"></a>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/8.gif" />
+            <div class="contenido-invitacion">
+                <a class="opcion-animada recepcion" onclick="showMap('51.5, -0.09');"></a>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/9.gif" />
+            <div class="contenido-invitacion">
+                <a class="opcion-animada numero-cuenta" onclick="copiarTexo(this);"><label id="numeroCuenta" class="hidden">000000000000000</label></a>
+                <a class="opcion-animada numero-cci" onclick="copiarTexo(this);"><label id="numeroCCI" class="hidden">1111111111111</label></a>
+                <a class="opcion-animada mesa-regalos" href="https://www.figma.com/proto/MhvKUZHtazrz2CDQFbvqFy/Merian-Invitaciones-Digitales?type=design&node-id=355-4193&t=lfPnpB4fso4Wu4Q9-0&scaling=min-zoom&page-id=38%3A139&starting-point-node-id=294%3A3055" target="_blank" onclick="preventLoading();"></a>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/10.gif" />
+            <div class="contenido-invitacion">
+                <a class="opcion-animada asistencia" href="https://wa.me/51912528593?text=Hola,%20quiero%20confirmar%20mi%20asistencia" target="_blank" onclick="preventLoading();"></a>
+                <a class="opcion-animada asistencia-opcional" href="https://wa.me/51912528593?text=Hola,%20quiero%20confirmar%20mi%20asistencia" target="_blank" onclick="preventLoading();"></a>
+            </div>
+        </div>
+        <div class="contenido-animado animacion">
+            <img src="~/Images/Invitacion/FotoInvitacion/11.gif" />
+            <div class="contenido-invitacion"></div>
+        </div>
+    </div>
+
+    <!--POPUPS-->
+    <div class="popup" id="popupUbicacion">
+        <div class="popup-box">
+            <div id="map" class="map-invitacion">
+
+            </div>
+            <div class="form-actions">
+                <a class="button btn-small text-color-white background-color01" onclick="popupUbicacion.hide();">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="popup white" id="popupIntroInvitacion">
+    <a class="letter-spacing button text-color-white background-color02 position-center" onclick="turnOffAudio(); popupIntroInvitacion.hide();">Ver invitación</a>
+</div>
+
+@section scripts{
+    <script>
+
+        var popupUbicacion = new Popup('popupUbicacion');
+        var popupIntroInvitacion = new Popup('popupIntroInvitacion');
+
+        $(document).ready(function () {
+
+            coutdown();
+
+            // Función para animar elementos cuando son visibles en el área visible del navegador
+            function animarElementos() {
+                $('.animacion').each(function () {
+                    var elemento = $(this);
+                    if (elemento.is(':visible')) {
+                        elemento.addClass('visible');
+                    }
+                });
+            }
+
+            // Inicializar Waypoints
+            $('.animacion').waypoint({
+                handler: function (direction) {
+                    $(this.element).toggleClass('visible', direction === 'down');
+                },
+                offset: '93%',
+                continuous: false
+            });
+
+            // Animar elementos al cargar la página
+            animarElementos();
+
+            // Animar elementos al desplazarse
+            $(window).scroll(function () {
+                animarElementos();
+            });
+
+        });
+
+        function coutdown() {
+            // Establecer la fecha y hora objetivo
+            var endDate = new Date("2023-12-31T23:59:59");
+
+            // Actualizar el countdown cada segundo
+            var interval = setInterval(function () {
+                var currentDate = new Date().getTime();
+                var timeRemaining = endDate - currentDate;
+
+                // Calcular días, horas, minutos y segundos restantes
+                var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+
+                // Mostrar el countdown en el elemento con el id "countdown"
+                $("#days").text(days);
+                $("#hours").text(hours);
+                $("#min").text(minutes);
+                $("#seg").text(seconds);
+
+                // Si el countdown llega a cero, detenerlo
+                if (timeRemaining < 0) {
+                    clearInterval(interval);
+                    $("#days").text('0');
+                    $("#hours").text('0');
+                    $("#min").text('0');
+                    $("#seg").text('0');
+                }
+            }, 1000);
+        }
+
+        var map; // Variable global para almacenar la instancia del mapa
+
+        function showMap(coordenadas) {
+            if (map) {
+                map.remove(); // Destruye el mapa existente si existe
+            }
+
+            var coordenadasArray = coordenadas.split(',');
+            var latitud = parseFloat(coordenadasArray[0].trim());
+            var longitud = parseFloat(coordenadasArray[1].trim());
+
+            map = L.map('map').setView([latitud, longitud], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Datos del mapa &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+
+            var marker = L.marker([latitud, longitud]).addTo(map);
+
+            popupUbicacion.show();
+        }
+
+        function copiarTexo(item) {
+            // Obtener el texto que deseas copiar
+            var texto = $(item).find('label').text();
+
+            // Crear un elemento de textarea temporal para copiar el texto
+            var textareaTemporal = $('<textarea>').val(texto).appendTo('body').select();
+
+            // Copiar el texto al portapapeles
+            document.execCommand('copy');
+
+            // Eliminar el elemento de textarea temporal
+            textareaTemporal.remove();
+
+            // Alerta o notificación de copia exitosa
+            alert('Texto copiado: ' + texto);
+        }
+
+        //VOLUMEN DEL AUDIO
+        document.getElementById("audioInvitacion").volume = 0.2;
+
+        //APAGAR AUDIO
+        function turnOffAudio() {
+            if ($('#audioIcon').hasClass('inactive')) {
+                $('#audioIcon').removeClass('inactive');
+                document.getElementById("audioInvitacion").play();
+            }
+            else {
+                $('#audioIcon').addClass('inactive');
+                document.getElementById("audioInvitacion").pause();
+            }
+        }
+    </script>
+}

@@ -1,0 +1,128 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model List<InvitacionModel>
+@{
+    String Filtro = ViewBag.Filtro;
+    int Page = ViewBag.Page;
+    int TotalPages = ViewBag.TotalPages;
+
+    ViewBag.Title = "Invitaciones";
+    ViewBag.NavigationAction = Constants.NavigationAction.MENU;
+    ViewBag.Section = Constants.Section.INVITACIONES;
+
+}
+
+@section actions {
+    <a class="button btn-icon background-color02 text-color-white btn-small btn-small-icon ic-add" href="@Url.Action("NuevaInvitacion", "Invitacion")"><span class="desktop-only">Nueva invitación</span></a>
+    <form action="@Url.Action("Index", "Invitacion")">
+        <input class="search" placeholder="Buscar por cliente" name="Busqueda" value="@Request["Busqueda"]" @(Request["Busqueda"] != null ? "autofocus" : "") />
+        <input type="hidden" name="Filtro" value="@Filtro" />
+        <input type="submit" class="hidden" />
+    </form>
+}
+
+<section class="productos">
+    <div class="tabs">
+        <div class="title-page">
+            <h1 class="bold title text-color-black">Lista de invitaciones</h1>
+        </div>
+        <div class="content table-all">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Cliente</th>
+                            <th>Tipo de invitación</th>
+                            <th>Previsualizar</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr >
+                                <td>@(i+1)</td>
+                                <td>@Model[i].ClienteInvitacion</td>
+                                <td>@Model[i].TipoInvitacion</td>
+                                <td>
+                                    @*<a class="button text-color-white background-color01" href="@Url.Action("InvitacionTipo", "Invitacion",new { TipoInvitacion = Model[i].TipoInvitacion.Trim(), IdInvitacion = Model[i].IdInvitacion, Cliente = Model[i].ClienteInvitacion })" onclick="preventLoading();" target="_blank">Previsualizar</a>*@
+                                    <a class="button text-color-white background-color01" href="@(System.Configuration.ConfigurationManager.AppSettings["UrlClient"] + "event/inv-" + Model[i].IdInvitacion+"/"+ Model[i].ClienteInvitacion.Replace(" ","").Replace("&","y").Replace("á","a").Replace("é", "e").Replace("í", "i").Replace("ó", "o").Replace("ú", "u"))" onclick="preventLoading();" target="_blank">Previsualizar</a>
+                                </td>
+
+                                <td class="actions">
+                                    <a class="action-edit" onclick="InvitacionDetail()" href="@Url.Action("Detalle", "Invitacion", new { id = Model[i].IdInvitacion })"><img src="~/Images/Icons/ic_edit.svg" class="svg" /></a>
+                                    <a class="action-delete" onclick="startEliminarInvitacion( @Model[i].IdInvitacion)"><img src="~/Images/Icons/ic_delete.svg" class="svg" /></a>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr><td colspan="5" style="text-align:center;">No hay invitaciones registrados en la plataforma.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (TotalPages > 1)
+            {
+                <div class="pages">
+                    @if (Page > 1)
+                    {
+                        <a class="prev" href="@Url.Action("Index", "Invitacion", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = Page - 1 })">Anterior</a>
+                    }
+                    @for (int i = Page - 3; i <= Page + 3; i++)
+                    {
+                        var index = i;
+                        if (Page == 1)
+                        {
+                            index++;
+                        }
+                        else if (Page == TotalPages)
+                        {
+                            index--;
+                        }
+
+                        if (index > 0 && index <= TotalPages)
+                        {
+                            <a class="@(index == Page ? "active" : "")" href="@Url.Action("Index", "Invitacion", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = index })">@(index > 1 && i == Page - 3 ? "..." : "")@index.ToString()@(i == Page + 3 && index < TotalPages ? "..." : "")</a>
+                        }
+                    }
+                    @if (Page < TotalPages)
+                    {
+                        <a class="next" href="@Url.Action("Index", "Invitacion", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = Page + 1 })">Siguiente</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<form id="frmEliminarInvitacion" action="@Url.Action("EliminarInvitacion", "Invitacion")" method="post" onsubmit="return eliminarInvitacion(this);" enctype="multipart/form-data">
+    <input type="hidden" name="IdInvitacion" id="idInvitacionEliminar" />
+</form>
+
+@section scripts {
+    <script>
+        //Eliminación de producto
+        function startEliminarInvitacion(idInvitacion) {
+            event.preventDefault();
+            showConfirmation('¿Deseas eliminar a esta invitación de la lista de invitaciones?.', 'Eliminar', 'background-color02', 'ic-ok-white', function () {
+                $('#idInvitacionEliminar').val(idInvitacion);
+                $('#frmEliminarInvitacion').submit();
+            });
+        }
+
+        function eliminarInvitacion(formData) {
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    window.location.reload();
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+        function startDetalleInvitacion(idInvitacion) {
+            window.location.href = '@Url.Action("Detalle", "Invitacion")?id=' + idInvitacion  ;
+        }
+    </script>
+}

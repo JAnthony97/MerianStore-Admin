@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_No_Menu.cshtml";
+    ViewBag.Title = "Error";
+}
+<section class="error">
+    <div class="background-error">
+        <img src="~/Images/error/background.png" />
+    </div>
+    <div class="contenido-error">
+        <div class="error-detail">
+            <div class="logo">
+                <img src="~/Images/logo.svg" />
+            </div>
+            <div class="error-description">
+                <label class="block lato error-404 bold">404</label>
+                <label class="block cormorant not-found">Página no encontrada</label>
+                <label class="block cormorant sorry">Lo sentimos, no encontramos la página</label>
+            </div>
+            <div class="align-center">
+                <a class="text-color-gray-oscuro background-color-02 button" href="@Url.Action("Index", "Home")">Volver al inicio</a>
+            </div>
+            <div class="imagenes-complemento">
+                <div class="complemento complemento-01">
+                    <img src="~/Images/error/1.png" />
+                </div>
+                <div class="complemento complemento-02">
+                    <img src="~/Images/error/2.png" />
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>

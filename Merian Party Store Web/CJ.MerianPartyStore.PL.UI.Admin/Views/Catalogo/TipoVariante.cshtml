@@ -1,0 +1,20 @@
+﻿@using CJ.MerianPartyStore.Util
+@model CJ.MerianPartyStore.PL.UI.Admin.Models.TipoVarianteModel
+<div class="tipo-variante">
+    <input type="hidden" name="IdTipoVariantes" value="@(Model != null && Model.IdTipoVariante > 0 ? Model.IdTipoVariante : 0)" />
+    <div class="form-field nombre">
+        <label>Nombre de variante</label>
+        <input class="nombre-variante" name="Nombres" maxlength="100" value="@(Model != null ? Model.Nombre : "")" placeholder="Nombre de variante" />
+    </div>
+    <div class="form-field tipo">
+        <label>Tipo</label>
+        <select name="Tipos" id="producto-tipo-variante-@(Model != null ? (int?)Model.IdTipoVariante : null)">
+            <option @(Model != null && Model.Tipo == Constants.Producto.Variante.Tipo.COLOR ? "selected" : "") value="@Constants.Producto.Variante.Tipo.COLOR">Color</option>
+        </select>
+    </div>
+    <div class="form-field opciones">
+        <label>Opciones</label>
+        <input class="opciones-variante" name="Variantes" id="tipo-variante-@(Model != null ? (int?)Model.IdTipoVariante : null)" value="@(Model != null ? Model.Variantes : "")" />
+    </div>
+    <a class="item-delete eliminar-variante" onclick="eliminarVariante(this);">Eliminar</a>
+</div>

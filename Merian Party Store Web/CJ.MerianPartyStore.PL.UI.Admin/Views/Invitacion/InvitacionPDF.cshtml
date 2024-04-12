@@ -1,0 +1,179 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model InvitacionModel
+@{
+    Layout = "~/Views/Shared/_Layout_No_Menu.cshtml";
+    ViewBag.Title = "Invitación";
+}
+
+<section class="invitaciones-pdf" style="background-image: url(@(Model!= null && Model?.AudioFile!= null? "../../Images/Invitacion/Fondo/"+Model.FondoFile:"../../Images/Invitacion/Fondo/background_invitacion.png"))">
+    <div class="fondo relative">
+        <div id="pdf-viewer" class="pdf-viewer">
+            <canvas id="pdf-canvas" class="pdf-canvas" width="200" height="200"></canvas>
+            <div id="pdf-annotations" class="pdf-annotations"></div>
+        </div>
+        <div class="contenido-invitacion">
+            <div class="audio-content">
+                <div class="audio-controllers flex-center" style="background-color:@(Model!= null && !String.IsNullOrEmpty(Model.ColorAudio) ? Model.ColorAudio:"#000");">
+                    <a id="audioIcon" class="ic-play-white play-pause inactive" onclick="turnOffAudio();"></a>
+                    <a class="ic-music-white"></a>
+                </div>
+                <div class="audio hidden">
+                    <audio id="audioInvitacion" controls autoplay loop>
+                        <source src="@(Model!= null && Model?.AudioFile!= null? Url.Content(Model.AudioFile):"")" type="audio/mpeg" />
+                    </audio>
+                </div>
+            </div>
+            <div class="countdown flex-center">
+                <div class="date align-center">
+                    <label id="days" class="date-number block" style="color:@(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">--</label>
+                    <label class="date-label block" style="color: @(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">DÍAS</label>
+                </div>
+                <div class="date align-center">
+                    <label id="hours" class="date-number block" style="color: @(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">--</label>
+                    <label class="date-label block" style="color:@(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">HORAS</label>
+                </div>
+                <div class="date align-center">
+                    <label id="min" class="date-number block" style="color: @(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">--</label>
+                    <label class="date-label block" style="color:@(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">MIN</label>
+                </div>
+                <div class="date align-center">
+                    <label id="seg" class="date-number block" style="color: @(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">--</label>
+                    <label class="date-label block" style="color: @(Model!= null && !String.IsNullOrEmpty(Model.ColorContador) ? Model.ColorContador:"#000")">SEG</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="popup white" id="popupIntroInvitacion">
+    <a class="letter-spacing button text-color-white  position-center" style="background-color:@(Model!= null && !String.IsNullOrEmpty(Model.ColorAudio) ? Model.ColorAudio:"#000");" onclick="turnOffAudio(); popupIntroInvitacion.hide();">Ver invitación</a>
+</div>
+
+@section scripts {
+    <script>
+
+        var popupIntroInvitacion = new Popup('popupIntroInvitacion');
+
+        $(document).ready(function () {
+            popupIntroInvitacion.show();
+            coutdown();
+            setTimeout(function () {
+                $(".invitaciones-pdf").css('height', $("#pdf-canvas").height());
+                $(".pdf-annotations")[0].style.setProperty('height', $("#pdf-canvas").height() + 'px', 'important');
+            }, 3000);
+        });
+
+
+        $(window).resize(function () {
+            $(".invitaciones-pdf").css('height', $("#pdf-canvas").height());
+            $(".pdf-annotations")[0].style.setProperty('height', $("#pdf-canvas").height() + 'px', 'important');
+        });
+        document.onkeydown = function () { return false };
+        $(function () {
+            $(document).bind("contextmenu", function (e) {
+                return false;
+            });
+        });
+        //VOLUMEN DEL AUDIO
+        document.getElementById("audioInvitacion").volume = 0.2;
+
+        //APAGAR AUDIO
+        function turnOffAudio() {
+            if ($('#audioIcon').hasClass('inactive')) {
+                $('#audioIcon').removeClass('inactive');
+                document.getElementById("audioInvitacion").play();
+            }
+            else {
+                $('#audioIcon').addClass('inactive');
+                document.getElementById("audioInvitacion").pause();
+            }
+        }
+
+        //PDF
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
+        const pdfViewer = document.querySelector("#pdf-viewer");
+        const canvas = document.querySelector("#pdf-canvas");
+        const annotationsContainer = document.querySelector("#pdf-annotations");
+        const context = canvas.getContext('2d');
+        const linkService = new pdfjsViewer.PDFLinkService({
+            externalLinkTarget: pdfjsViewer.LinkTarget.SELF
+        });
+
+        async function renderPage(pdf, pageNumber, scale) {
+            const page = await pdf.getPage(pageNumber);
+            const annotations = await page.getAnnotations();
+            if (!scale) scale = 1;
+            const viewport = page.getViewport({ scale: scale });
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            pdfViewer.style.width = canvas.width + "px";
+            pdfViewer.style.height = canvas.height + "px";
+            page.render({
+                canvasContext: context, viewport: viewport
+            });
+            annotationsContainer.style.left = canvas.offsetLeft + "px";
+            annotationsContainer.style.top = canvas.offsetRight + "px";
+            pdfjsLib.AnnotationLayer.render({
+                viewport: viewport.clone({ dontFlip: true }),
+                div: annotationsContainer,
+                annotations: annotations,
+                page: page,
+                linkService: linkService,
+            });
+        }
+
+        // If no URL params are passed, this page tries to
+        // load a PDF called test.pdf and render its first page at scale 1
+        function start() {
+            let pdfFile = '../Images/Invitacion/PDF/@(Model!= null && Model?.PDFFile != null? Model.PDFFile : "")';
+            let scale = 0.8;
+            let pageNumber = 1;
+            let params = new URLSearchParams(window.location.search.substring(1));
+            params.has("f") && (pdfFile = params.get("f"));
+            params.has("n") && (pageNumber = Math.abs(parseInt(params.get("n"))) || 1);
+            pdfjsLib.getDocument(pdfFile).promise.then((pdf) => {
+                if (pdf.numPages < pageNumber) {
+                    pageNumber = pdf.numPages;
+                }
+                renderPage(pdf, pageNumber, scale);
+            });
+        }
+        start();
+
+        //COUTDOWN
+        function coutdown() {
+            // Establecer la fecha y hora objetivo
+            var endDate = new Date("@Model.FechaEvento.Value.ToString("yyyy-MM-dd")" +"T"+"@Model.HoraEvento.Value.ToString()");
+
+            // Actualizar el countdown cada segundo
+            var interval = setInterval(function () {
+                var currentDate = new Date().getTime();
+                var timeRemaining = endDate - currentDate;
+
+                // Calcular días, horas, minutos y segundos restantes
+                var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+
+                // Mostrar el countdown en el elemento con el id "countdown"
+                $("#days").text(days);
+                $("#hours").text(hours);
+                $("#min").text(minutes);
+                $("#seg").text(seconds);
+
+                // Si el countdown llega a cero, detenerlo
+                if (timeRemaining < 0) {
+                    clearInterval(interval);
+                    $("#days").text('0');
+                    $("#hours").text('0');
+                    $("#min").text('0');
+                    $("#seg").text('0');
+                }
+            }, 1000);
+        }
+
+    </script>
+}

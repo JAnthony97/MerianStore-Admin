@@ -1,0 +1,200 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model List<ProductoModel>
+@{
+    String Filtro = ViewBag.Filtro;
+    int Page = ViewBag.Page;
+    int TotalPages = ViewBag.TotalPages;
+
+    ViewBag.Title = "Catálogo";
+    ViewBag.NavigationAction = Constants.NavigationAction.MENU;
+    ViewBag.Section = Constants.Section.CATALOGO;
+    UsuarioModel UsuarioLogueado = (ViewContext.Controller as BaseController).UsuarioLogueado;
+    bool Editable = UsuarioLogueado.Perfil == Constants.Usuario.Perfil.ADMINISTRADOR;
+}
+
+@section actions {
+    <a class="button btn-icon background-color01 text-color-white btn-small btn-small-icon ic-categories" href="@Url.Action("Categorias", "Catalogo")"><span class="desktop-only">Ver categorías</span></a>
+    <a class="button btn-icon background-color02 text-color-white btn-small btn-small-icon ic-add" href="@Url.Action("NuevoProducto", "Catalogo")"><span class="desktop-only">Nuevo producto</span></a>
+    <form action="@Url.Action("Index", "Catalogo")">
+        <input class="search" placeholder="Buscar por producto o categoría" name="Busqueda" value="@Request["Busqueda"]" @(Request["Busqueda"] != null ? "autofocus" : "") />
+        <input type="hidden" name="Filtro" value="@Filtro" />
+        <input type="submit" class="hidden" />
+    </form>
+}
+
+<section class="productos">
+    <div class="tabs">
+        <div class="title-page">
+            <h1 class="bold title text-color-black">Lista de productos</h1>
+        </div>
+        <div class="content table-all">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Recomendado</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        //@foreach (ProductoModel objProductoModel in Model)*@
+                        {
+                            
+                            String Categorias = "";
+                            for (int j = 0; j < Model[i].Categorias.Count; j++)
+                            {
+                                if (j > 0)
+                                {
+                                    Categorias += ", ";
+                                }
+                                Categorias += Model[i].Categorias[j].Nombre;
+                            }
+                            if (String.IsNullOrWhiteSpace(Categorias))
+                            {
+                                Categorias = "(Sin categoría)";
+                            }
+                            <tr >
+                                <td>@(i+1)</td>
+                                <td>@Model[i].Nombre</td>
+                                <td><label>@Categorias</label></td>
+                                <td>S/ @Model[i].Precio.Value.ToString("0.00") | $ @((int)Math.Ceiling(Model[i].Precio.Value / ViewBag.TipoCambio))</td>
+                                <td>
+                                    <input type="checkbox" class="switch producto-destacado" @(Model[i].Recomendado.Value ? "checked" : "") onchange="startMarcarProductoRecomendado(@Model[i].IdProducto, this);" />
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="switch" @(Model[i].Activo.Value ? "checked" : "") onchange="startCambiarEstadoProducto(@Model[i].IdProducto, this);" />
+                                </td>
+                                <td class="actions">
+                                    <a class="action-edit" onclick="productDetail()" href="@Url.Action("Producto", "Catalogo", new { id = Model[i].IdProducto, Page = Page, Busqueda = Request["Busqueda"] ?? "" })"><img src="~/Images/Icons/ic_edit.svg" class="svg" /></a>
+                                    <a class="action-delete" onclick="startEliminarProducto('@Model[i].Nombre', @Model[i].IdProducto)"><img src="~/Images/Icons/ic_delete.svg" class="svg" /></a>
+                                </td>
+                            </tr>
+                          
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr><td colspan="8" style="text-align:center;">No hay productos registrados en la plataforma.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (TotalPages > 1)
+            {
+                <div class="pages">
+                    @if (Page > 1)
+                    {
+                        <a class="prev" href="@Url.Action("Index", "Catalogo", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = Page - 1 })">Anterior</a>
+                    }
+                    @for (int i = Page - 3; i <= Page + 3; i++)
+                    {
+                        var index = i;
+                        if (Page == 1)
+                        {
+                            index++;
+                        }
+                        else if (Page == TotalPages)
+                        {
+                            index--;
+                        }
+
+                        if (index > 0 && index <= TotalPages)
+                        {
+                            <a class="@(index == Page ? "active" : "")" href="@Url.Action("Index", "Catalogo", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = index })">@(index > 1 && i == Page - 3 ? "..." : "")@index.ToString()@(i == Page + 3 && index < TotalPages ? "..." : "")</a>
+                        }
+                    }
+                    @if (Page < TotalPages)
+                    {
+                        <a class="next" href="@Url.Action("Index", "Catalogo", new { Filtro = Filtro, Busqueda = Request["Busqueda"], Page = Page + 1 })">Siguiente</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<form id="frmEliminarProducto" action="@Url.Action("EliminarProducto", "Catalogo")" method="post" onsubmit="return eliminarProducto(this);" enctype="multipart/form-data">
+    <input type="hidden" name="IdProducto" id="idProductoEliminar" />
+</form>
+<form id="frmCambiarEstado" action="@Url.Action("CambiarEstadoProducto", "Catalogo")" method="post" onsubmit="return cambiarEstadoProducto(this);" enctype="multipart/form-data">
+    <input type="hidden" name="IdProducto" id="idProductoCambiarEstado" />
+    <input type="hidden" name="Activo" id="activo" />
+</form>
+<form id="frmMarcarRecomendado" action="@Url.Action("MarcarProductoRecomendado", "Catalogo")" method="post" onsubmit="return marcarProductoRecomendado(this);" enctype="multipart/form-data">
+    <input type="hidden" name="IdProducto" id="idProductoRecomendado" />
+    <input type="hidden" name="Recomendado" id="recomendado" />
+</form>
+
+@section scripts {
+    <script>
+        //Eliminación de producto
+        function startEliminarProducto(nombreProducto, idProducto) {
+            event.preventDefault();
+            showConfirmation('¿Deseas eliminar a ' + nombreProducto + ' de la lista de productos?', 'Eliminar', 'background-color02', 'ic-ok-white', function () {
+                $('#idProductoEliminar').val(idProducto);
+                $('#frmEliminarProducto').submit();
+            });
+        }
+
+        function eliminarProducto(formData) {
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    window.location.reload();
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+
+        //Cambio de estado de producto
+        var itemCambioEstado = null;
+        function startCambiarEstadoProducto(idProducto, item) {
+
+            itemCambioEstado = item;
+
+            $('#idProductoCambiarEstado').val(idProducto);
+            $('#activo').val($(item).is(':checked'));
+            $('#frmCambiarEstado').submit();
+        }
+
+        function cambiarEstadoProducto(formData) {
+            preventLoading();
+            return ajaxPost(formData, function (data) {
+            }, function (data) {
+                showMessage(data.Message, null);
+                $(itemCambioEstado).attr('checked', !$('#activo').val());
+            });
+        }
+
+        //Marcado de producto como recomendado
+        var itemProductoRecomendado = null;
+        function startMarcarProductoRecomendado(idProducto, item) {
+
+            itemProductoRecomendado = item;
+
+            $('#idProductoRecomendado').val(idProducto);
+            $('#recomendado').val($(item).is(':checked'));
+            $('#frmMarcarRecomendado').submit();
+        }
+
+        function marcarProductoRecomendado(formData) {
+            preventLoading();
+            return ajaxPost(formData, function (data) {
+
+                $('.producto-recomendado').not(itemProductoRecomendado).attr('checked', false);
+            }, function (data) {
+                showMessage(data.Message, null);
+                $(itemProductoRecomendado).attr('checked', !$('#recomendado').val());
+            });
+        }
+        function startDetalleProducto(idProducto,page,busqueda) {
+            window.location.href = '@Url.Action("Producto", "Catalogo")?id=' + idProducto + "Page=" + page + "Busqueda=" + busqueda ;
+        }
+    </script>
+}

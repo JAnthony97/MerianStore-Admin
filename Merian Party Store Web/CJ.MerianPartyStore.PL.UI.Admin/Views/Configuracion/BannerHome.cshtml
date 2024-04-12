@@ -1,0 +1,9 @@
+﻿<div class="banner" style="background-image: url('@Url.Content(Model.Imagen)');">
+    <input type="hidden" name="IdConfiguraciones" value="@Model.IdBanner" />
+    <div class="item-delete" onclick="if ($(this).parent().prev().is('.add')) $(this).parent().prev().remove(); $(this).parent().remove();">Eliminar</div>
+    <input class="link" type="text" name="Link" placeholder="Link (https://ejemplo.com)" value="@Model.Link" maxlength="255" />
+</div>
+@if (Model.IdBanner == 0)
+{
+<input type="file" id="newBanner" name="BannerFile" />
+}

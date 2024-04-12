@@ -1,0 +1,192 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model CategoriaModel
+@{
+    if (Model == null)
+    {
+        ViewBag.Title = "Nueva Categoría";
+    }
+    else
+    {
+        ViewBag.Title = Model.Nombre;
+    }
+    ViewBag.NavigationAction = Constants.NavigationAction.BACK;
+    ViewBag.Section = Constants.Section.CATALOGO;
+    ViewBag.Breadcrumb = new String[][] {
+        new String[] {"Catálogo", "Index", "Catalogo", null},
+        new String[] {"Categorias", "Categorias", "Catalogo", null}
+    };
+}
+<section class="detalle-categorias">
+    <form id="frmCategoria" action="@Url.Action("GuardarCategoria", "Catalogo")" method="post" onsubmit="return guardarCategoria(this);" enctype="multipart/form-data">
+        <input type="hidden" id="idCategoria" name="IdCategoria" value=" @(Model != null ? Model.IdCategoria : 0)" />
+        <input type="hidden" id="idCategoriaPadre" name="IdCategoriaPadre" value="@(Model != null ? Model.IdCategoriaPadre : null)"  />
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-user bold">Información básica</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="user-personal-info">
+                        <div class="user-picture"></div>
+                        <div class="user-info">
+                            <div class="columns columns-spacing">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Nombre de la categoría <span class="text-color01">*</span></label>
+                                        <input id="nombreCategoria" type="text" name="Nombre" maxlength="100" placeholder="Nombre de la categoría" value="@(Model != null ? Model.Nombre : "")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Descripción <span class="text-color01"></span></label>
+                                        <textarea id="descripcion" name="Descripcion" placeholder="Descripción">@(Model != null ? Model.Descripcion : "")</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-media">Multimedia</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="form-field">
+                        <label>Banner para la categoría <span class="text-color01">*</span> (1200 x 300px)</label>
+                        <div class="banners flex-list left">
+                            <input type="file" id="newBanner" name="BannerFile" />
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Imagen principal de la categoría: 280 x 250px (JPG)</label>
+                        <div class="fotos flex-list left">
+                            <input type="file" id="newFoto" name="FotoFile" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions section-actions">
+            <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="history.back();">Cancelar</a>
+            <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="startGuardarCategoria();">Guardar</a>
+        </div>
+    </form>
+</section>
+@section scripts{
+
+    <script>
+        //Primera carga de la página
+        var imageInputBanner = new ImageInput('newBanner', 'banner add', null, null);
+        var imageInputFoto = new ImageInput('newFoto', 'producto-foto add', null, null);
+        var extensionesValidas = ".png, .gif, .jpeg, .jpg";
+        $(document).ready(function () {
+
+
+            @if (Model!= null && Model?.Banner!= null) {
+
+               <text>var container = $('#newBanner').parent();
+            container.removeClass('add');
+            imageInputBanner.setImageUrl('@Url.Content(Model.Banner)');
+
+            </text>
+            }
+            @if (Model!= null && Model?.Imagen != null) {
+                <text> var container = $('#newFoto').parent();
+                container.removeClass('add');
+            imageInputFoto.setImageUrl('@Url.Content(Model.Imagen)');
+
+               </text>
+            }
+
+            setValidations();
+        });
+
+        //Validaciones
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#nombreCategoria', name: 'Nombre de la categoría', required: true },
+              
+            ];
+            validator = new Validator(fields, 'error');
+        }
+
+        ////Funcionalidad de "Nuevo banner"
+        $('#newBanner').change(function () {
+            var container = $('#newBanner').parent();
+            if (validarExtension(this)){
+                if ($('#newBanner').val() !== "") {
+
+                    container.removeClass('add');
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡El Banner no es de formato: png, gif, jpeg o jpg.!", null);
+            }
+        });
+        ////Funcionalidad de "Nueva foto"
+        $('#newFoto').change(function () {
+            var container = $('#newFoto').parent();
+            if (validarExtension(this)) {
+                if ($('#newFoto').val() !== "") {
+                    container.removeClass('add');
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡La Imagen Principal no es de formato: png, gif, jpeg o jpg.!", null);
+            }
+        });
+
+        //Guardado de categoría
+        function startGuardarCategoria() {
+            var result = validator.validate();
+
+            if (result == null)
+                $('#frmCategoria').submit();
+            else
+                showMessage(result, null);
+        }
+
+        function guardarCategoria(formData) {
+                return ajaxPost(formData, function (data) {
+                    showMessage(data.Message, function () {
+                         window.location.replace('@Url.Action("Categorias", "Catalogo")');
+                    });
+                }, function (data) {
+                    showMessage(data.Message, null);
+                });
+
+        }
+        function validarExtension(datos) {
+
+            var ruta = datos.value;
+            var extension = ruta.substring(ruta.lastIndexOf('.') + 1).toLowerCase();
+            var extensionValida = extensionesValidas.indexOf(extension);
+
+            if (extensionValida < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+
+}

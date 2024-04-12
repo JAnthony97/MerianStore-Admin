@@ -1,0 +1,11 @@
+﻿@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model FotoModel
+
+<div class="producto-foto" style="background-image: url('@Url.Content(Model.Imagen)');">
+    <input type="hidden" name="IdFotos" value="@Model.IdFoto" />
+    <div class="item-delete" onclick="if ($(this).parent().prev().is('.add')) $(this).parent().prev().remove(); $(this).parent().remove();">Eliminar</div>
+</div>
+@if (Model.IdFoto == 0)
+{
+<input type="file" id="newFoto" name="FotoFile" multiple/>
+}

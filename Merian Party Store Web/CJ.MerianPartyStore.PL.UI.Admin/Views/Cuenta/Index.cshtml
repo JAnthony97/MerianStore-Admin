@@ -1,0 +1,191 @@
+﻿﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model UsuarioModel
+@{
+    ViewBag.Title = "Mi cuenta";
+    ViewBag.NavigationAction = Constants.NavigationAction.MENU;
+
+    bool Master = Model.Username == Constants.Usuario.MASTER;
+    bool Merchant = Model.Perfil == Constants.Usuario.Perfil.MERCHANT;
+}
+
+<section class="usuario">
+    <form id="frmUsuario" action="@Url.Action("Guardar", "Cuenta")" method="post" onsubmit="return guardarUsuario(this);" enctype="multipart/form-data">
+        <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
+        <input type="hidden" name="IdPersona" value="@Model.IdPersona" />
+        @if (Master || Merchant)
+        {
+            <input type="hidden" name="Username" value="@Model.Username" />
+        }
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-user bold">Datos personales</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="user-personal-info">
+                        <div class="user-picture"></div>
+                        <div class="user-info">
+                            <div class="columns columns-spacing">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Tipo de documento <span class="text-color01">*</span></label>
+                                        <select id="tipoDocumento" name="TipoDocumento" @(Master || Merchant ? "disabled" : "")>
+                                            <option @(Model.TipoDocumento == Constants.Persona.TipoDocumento.DNI ? "selected" : "") value="@Constants.Persona.TipoDocumento.DNI">DNI</option>
+                                            <option @(Model.TipoDocumento == Constants.Persona.TipoDocumento.PASAPORTE ? "selected" : "") value="@Constants.Persona.TipoDocumento.PASAPORTE">Pasaporte</option>
+                                            <option @(Model.TipoDocumento == Constants.Persona.TipoDocumento.RUC ? "selected" : "") value="@Constants.Persona.TipoDocumento.RUC">RUC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Número de documento <span class="text-color01">*</span></label>
+                                        <input id="documentoIdentidad" type="text" name="DocumentoIdentidad"  value="@Model.DocumentoIdentidad" @(Master || Merchant ? "disabled" : "")  maxlength="50" placeholder="Número de documento" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Nombres <span class="text-color01">*</span></label>
+                                        <input id="nombre" type="text" name="Nombre" value="@Model.Nombre" @(Master ? "disabled" : "") placeholder="Nombre" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Primer apellido <span class="text-color01">*</span></label>
+                                        <input id="primerApellido" type="text" name="PrimerApellido" value="@Model.PrimerApellido" @(Master ? "disabled" : "") placeholder="1er apellido" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Seguno apellido</label>
+                                        <input id="segundoApellido" type="text" name="SegundoApellido" value="@Model.SegundoApellido" @(Master ? "disabled" : "") placeholder="2do apellido" maxlength="100" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Sexo <span class="text-color01">*</span></label>
+                                        <select id="sexo" name="Sexo" @(Master ? "disabled" : "")>
+                                            <option @(Model.Sexo == Constants.Persona.Sexo.HOMBRE ? "selected" : "") value="@Constants.Persona.Sexo.HOMBRE">Hombre</option>
+                                            <option @(Model.Sexo == Constants.Persona.Sexo.MUJER ? "selected" : "") value="@Constants.Persona.Sexo.MUJER">Mujer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Fecha de nacimiento</label>
+                                        <input id="fechaNacimiento" type="text" name="FechaNacimiento" placeholder="dd/mm/aaaa" value="@Model.FechaNacimiento" @(Master ? "disabled" : "") maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Número de documento <span class="text-color01"></span></label>
+                                        <input id="numerotelefono" type="text" name="Numerotelefono" value="@Model.Telefono" @(Master || Merchant ? "disabled" : "") maxlength="50" placeholder="Número de documento" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-password bold">Acceso a la plataforma</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="columns columns-spacing">
+                        <div class="col col-1">
+                            <div class="form-field">
+                                <label>Usuario <span class="text-color01">(*)</span></label>
+                                <input id="username" type="text" name="Username" maxlength="50" placeholder="Usuario" value="@Model.Username" @(Master || Merchant ? "disabled" : "") />
+                            </div>
+                        </div>
+                        <div class="col col-1">
+                            <div class="form-field">
+                                <label>Contraseña</label>
+                                <input id="password" type="password" name="Password" placeholder="(Escribe para modificar tu contraseña)" maxlength="20" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions section-actions">
+            <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="history.back();">Cancelar</a>
+            <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="solicitarPassword();">Guardar</a>
+        </div>
+
+        <!--POPUPS-->
+        <div class="popup" id="popupPassword">
+            <div class="popup-box">
+                <label class="text">Ingresa tu contraseña actual<br />para guardar los datos de la cuenta:</label>
+                <input type="password" class="full-width" name="PasswordActual" maxlength="20" />
+                <div class="form-actions">
+                    <a class="button btn-small text-color-white background-color01" onclick="popupPassword.hide();">Cancelar</a>
+                    <a class="button btn-small text-color-white background-color02 btn-icon ic-ok-white" onclick="$('#frmUsuario').submit();">Confirmar</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section scripts {
+    <script>
+        var popupPassword = new Popup('popupPassword');
+
+        //Primera carga de la página
+        $(document).ready(function () {
+            setValidations();
+        });
+
+        //Validaciones
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#tipoDocumento', name: 'Tipo de documento', required: true },
+                { selector: '#documentoIdentidad', name: 'Documento de identidad', required: true },
+                { selector: '#nombre', name: 'Nombre', required: true },
+                { selector: '#primerApellido', name: 'Primer apellido', required: true },
+                { selector: '#sexo', name: 'Sexo', required: true },
+                { selector: '#username', name: 'Usuario', required: true, type: 'E' },
+                { selector: '#password', name: 'Password', minLength: 8 },
+            ];
+
+            validator = new Validator(fields, 'error');
+        }
+
+        //Guardado de usuario
+        function solicitarPassword() {
+            var result = validator.validate();
+
+            if (result == null)
+                popupPassword.show();
+            else
+                showMessage(result, null);
+        }
+
+        function guardarUsuario(formData) {
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    history.back();
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+    </script>
+}

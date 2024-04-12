@@ -1,0 +1,114 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Controllers
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model List<CategoriaModel>
+@{
+    ViewBag.Title = "Categorías";
+    ViewBag.NavigationAction = Constants.NavigationAction.BACK;
+    ViewBag.Section = Constants.Section.CATALOGO;
+
+    ViewBag.Breadcrumb = new String[][] {
+        new String[] {"Catálogo", "Index", "Catalogo", null}
+    };
+
+    String[] IdCategorias = { };
+    if (Request["c"] != null)
+    {
+        IdCategorias = Request["c"].Split(',');
+    }
+}
+
+@section actions {
+    <a class="button btn-icon background-color02 text-color-white btn-small btn-small-icon ic-add" href="@Url.Action("NuevaCategoria", "Catalogo")"><span class="desktop-only">Nueva categoría</span></a>
+}
+
+@helper Categoria(CategoriaModel objCategoriaModel, String[] IdCategorias)
+{
+    <div class="categoria tree-item @(objCategoriaModel.Subcategorias.Count > 0 ? "expandable" : "") @(IdCategorias.Any(c => c == objCategoriaModel.IdCategoria.ToString()) ? "active" : "")" id="categoria-@objCategoriaModel.IdCategoria">
+        <header>
+            <label>@objCategoriaModel.Nombre</label>
+            <div class="actions">
+                <a class="ic-edit" href="@Url.Action("DetalleCategoria", "Catalogo", new { IdCategoria=objCategoriaModel.IdCategoria})">Editar</a>
+                <a class="ic-add" href="@Url.Action("DetalleCategoria", "Catalogo", new { IdCategoriaPadre=objCategoriaModel.IdCategoria})">Nueva subcategoría</a>
+                <a class="ic-delete" onclick="startEliminarCategoria('@objCategoriaModel.Nombre', @objCategoriaModel.IdCategoria, @(objCategoriaModel.Subcategorias.Count > 0 ? "true" : "false"));">Eliminar</a>
+            </div>
+        </header>
+        <div class="subcategorias sub-items">
+            @foreach (CategoriaModel objSubcategoriaModel in objCategoriaModel.Subcategorias)
+            {
+                @Categoria(objSubcategoriaModel, IdCategorias)
+            }
+        </div>
+    </div>
+}
+
+<section class="categorias">
+    <div class="tabs">
+        <div class="content content-padding">
+            <div class="centered">
+                <div class="categorias-list tree">
+                    @foreach (CategoriaModel objCategoriaModel in Model)
+                    {
+                        @Categoria(objCategoriaModel, IdCategorias)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form id="frmEliminarCategoria" action="@Url.Action("EliminarCategoria", "Catalogo")" method="post" onsubmit="return eliminarCategoria(this);" enctype="multipart/form-data">
+    <input type="hidden" name="IdCategoria" id="idCategoriaEliminar" />
+</form>
+
+
+@section scripts {
+    <script>
+
+        //Eliminación de categorías
+        function startEliminarCategoria(nombreCategoria, idCategoria, subcategorias) {
+            event.preventDefault();
+            var confirmacionSubcategorias = '';
+            if (subcategorias)
+                confirmacionSubcategorias += '\nSe eliminarán también <span class="bold">todas sus subcategorías</span>.';
+            showConfirmation('¿Deseas eliminar la categoría ' + nombreCategoria + '?' + confirmacionSubcategorias, 'Eliminar', 'background-color02', 'ic-ok-white', function () {
+                $('#idCategoriaEliminar').val(idCategoria);
+                $('#frmEliminarCategoria').submit();
+            });
+        }
+
+        function eliminarCategoria(formData) {
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    window.location.reload();
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+        function nuevaCategoria(IdCategoriaPadre) {
+
+            window.location.replace('@Url.Action("Categorias", "Catalogo")?IdCategoriaPadre=' + idCategoriaPadre);
+        }
+
+        //Recarga de página
+        function refreshPage() {
+            var params = 'c=';
+            $('.categoria.active').each(function (i, item) {
+                params += $(item).attr('id').replace('categoria-', '') + ',';
+            });
+            window.location.replace('@Url.Action("Categorias", "Catalogo")?' + params);
+        }
+
+        //Expansión de categorías
+        $('.categoria header').click(function () {
+            if (!$(event.target).is('a')) {
+                var categoria = $(this).parent();
+
+                if (categoria.hasClass('active'))
+                    categoria.removeClass('active');
+                else
+                    categoria.addClass('active');
+            }
+        });
+    </script>
+}

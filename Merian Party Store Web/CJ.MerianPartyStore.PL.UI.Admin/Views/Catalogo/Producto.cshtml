@@ -1,0 +1,784 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model ProductoModel
+@{
+    if (Model == null)
+    {
+        ViewBag.Title = "Nuevo producto";
+    }
+    else
+    {
+        ViewBag.Title = Model.Nombre;
+    }
+
+    ViewBag.NavigationAction = Constants.NavigationAction.BACK;
+    ViewBag.Section = Constants.Section.CATALOGO;
+
+    ViewBag.Breadcrumb = new String[][] {
+        new String[] {"Catálogo", "Index", "Catalogo", null}
+    };
+
+    List<CategoriaModel> Categorias = ViewBag.Categorias;
+
+    int[] CategoriasAsignadas = null;
+    if (Model == null)
+    {
+        CategoriasAsignadas = new int[] { };
+    }
+    else
+    {
+        CategoriasAsignadas = Model.Categorias.Select(c => c.IdCategoria).ToArray();
+    }
+}
+
+@helper Categoria(CategoriaModel objCategoriaModel, int[] IdCategorias)
+{
+    <div class="tree-item categoria @(objCategoriaModel.Subcategorias.Count > 0 ? "expandable" : "")" id="categoria-@objCategoriaModel.IdCategoria">
+        <header>
+            <label><input type="checkbox" value="@objCategoriaModel.IdCategoria" name="IdCategorias" onchange="loadCategoriasIndeterminadas(false);" @(IdCategorias.Any(c => c == objCategoriaModel.IdCategoria) ? "checked" : "") /> @objCategoriaModel.Nombre.ToUpper()</label>
+        </header>
+        <div class="subcategorias sub-items">
+            @foreach (CategoriaModel objSubcategoriaModel in objCategoriaModel.Subcategorias)
+            {
+                @Categoria(objSubcategoriaModel, IdCategorias)
+            }
+        </div>
+    </div>
+}
+
+<section class="producto">
+    <form id="frmProducto" action="@Url.Action("GuardarProducto", "Catalogo")" method="post" onsubmit="return guardarProducto(this);" enctype="multipart/form-data">
+        <input type="hidden" name="IdProducto" id="idProducto" value="@(Model != null ? Model.IdProducto : 0)" />
+        <input type="hidden" name="Descripcion" id="descripcion" />
+        <input type="hidden" name="DescripcionServiciosAdicionales" id="descripcionServiciosAdicionales" />
+        <input type="hidden" name="DescripcionComoComprar" id="descripcionComoComprar" />
+        <input id="tieneVariantes" type="hidden" name="TieneVariantes" value="false" />
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-menu">Información básica</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="columns columns-spacing">
+                        <div class="col col-2">
+                            <div class="columns">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Nombre del producto <span class="text-color01">*</span></label>
+                                        <input id="nombre" class="nombre" type="text" name="Nombre" placeholder="Nombre del producto" value="@(Model != null ? Model?.Nombre : "")" maxlength="100" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-1">
+                            <div class="columns">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Precio <span class="text-color01">*</span></label>
+                                        <input id="precio" type="text" name="Precio" placeholder="S/" value="@(Model != null ? Model?.Precio.Value.ToString("0.00") : "")" maxlength="8" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-1">
+                            <div class="columns">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Precio promocional</label>
+                                        <input id="precioPromocional" class="precio-promocional" type="text" name="PrecioPromocional" placeholder="S/" value="@(Model != null ? Model?.PrecioPromocional : null)" maxlength="8" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Datos del Producto</label>
+                        <div class="descripcion" id="editorDescripcion"></div>
+                    </div>
+                    <div class="form-field">
+                        <label>¿Cómo comprar este producto?</label>
+                        <div class="descripcion" id="editorComprar"></div>
+                    </div>
+                    <div class="form-field">
+                        <label>Detalles del Producto</label>
+                        <div class="descripcion" id="editorServicios"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-menu">Servicios adicionales</a></li>
+                    </ul>
+                </div>
+                <div class="actions">
+                    <a onclick="agragarServicioAdicional();" class="button btn-small text-color-white background-color02 btn-icon ic-add-white">Servicios</a>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="table-container">
+                    <table id="tableServiciosAdicionales">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Texto de ejemplo</th>
+                                <th>Previsualizar</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.ServiciosAdicionales != null)
+                            {
+                                foreach (ServiciosAdicionalesModel objServiciosAdicionalesModel in Model.ServiciosAdicionales)
+                                {
+                                    objServiciosAdicionalesModel.TipoCambio = ViewBag.TipoCambio;
+                                    Html.RenderPartial("ServicioAdicional", objServiciosAdicionalesModel);
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-categories">Categorías</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding categorias">
+                <div class="centered categorias-list tree">
+                    @foreach (CategoriaModel objCategoriaModel in Categorias)
+                    {
+                        @Categoria(objCategoriaModel, CategoriasAsignadas)
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-media">Multimedia</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered multimedia">
+                    <div class="fotos flex-list left">
+                        @if (Model != null && Model.Fotos != null)
+                        {
+                            foreach (FotoModel objFotoModel in Model.Fotos)
+                            {
+                                Html.RenderPartial("Foto", objFotoModel);
+                            }
+                        }
+                        <input type="file" id="newFoto" name="FotoFile" multiple/>
+                    </div>
+                    <div class="form-field">
+                        <label>Video URL YouTube (Si es que el producto no tiene variantes)</label>
+                        <input id="videoUrl" type="text" name="VideoUrl" placeholder="URL del video en YouTube" value="@(Model != null ? Model?.VideoUrl : "")" maxlength="255" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-products">Variantes</a></li>
+                    </ul>
+                </div>
+                <div class="actions">
+                    <a onclick="abrirPopupNuevaVariante();" class="button btn-small text-color-white background-color02 btn-icon ic-add-white">Variantes</a>
+                </div>
+            </header>
+            <div class="content content-padding variantes">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Variante</th>
+                                @if (Model != null)
+                                {
+                                    <th>Fotos</th>
+                                }
+                                <th>YouTube</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (VarianteProductoModel objVarianteProductoModel in Model.VariantesProducto)
+                                {
+                                    <tr id="varianteProducto-@objVarianteProductoModel.IdVarianteProducto">
+                                        <td>
+                                            <input type="hidden" name="IdVariantesProducto" value="@objVarianteProductoModel.IdVarianteProducto" />
+                                            <label>@(objVarianteProductoModel.Variante != null ? objVarianteProductoModel.Variante : "(Variante por defecto)")</label>
+                                        </td>
+                                        <td>
+                                            @{
+                                                List<int> lstIndiceFotos = new List<int>();
+                                                if (objVarianteProductoModel.Fotos != null)
+                                                {
+                                                    foreach (FotoModel objFotoModel in objVarianteProductoModel.Fotos)
+                                                    {
+                                                        FotoModel objFotoProductoModel = Model.Fotos.SingleOrDefault(f => f.IdFoto == objFotoModel.IdFoto);
+                                                        if (objFotoProductoModel != null)
+                                                        {
+                                                            lstIndiceFotos.Add(Model.Fotos.IndexOf(objFotoProductoModel));
+                                                        }
+                                                    }
+                                                }
+
+                                                String FotosSeleccionadas = "";
+                                                for (int i = 0; i < lstIndiceFotos.Count; i++)
+                                                {
+                                                    if (i > 0)
+                                                    {
+                                                        FotosSeleccionadas += ",";
+                                                    }
+                                                    FotosSeleccionadas += lstIndiceFotos[i];
+                                                }
+                                            }
+                                            <input type="hidden" class="indice-fotos-seleccionadas" name="IndiceFotosSeleccionadas" id="fotosSeleccionadas-@objVarianteProductoModel.IdVarianteProducto" value="@FotosSeleccionadas" />
+                                            <a class="variante-fotos" onclick="loadFotos(@objVarianteProductoModel.IdVarianteProducto);">
+                                                @if (objVarianteProductoModel.Fotos == null || objVarianteProductoModel.Fotos.Count == 0)
+                                                {
+                                                    <label class="text-color01">(Asignar fotos)</label>
+                                                }
+                                                else
+                                                {
+                                                    bool Sobrepasa = objVarianteProductoModel.Fotos.Count > 4;
+                                                    for (int i = 0; i < (Sobrepasa ? 3 : objVarianteProductoModel.Fotos.Count); i++)
+                                                    {
+                                                        <div class="producto-foto" style="background-image: url('@Url.Content(objVarianteProductoModel.Fotos[i].Imagen)')"></div>
+                                                    }
+
+                                                    if (Sobrepasa)
+                                                    {
+                                                        <label class="text-color01">+@(objVarianteProductoModel.Fotos.Count - 3)</label>
+                                                    }
+                                                }
+                                            </a>
+                                        </td>
+                                        <td><input type="text" name="URLYouTube" value="@objVarianteProductoModel.Link" maxlength="100" style="width: 100%;" /></td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="align-center" colspan="2">
+                                        <label class="bold subtitle">No hay variantes</label>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions section-actions">
+            <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="history.back();">Cancelar</a>
+            <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="startGuardarProducto();">Guardar</a>
+        </div>
+    </form>
+
+    <!--POPUPS-->
+    <div class="popup popup-tipos-variante" id="popupTiposVariante">
+        <div class="popup-box" style="overflow-x:hidden;">
+            <form id="frmTiposVariante" action="@Url.Action("GuardarTiposVariante", "Catalogo")" method="post" onsubmit="return guardarTiposVariante(this);" enctype="multipart/form-data">
+                <input type="hidden" name="IdProducto" value="@(Model != null ? Model.IdProducto : 0)" id="idProductoTiposVariante" />
+                <input type="hidden" name="Restablecer" value="false" id="restablecer" />
+                <div class="align-left">
+                    <h2 class="title">Variantes</h2>
+                    <div class="tipos-variante-list" id="tiposVariante">
+                        @if (Model != null && Model.TiposVariante != null)
+                        {
+                            foreach (TipoVarianteModel objTipoVariante in Model.TiposVariante)
+                            {
+                                Html.RenderPartial("TipoVariante", objTipoVariante);
+                            }
+                        }
+
+                        <a class="nueva-variante button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="nuevoTipoVariante();">Nueva variante</a>
+
+                    </div>
+                </div>
+            </form>
+            <div class="form-actions">
+                <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="cerrarColorPicker(); popupTiposVariante.hide();">Cancelar</a>
+                <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="startGuardarTiposVariante();">Guardar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-fotos" id="popupFotos">
+        <div class="popup-box">
+            <div class="align-left">
+                <h2 class="title">Seleccionar fotos</h2>
+                <div class="fotos flex-list" id="fotos">
+                </div>
+            </div>
+            <div class="form-actions">
+                <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="popupFotos.hide();">Cancelar</a>
+                <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="asignarFotos();">Asignar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-servicios-adicionales" id="popupServiciosAdicionales">
+        <div class="popup-box">
+            <div class="align-left">
+                <h2 class="title">Servicios adicionales</h2>
+                <div>
+                    <div class="form-field">
+                        <label>Nombre <span class="text-color01">*</span></label>
+                        <input id="nombreServicioAdicional" type="text" name="NombreServicioAdicional" placeholder="Nombre del servicio" value="" maxlength="100" />
+                    </div>
+                    <div class="form-field">
+                        <label>Precio <span class="text-color01">*</span></label>
+                        <input id="precioServicioAdicional" type="text" name="PrecioServicioAdicional" placeholder="S/" value="" maxlength="10" />
+                    </div>
+                    <div class="form-field">
+                        <label>Texto del ejemplo</label>
+                        <input id="textoEjemploServicioAdicional" type="text" name="TextoEjemploServicioAdicional" placeholder="Texto del ejemplo" value="" maxlength="100" />
+                    </div>
+                    <div class="form-field">
+                        <label>Link de ejemplo</label>
+                        <input id="linkEjemploServicioAdicional" type="text" name="LinkEjemploServicioAdicional" placeholder="Link de ejemplo" value="" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="popupServiciosAdicionales.hide();">Cancelar</a>
+                <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="nuevoServicioAdicional();">Guardar</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section scripts {
+    <script>
+        var popupTiposVariante = new Popup('popupTiposVariante');
+        var popupServiciosAdicionales = new Popup('popupServiciosAdicionales');
+        var popupFotos = new Popup('popupFotos');
+        var extensionesValidasimage = ".png, .gif, .jpeg, .jpg";
+        //Primera carga de la página
+        $(document).ready(function () {
+            loadImageInput();
+            setValidations();
+            setValidationsTiposVariante();
+            setValidationsServiciosAdicionales();
+            loadTiposVariante();
+            loadCategoriasIndeterminadas(true);
+            loadDescripcion();
+            loadComprar();
+            loadServicios();
+            loadEstadoVariantesProducto();
+            setEliminacionFotos();
+            ocultarNuevaVariante();
+
+        });
+        function ocultarNuevaVariante() {
+            var cantidadTipoVariante = $(".tipo-variante").length;
+            if (cantidadTipoVariante == 1)
+                $('.nueva-variante').css('display', 'none');
+        }
+
+        function eliminarVariante(id) {
+            $(id).parent().remove();
+            var cantidadTipoVarianteregreso = $(".tipo-variante").length;
+            if (cantidadTipoVarianteregreso < 1)
+                $('.nueva-variante').css('display', '');
+        }
+        function abrirPopupNuevaVariante() {
+            var result = validator.validate();
+            if (result == null) {
+                popupTiposVariante.show();
+            } else {
+                showMessage(result, null);
+            }
+        }
+        //Carga de estados de variantes de producto
+        function loadEstadoVariantesProducto() {
+            $('.estado-variante-producto').each(function (i, item) {
+                cambiarEstadoVarianteProducto(item);
+            })
+        }
+
+        function cerrarColorPicker() {
+            $('.color-tag').each(function (index) {
+                $('#colorTag-' + index).removeClass('active');
+            });
+        }
+
+        //Expansión de categorías
+        $('.categoria header').click(function () {
+            if (!$(event.target).is('input')) {
+                var categoria = $(this).parent();
+
+                if (categoria.hasClass('active'))
+                    categoria.removeClass('active');
+                else
+                    categoria.addClass('active');
+            }
+        });
+
+        //Marcado de categorías
+        function loadCategoriasIndeterminadas(expanded) {
+            $('.categorias-list > .categoria').each(function (i, item) {
+                loadCategoriaIndeterminada(item, expanded);
+            });
+        }
+        function loadCategoriaIndeterminada(parentItem, expanded) {
+            var checkbox = $(parentItem).children('header').children('label').children('input');
+            var subcategoriaMarcada = false;
+            $(parentItem).children('.subcategorias').children('.categoria').each(function (i, item) {
+                loadCategoriaIndeterminada(item, expanded);
+                if (!checkbox.is(':checked')) {
+                    var checkboxSubcategoria = $(item).children('header').children('label').children('input');
+                    if (checkboxSubcategoria.is(':checked') || checkboxSubcategoria.is(':indeterminate'))
+                        subcategoriaMarcada = true;
+                }
+            });
+            checkbox.prop('indeterminate', subcategoriaMarcada);
+            if (subcategoriaMarcada && expanded)
+                $(parentItem).addClass('active');
+        }
+
+        //Editor de descripción
+        var editorDescripcion = new Quill('#editorDescripcion', {
+            modules: {
+                toolbar: [[{ header: [1, 2, false] }], ['bold', 'italic', 'underline', 'strike'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link', 'image', 'video']]
+            },
+            theme: 'snow'
+        });
+
+        //Editor de descripción
+        var editorComprar = new Quill('#editorComprar', {
+            modules: {
+                toolbar: [[{ header: [1, 2, false] }], ['bold', 'italic', 'underline', 'strike'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link', 'image', 'video']]
+            },
+            theme: 'snow'
+        });
+
+        //Editor de descripción
+        var editorServicios = new Quill('#editorServicios', {
+            modules: {
+                toolbar: [[{ header: [1, 2, false] }], ['bold', 'italic', 'underline', 'strike'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link', 'image', 'video']]
+            },
+            theme: 'snow'
+        });
+
+        function loadDescripcion() {
+            var descripcion = JSON.parse('@Html.Raw((Model != null && Model.Descripcion!=null? Model.Descripcion.Replace(@"\", @"\\").Replace(@"'", @"\'") : "{\"ops\":[{\"insert\":\"[Nombre del Producto]\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción general del producto]" + @"\\n" + "[Video promocional]" + @"\\n" + "" + @"\\n" + "[Característica 1]\"},{\"attributes\":{\"header\":2},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción de la catacterística 1]" + @"\\n" + "[Foto]" + @"\\n" + "" + @"\\n" + "Especificaciones técnicas\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"attributes\":{\"bold\":true},\"insert\":\"[Especificación 1]\"},{\"insert\":\": [Dato]\"},{\"attributes\":{\"list\":\"bullet\"},\"insert\":\"" + @"\\n" + "\"}]}"))');
+            editorDescripcion.setContents(descripcion);
+        }
+
+        function loadComprar() {
+            var comprar = JSON.parse('@Html.Raw((Model != null && Model.DescripcionComoComprar != null ? Model.DescripcionComoComprar.Replace(@"\", @"\\").Replace(@"'", @"\'") : "{\"ops\":[{\"insert\":\"[¿Cómo comprar este producto?]\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción]" + @"\\n" + "[Video promocional]" + @"\\n" + "" + @"\\n" + "[Característica 1]\"},{\"attributes\":{\"header\":2},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción de la catacterística 1]" + @"\\n" + "[Foto]" + @"\\n" + "" + @"\\n" + "Especificaciones técnicas\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"attributes\":{\"bold\":true},\"insert\":\"[Especificación 1]\"},{\"insert\":\": [Dato]\"},{\"attributes\":{\"list\":\"bullet\"},\"insert\":\"" + @"\\n" + "\"}]}"))');
+            editorComprar.setContents(comprar);
+        }
+
+        function loadServicios() {
+            var servicios = JSON.parse('@Html.Raw((Model != null && Model.DescripcionServiciosAdicionales != null ? Model.DescripcionServiciosAdicionales.Replace(@"\", @"\\").Replace(@"'", @"\'") : "{\"ops\":[{\"insert\":\"[Detalles del Producto]\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción del detalle del producto]" + @"\\n" + "[Video promocional]" + @"\\n" + "" + @"\\n" + "[Característica 1]\"},{\"attributes\":{\"header\":2},\"insert\":\"" + @"\\n" + "\"},{\"insert\":\"[Descripción de la catacterística 1]" + @"\\n" + "[Foto]" + @"\\n" + "" + @"\\n" + "Especificaciones técnicas\"},{\"attributes\":{\"header\":1},\"insert\":\"" + @"\\n" + "\"},{\"attributes\":{\"bold\":true},\"insert\":\"[Especificación 1]\"},{\"insert\":\": [Dato]\"},{\"attributes\":{\"list\":\"bullet\"},\"insert\":\"" + @"\\n" + "\"}]}"))');
+            editorServicios.setContents(servicios);
+        }
+        let ultimaimagen = '';
+        let contadorimagen = 0;
+
+        //Funcionalidad de "Nueva foto"
+        function loadImageInput() {
+         
+            new ImageInput('newFoto', 'producto-foto add', null, function (imageUrl) {
+                var container = $('#newFoto').parent();
+                var image = $('#newFoto').val();
+                var name = document.getElementById('newFoto').files[contadorimagen].name;
+                /*ultimaimagen = window.URL.createObjectURL(document.getElementById('newFoto').files[document.getElementById('newFoto').files.length - 1]);*/
+               ultimaimagen= document.getElementById('newFoto').files[document.getElementById('newFoto').files.length - 1].name
+                if (!validarExtension(image, extensionesValidasimage)) {
+                    $('#newFoto').val("");
+                    showMessage("¡La Imagen de la seccion de Foto no es de formato: png, gif, jpeg o jpg.!", null);
+                } else {
+                    $.post('@Url.Action("Foto")', { IdFoto: 0, Imagen: imageUrl, Name: name }, function (data) {
+                        container.addClass('hidden');
+                        $('#newFoto').attr('id', '');
+                        /*  if ($("#newFoto")[0].files == 1 || document.getElementById(imageInput.id).files[$("#newFoto")[0].files.length].name == imageUrl.name)*/
+                        if (ultimaimagen !== name)
+                            data = data.replace('<input type="file" id="newFoto" name="FotoFile" multiple/>', '')
+                        else if (ultimaimagen==name)
+                            contadorimagen=0
+                        container.parent().append(data);
+                        loadImageInput();
+                        setEliminacionFotos();
+                    });
+                }
+                contadorimagen++;
+            });
+        }
+     
+        function validarExtension(datos, extensionesValidas) {
+
+            var ruta = datos;
+            var extension = ruta.substring(ruta.lastIndexOf('.') + 1).toLowerCase();
+            var extensionValida = extensionesValidas.indexOf(extension);
+
+            if (extensionValida < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        //Carga de tipos de variante existentes
+        function loadTiposVariante() {
+            @if (Model != null)
+            {
+                foreach (TipoVarianteModel objTipoVarianteModel in Model.TiposVariante)
+                {<text>
+                    var tipo@(objTipoVarianteModel.IdTipoVariante) = '@objTipoVarianteModel.Tipo';
+                    tipo@(objTipoVarianteModel.IdTipoVariante) = 'C';
+
+                    var tagInputTipoVariante@(objTipoVarianteModel.IdTipoVariante) = new TagInput('tipo-variante-@(objTipoVarianteModel.IdTipoVariante)', tipo@(objTipoVarianteModel.IdTipoVariante), function () {
+                        $('#restablecer').val('false');
+                    });
+                </text>}
+            }
+        }
+
+        //Funcionalidad de "Nuevo tipo de variante"
+        var indexNuevoTipoVariante = -1;
+        function nuevoTipoVariante() {
+            var container = $('#tiposVariante');
+
+            $.post('@Url.Action("TipoVariante")', { IdTipoVariante: indexNuevoTipoVariante, IdProducto: $('#idProducto').val() }, function (data) {
+                container.append(data);
+                var indexTipoVariante = indexNuevoTipoVariante;
+                new TagInput('tipo-variante-' + indexTipoVariante, 'C', function () {
+                    $('#restablecer').val('false');
+                });
+                ocultarNuevaVariante();
+                indexNuevoTipoVariante--;
+            });
+        }
+
+        //Validaciones de tipos de variante
+        var validatorTiposVariante = null;
+        function setValidationsTiposVariante() {
+            var fields = [
+                { selector: '.nombre-variante', name: 'Nombre de variante', required: true },
+                { selector: '.opciones-variante', name: 'Opciones', required: true }
+            ];
+
+            validatorTiposVariante = new Validator(fields, 'error');
+        }
+
+        //Guardado de tipos de variante
+        function startGuardarTiposVariante() {
+            var result = validatorTiposVariante.validate();
+
+            if (result == null )
+                showConfirmation('¿Deseas guardar el producto con estas variantes?', 'Guardar', 'background-color02', 'ic-ok-white', function () {
+                    $('#descripcion').val(JSON.stringify(editorDescripcion.getContents()));
+                    $('#descripcionServiciosAdicionales').val(JSON.stringify(editorComprar.getContents()));
+                    $('#descripcionComoComprar').val(JSON.stringify(editorServicios.getContents()));
+                    $('#tieneVariantes').val(true);
+                    return ajaxPost($('#frmProducto').get(0), function (data) {
+                        $('#idProductoTiposVariante').val(data.Data);
+                        $('#frmTiposVariante').submit();
+                    }, function (data) {
+                        showMessage(data.Message, null);
+                    });
+                });
+            else
+                showMessage(result, null);
+        }
+
+        function guardarTiposVariante(formData) {
+            return ajaxPost(formData, function (data) {
+                window.location.reload();
+                window.location.href='@Url.Action("Producto", "Catalogo")?id=' + data.Data;
+                @*window.location.replace('@Url.Action("Index", "Producto")?id=' + data.Data);*@
+                 @*/*window.location.replace('@Url.Action("Index", "Catalogo", new { Page = Request["Page"] ?? "1", Busqueda = Request["Busqueda"] ?? "" })');*/*@
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+
+        //Eliminación de fotos
+        function setEliminacionFotos() {
+            $('.multimedia .fotos .producto-foto:not(.add)').each(function (i, item) {
+                $(item).find('.item-delete').off('mouseup');
+                $(item).find('.item-delete').mouseup(function () {
+                    $('.indice-fotos-seleccionadas').each(function (j, item) {
+                        var indices = $(item).val().split(',');
+                        var texto = '';
+
+                        for (var k = 0; k < indices.length; k++) {
+                            var indice = parseInt(indices[k]);
+                            if (texto !== '' && indice !== i)
+                                texto += ',';
+
+                            if (indice > i)
+                                texto += indice - 1;
+                            else if (indice < i)
+                                texto += indice;
+                        }
+
+                        $(item).val(texto);
+                    });
+                    setTimeout(function () {
+                        setEliminacionFotos();
+                    }, 50);
+                });
+            });
+        }
+
+        //Selección de fotos por variante
+        var idVarianteProducto = null;
+        function loadFotos(id) {
+            idVarianteProducto = id;
+            var html = '';
+            $('.multimedia .fotos .producto-foto:not(.add)').each(function (i, item) {
+                var style = $(item).attr('style');
+                var idFoto = $(item).find('input').val();
+                html += '<div class="producto-foto" style="' + style + '">';
+                html += '<input type="checkbox" name="IdFotos" value="' + i + '" /></div>';
+            });
+
+            $('#fotos').html(html);
+            var indices = $('#fotosSeleccionadas-' + idVarianteProducto).val().split(',');
+            for (var i = 0; i < indices.length; i++) {
+                if (indices[i].trim() !== '')
+                    $('#fotos .producto-foto:nth-child(' + (parseInt(indices[i]) + 1) + ') input').attr('checked', true);
+            }
+
+            popupFotos.show();
+        }
+
+        function asignarFotos() {
+            var indices = '';
+            var htmlPreview = '';
+
+            $('#fotos input:checked').each(function (i, item) {
+                if (i > 0)
+                    indices += ',';
+                indices += $(item).val();
+
+                if ($('#fotos input:checked').length <= 4 || i < 3)
+                    htmlPreview += '<div class="producto-foto" style="' + $(item).parent().attr('style') + '"></div>';
+                else if (i == 3)
+                    htmlPreview += '<label class="text-color01">+' + ($('#fotos input:checked').length - 3) + '</label>';
+            });
+
+            if (htmlPreview.trim() == '')
+                htmlPreview = '<label class="text-color01">(Asignar fotos)</label>';
+
+            $('#fotosSeleccionadas-' + idVarianteProducto).val(indices);
+            $('#varianteProducto-' + idVarianteProducto + ' .variante-fotos').html(htmlPreview);
+            popupFotos.hide();
+        }
+
+        //Validaciones de producto
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#nombre', name: 'Nombre', required: true },
+                { selector: '#precio', name: 'Precio', required: true, type: 'D' },
+                { selector: '#precioPromocional', name: 'Precio promocional', type: 'D' },
+            ];
+
+            validator = new Validator(fields, 'error');
+        }
+
+        //Guardado de producto
+        function startGuardarProducto() {
+            var result = validator.validate();
+
+            if (result == null) {
+                var message = '¿Deseas guardar los datos del producto?';
+                showConfirmation(message, 'Guardar', 'background-color03', 'ic-ok-white', function () {
+                    $('#frmProducto').submit();
+                });
+            }
+            else
+                showMessage(result, null);
+        }
+
+        function guardarProducto(formData) {
+            $('#descripcion').val(JSON.stringify(editorDescripcion.getContents()));
+            $('#descripcionServiciosAdicionales').val(JSON.stringify(editorServicios.getContents()));
+            $('#descripcionComoComprar').val(JSON.stringify(editorComprar.getContents()));
+            return ajaxPost(formData, function (data) {
+                showMessage(data.Message, function () {
+                    window.location.replace('@Url.Action("Index", "Catalogo", new { Page = Request["Page"] ?? "1", Busqueda = Request["Busqueda"] ?? "" })');
+                });
+            }, function (data) {
+                showMessage(data.Message, null);
+            });
+        }
+
+        //Validaciones de servicios adicionales
+        var validatorServiciosAdicionales = null;
+        function setValidationsServiciosAdicionales() {
+            var fields = [
+                { selector: '#nombreServicioAdicional', name: 'Nombre del servicio adicional', required: true },
+                { selector: '#precioServicioAdicional', name: 'Precio del servicio adicional', required: true, type: 'D' }
+            ];
+
+            validatorServiciosAdicionales = new Validator(fields, 'error');
+        }
+
+        function agragarServicioAdicional() {
+            $('#nombreServicioAdicional').val('');
+            $('#precioServicioAdicional').val('');
+            $('#textoEjemploServicioAdicional').val('');
+            $('#linkEjemploServicioAdicional').val('');
+            popupServiciosAdicionales.show();
+        }
+
+        //Eliminar servicios adicionales
+        function deleteServicioAdicional(servicio) {
+            $(servicio).parent().parent().remove();
+        }
+
+        //Agregar servicio adicional
+        function nuevoServicioAdicional() {
+            var nombreServicioAdicional = $('#nombreServicioAdicional').val();
+            var precioServicioAdicional = $('#precioServicioAdicional').val();
+            var ejemploServicioAdicional = $('#textoEjemploServicioAdicional').val();
+            var linkServicioAdicional = $('#linkEjemploServicioAdicional').val();
+
+            var result = validatorServiciosAdicionales.validate();
+
+            if (result == null) {
+
+                $.post('@Url.Action("ServicioAdicional", "Catalogo")', {
+                    Nombre: nombreServicioAdicional, Precio: precioServicioAdicional, DescripcionEjemplo: ejemploServicioAdicional, Link: linkServicioAdicional, TipoCambio:@ViewBag.TipoCambio
+                },
+                    function (data) {
+                        if ($('#tableServiciosAdicionales tbody tr td').eq(0).html() == "No hay archivos") {
+                            $('#tableServiciosAdicionales tbody tr').remove();
+                        }
+                        $('#tableServiciosAdicionales').append(data);
+                        popupServiciosAdicionales.hide();
+                    });
+                return;
+            }
+            else
+                showMessage(result, null);
+        }
+
+    </script>
+}

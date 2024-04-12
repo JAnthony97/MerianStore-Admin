@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_No_Menu.cshtml";
+    ViewBag.Title = "Login";
+}
+<section class="login">
+    <div class="login-box">
+        <div class="welcome">
+            <div class="fondo-form">
+                <img class="img" src="~/Images/Login/login.png" />
+            </div>
+        </div>
+        <div class="login-form align-center">
+            <form action="@Url.Action("Index")" id="frmLogin" method="post" onsubmit="startLoading();">
+                <div class="logo" alt="Merian Party Store"></div>
+                <label class="login-input user"><input id="username" placeholder="Nombre de usuario" type="text" name="Username" value="@Request["Username"]" autofocus /></label>
+                <label class="login-input password"><input id="password" class="icon-input ic-eye" placeholder="Contraseña" type="password" name="Password" /></label>
+                <label class="login-input align-right recover-password">
+                    <a href="@Url.Action("RecuperarPassword", "Login")" class="link text text-color02">¿Olvidaste tu contraseña?</a>
+                </label>
+                <a class="button background-color03 text-color-white" onclick="login();">Iniciar sesión</a>
+                <input type="submit" class="hidden" />
+            </form>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+
+        //Primera carga de la página
+        $(document).ready(function () {
+            setValidations();
+        });
+
+        //Validaciones
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#username', name: 'Usuario', required: true, type: 'E' },
+                { selector: '#password', name: 'Contraseña', required: true, minLength: 8 }
+            ];
+            validator = new Validator(fields, 'error');
+        }
+
+        //Login
+        function login() {
+            var result = validator.validate();
+            if (result == null)
+                $('#frmLogin').submit();
+            else
+                showMessage(result, null);
+        }
+
+        //Mostrar contraseña
+        new ButtonInput('password', function () {
+            var tipo = document.getElementById("password");
+            if (tipo.type == "password") {
+                tipo.type = "text";
+                $(tipo).removeClass('ic-eye');
+                $(tipo).addClass('ic-close-eye');
+            } else {
+                tipo.type = "password";
+                $(tipo).removeClass('ic-close-eye');
+                $(tipo).addClass('ic-eye');
+            }
+        });
+    </script>
+}

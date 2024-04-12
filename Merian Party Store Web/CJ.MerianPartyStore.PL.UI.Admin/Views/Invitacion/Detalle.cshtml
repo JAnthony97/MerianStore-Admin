@@ -1,0 +1,485 @@
+﻿@using CJ.MerianPartyStore.Util
+@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model InvitacionModel
+@{
+    ViewBag.Title = "Nueva invitación";
+    ViewBag.NavigationAction = Constants.NavigationAction.BACK;
+    ViewBag.Section = Constants.Section.INVITACIONES;
+
+    ViewBag.Breadcrumb = new String[][] {
+        new String[] {"Invitaciones", "Index", "Invitacion", null},
+    };
+
+}
+
+<section class="inivitacion">
+    <form id="frmGuardarInvitacion" action="@Url.Action("GuardarInvitacion", "Invitacion")" method="post" onsubmit="return guardarInvitacion(this);" enctype="multipart/form-data">
+        <input type="hidden" name="IdInvitacion" id="idProducto" value="@(Model != null ? Model.IdInvitacion : 0)" />
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-menu bold">Información básica</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="user-personal-info">
+                        <div class="user-info">
+                            <div class="columns columns-spacing">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Tipo de invitación <span class="text-color01">*</span></label>
+                                        <select id="tipoInvitacion"  name="TipoInvitacion"  @(Model != null && Model.IdInvitacion != null ? "disabled" : "") onchange="showOptions()">
+                                            <option @(Model != null && Model.TipoInvitacion.Trim() == Constants.Invitacion.TipoInvitacion.PDF ? "selected" : "")  value="@Constants.Invitacion.TipoInvitacion.PDF">PDF</option>
+                                            <option @(Model != null && Model.TipoInvitacion.Trim() == Constants.Invitacion.TipoInvitacion.ANIMADO ? "selected" : "")  value="@Constants.Invitacion.TipoInvitacion.ANIMADO">Animado</option>
+                                            <option @(Model != null && Model.TipoInvitacion.Trim() == Constants.Invitacion.TipoInvitacion.VIDEO ? "selected" : "")  value="@Constants.Invitacion.TipoInvitacion.VIDEO">Video</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Cliente <span class="text-color01">*</span></label>
+                                        <input id="clienteInvitacion" type="text" name="ClienteInvitacion" maxlength="100" placeholder="Cliente" value="@(Model!=null?Model.ClienteInvitacion:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Fecha del evento countdown<span class="text-color01">*</span></label>
+                                        <input id="fechaEvento" type="text" name="FechaEvento" placeholder="Fecha del evento" maxlength="10" value="@(Model!=null?Model.FechaEvento.Value.ToString("dd/MM/yyyy"):null)" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Hora del evento countdown<span class="text-color01">*</span></label>
+                                        <input id="horaEvento" type="text" name="HoraEvento" placeholder="Hora del evento" maxlength="5" value="@(Model!=null?Model.HoraEvento:null)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Color de audio <span class="text-color01">*</span></label>
+                                        <input id="colorAudio" type="text" name="ColorAudio" maxlength="7" placeholder="#FFFFFF" value="@(Model!=null?Model.ColorAudio:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Color countdown <span class="text-color01">*</span></label>
+                                        <input id="colorContador" type="text" name="ColorContador" maxlength="7" placeholder="#FFFFFF" value="@(Model!=null?Model.ColorContador:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Tiempo de carga (en milisegundos) <span class="text-color01">*</span></label>
+                                        <input id="tiempoCarga" type="text" name="TiempoCarga" placeholder="1000" value="@(Model!=null?Model.TiempoCarga.ToString():"")" />
+                                        <label class="disabled">1 seg equivale a 1000, 10 seg equivale a 10000</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing hidden video">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Frase principal </label>
+                                        <input id="frasePrincipal" type="text" name="FrasePrincipal" maxlength="100" placeholder="Frase principal" value="@(Model!=null?Model.FrasePrincipal:"")"/>
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Mostrar ícono</label>
+                                        <input id="mostrarIcono" type="checkbox"  class="switch" name="MostrarIcono" @((Model!=null && Model.MostrarIcono==true) ||Model==null ? "checked" : "") />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing hidden animada">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Boda civíl (Link de google maps)</label>
+                                        <input id="bodaCivil" type="text" name="BodaCivil" maxlength="100" placeholder="Boda civíl" value="@(Model!=null?Model.BodaCivil:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Boda religiosa (Link de google maps)</label>
+                                        <input id="bodaReligiosa" type="text" name="BodaReligiosa" maxlength="100" placeholder="Boda religiosa" value="@(Model!=null?Model.BodaReligiosa:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Link de calendario </label>
+                                        <input id="linkCalendario" type="text" name="LinkCalendario" maxlength="100" placeholder="Link de calendario" value="@(Model!=null?Model.LinkCalendario:"")" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing hidden animada">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Contacto de asistencia</label>
+                                        <input id="contactoAsistenacia" type="text" name="ContactoAsistenacia" maxlength="20" placeholder="+51987654321" value="@(Model!=null?Model.ContactoAsistenacia:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Contacto opcional</label>
+                                        <input id="contactoOpcional" type="text" name="ContactoOpcional" maxlength="100" placeholder="+51987654321" value="@(Model!=null?Model.ContactoOpcional:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Mesa de regalos</label>
+                                        <input id="mesaRegalos" type="text" name="MesaRegalos" maxlength="20" placeholder="Mesa de regalos" value="@(Model!=null?Model.MesaRegalos:"")" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns columns-spacing hidden animada">
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Entidad bancaria </label>
+                                        <select id="entidadBancaria" name="EntidadBancaria">
+                                            <option value="" selected disabled="">--Seleccionar--</option>
+                                           
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.VISA ? "selected" : "") value="@Constants.EntidadBancaria.VISA">VISA</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.MASTERCARD ? "selected" : "") value="@Constants.EntidadBancaria.MASTERCARD">Mastercard</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.BANBIF ? "selected" : "") value="@Constants.EntidadBancaria.BANBIF">BanBif</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.AZTECA ? "selected" : "") value="@Constants.EntidadBancaria.AZTECA">Banco Azteca</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.COMERCIO ? "selected" : "") value="@Constants.EntidadBancaria.COMERCIO">Banco de Comercio</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.FALABELLA ? "selected" : "") value="@Constants.EntidadBancaria.FALABELLA">Banco Falabella</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.GN ? "selected" : "") value="@Constants.EntidadBancaria.GN">Banco GN</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.PICHINCHA ? "selected" : "") value="@Constants.EntidadBancaria.PICHINCHA">Banco Pichincha</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.RIPLEY ? "selected" : "") value="@Constants.EntidadBancaria.RIPLEY">Banco Ripley</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.SANTANDER ? "selected" : "") value="@Constants.EntidadBancaria.SANTANDER">Banco Santander</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.CHINA ? "selected" : "") value="@Constants.EntidadBancaria.CHINA">Bank of China</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.BBVA ? "selected" : "") value="@Constants.EntidadBancaria.BBVA">BBVA</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.BCP ? "selected" : "") value="@Constants.EntidadBancaria.BCP">BCP</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.CITIBANK ? "selected" : "") value="@Constants.EntidadBancaria.CITIBANK">Citibank</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.ICBC ? "selected" : "") value="@Constants.EntidadBancaria.ICBC">ICBC PERU BANK</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.INTERBANK ? "selected" : "") value="@Constants.EntidadBancaria.INTERBANK">Interbank</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.MIBANCO ? "selected" : "") value="@Constants.EntidadBancaria.MIBANCO">MiBanco</option>
+                                            <option @(Model != null && Model.EntidadBancaria != null && Model.EntidadBancaria.Trim() == Constants.EntidadBancaria.SCOTIABANK ? "selected" : "") value="@Constants.EntidadBancaria.SCOTIABANK">Scotiabank</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>Número de cuenta</label>
+                                        <input id="numeroCuenta" type="text" name="NumeroCuenta" maxlength="50" placeholder="Número de cuenta" value="@(Model!=null?Model.NumeroCuenta:"")" />
+                                    </div>
+                                </div>
+                                <div class="col col-1">
+                                    <div class="form-field">
+                                        <label>CCI</label>
+                                        <input id="cci" type="text" name="CCI" maxlength="50" placeholder="CCI" value="@(Model!=null?Model.CCI:"")" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <header>
+                <div class="tab-list">
+                    <ul>
+                        <li><a class="icon ic-media bold">Multimedia</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content content-padding">
+                <div class="centered">
+                    <div class="columns columns-spacing">
+                        <div class="col col-1">
+                            <div class="form-field">
+                                <label>Fondo principal de la invitación (JPG, PNG) <span class="text-color01">*</span></label>
+                                <div class="fotos flex-list left">
+                                    <input type="file" id="newFondo" name="FondoFile" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-1 audio hidden">
+                            <div class="form-field">
+                                <label>Audio musical (MP3) <span class="text-color01">*</span></label>
+                                <div class="fotos flex-list left">
+                                    <input type="file" id="newAudio" name="AudioFile" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-1 pdf hidden">
+                            <div class="form-field">
+                                <label>PDF <span class="text-color01">*</span></label>
+                                <div class="fotos  flex-list left">
+                                    <input type="file" id="newPDF" name="PDFFile" accept=".pdf, .PDF" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-1 video hidden">
+                            <div class="form-field">
+                                <label>Video (MP4) <span class="text-color01">*</span></label>
+                                <div class="fotos flex-list left">
+                                    <input type="file" id="newVideo" name="VideoFile" accept=".mp4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="centered multimedia hidden animada">
+                    <div class="form-field">
+                        <label>Secciones de la invitación <span class="text-color01">*</span></label>
+                        <div class="fotos flex-list left">
+                            @if (Model != null && Model.Fotos != null)
+                            {
+                                foreach (FotoModel objFotoModel in Model.Fotos)
+                                {
+                                    Html.RenderPartial("Foto", objFotoModel);
+                                }
+                            }
+                            <input type="file" id="newFoto" name="FotoFile" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions section-actions">
+            <a class="button btn-small btn-icon text-color-white background-color01 ic-cancel-white" onclick="history.back();">Cancelar</a>
+            <a class="button btn-small btn-icon text-color-white background-color02 ic-ok-white" onclick="startGuardarInvitacion();">Guardar</a>
+        </div>
+    </form>
+</section>
+
+@section scripts {
+    <script>
+        var extensionesValidasimage = ".png, .gif, .jpeg, .jpg";
+        var extensionesValidasmp3 = ".mp3";
+        var extensionesValidaspdf = ".pdf";
+        var extensionesValidasvideo = ".mp4";
+        new DatePicker('fechaEvento');
+        new TimePicker('horaEvento');
+
+        var fondoFoto = new ImageInput('newFondo', 'producto-foto add', null, null);
+        var audioFoto = new ImageInput('newAudio', 'producto-foto audio add', null, null);
+        var pdfFoto = new ImageInput('newPDF', 'producto-foto archivo add', null, null);
+        var videoFoto = new ImageInput('newVideo', 'producto-foto video add', null, null);
+
+        //Primera carga de la página
+        $(document).ready(function () {
+            fotoInvitacion();
+            setValidations();
+            showOptions();
+
+            @if (Model!= null && Model?.FondoFile!= null) {
+
+               <text>var container = $('#newFondo').parent();
+            container.removeClass('add');
+            fondoFoto.setImageUrl('@Url.Content(Model.FondoFile)');
+
+            </text>
+            }
+
+            @if (Model!= null && Model?.AudioFile != null) {
+                <text> var container = $('#newAudio').parent();
+                container.removeClass('add');
+            audioFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_play_color.svg")');
+
+               </text>
+            }
+
+    @if (Model!= null && Model?.PDFFile!= null) {
+
+               <text>var container = $('#newPDF').parent();
+        container.removeClass('add');
+        pdfFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_pdf_color.svg")');
+
+            </text>
+            }
+
+    @if (Model!= null && Model?.VideoFile != null) {
+                <text> var container = $('#newVideo').parent();
+        container.removeClass('add');
+        videoFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_play_color.svg")');
+
+               </text>
+            }
+});
+        ////Funcionalidad de "Nuevo fondo"
+        $('#newFondo').change(function () {
+            var container = $('#newFondo').parent();
+            if (validarExtension($(this).val(), extensionesValidasimage)) {
+                if ($('#newFondo').val() !== "") {
+
+                    container.removeClass('add');
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡El fondo no es de formato: png, gif, jpeg o jpg.!", null);
+            }
+        });
+
+        ////Funcionalidad de "Nuevo audio"
+        $('#newAudio').change(function () {
+            var container = $('#newAudio').parent();
+            if (validarExtension($(this).val(), extensionesValidasmp3)) {
+                if ($('#newAudio').val() !== "") {
+
+                    container.removeClass('add');
+                    audioFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_play_color.svg")');
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡El audio no es de formato: mp3.!", null);
+            }
+        });
+        ////Funcionalidad de "Nuevo fondo"
+        $('#newPDF').change(function () {
+            var container = $('#newPDF').parent();
+            if (validarExtension($(this).val(), extensionesValidaspdf)) {
+                if ($('#newPDF').val() !== "") {
+
+                    container.removeClass('add');
+                    pdfFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_pdf_color.svg")')
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡El archivo no es de formato: pdf.!", null);
+            }
+        });
+
+        ////Funcionalidad de "Nuevo audio"
+        $('#newVideo').change(function () {
+            var container = $('#newVideo').parent();
+            if (validarExtension($(this).val(), extensionesValidasvideo)) {
+                if ($('#newVideo').val() !== "") {
+
+                    container.removeClass('add');
+                    videoFoto.setImageUrl('@Url.Content("~/Images/Icons/ic_play_color.svg")');
+                }
+            } else {
+                $(this).val("");
+                container.removeAttr("style");
+                container.addClass('add');
+                showMessage("¡El video no es de formato: mp4.!", null);
+            }
+        });
+        //Mostrar información de acuerdo al tipo de invitación
+        function showOptions() {
+             @if (Model == null) {
+                  <text>   limpiarCampos();</text>
+                 }
+                 var tipoInvitacion = $('#tipoInvitacion').val();
+                 if (tipoInvitacion == '@Constants.Invitacion.TipoInvitacion.ANIMADO') {
+                $('.video').addClass('hidden');
+                $('.pdf').addClass('hidden');
+                $('.animada').removeClass('hidden');
+                $('.audio').removeClass('hidden');
+                 }
+                 else if (tipoInvitacion == '@Constants.Invitacion.TipoInvitacion.VIDEO') {
+                $('.animada').addClass('hidden');
+                $('.audio').addClass('hidden');
+                $('.video').removeClass('hidden');
+                $('.pdf').removeClass('hidden');
+                 }
+                 else {
+                $('.animada').addClass('hidden');
+                $('.video').addClass('hidden');
+                $('.pdf').removeClass('hidden');
+                $('.audio').removeClass('hidden');
+                 }
+             }
+
+        function limpiarCampos(){
+            $('#frasePrincipal').val('');
+            $('#mostrarIcono').val('');
+            $('#bodaCivil').val('');
+            $('#bodaReligiosa').val('');
+            $('#linkCalendario').val('');
+            $('#contactoAsistenacia').val('');
+            $('#contactoOpcional').val('');
+            $('#mesaRegalos').val('');
+            $('#entidadBancaria').val('');
+            $('#numeroCuenta').val('');
+            $('#cci').val('');
+            $('#newFondo').val('');
+            $('#newAudio').val('');
+            $('#newPDF').val('');
+            $('#VideoFile').val('');
+            $('#newFoto').val('');
+        }
+
+        //Validaciones
+        var validator = null;
+        function setValidations() {
+            var fields = [
+                { selector: '#tipoInvitacion', name: 'Tipo de invitación', required: true },
+                { selector: '#clienteInvitacion', name: 'Cliente', required: true },
+                { selector: '#fechaEvento', name: 'Fecha del evento', required: true },
+                { selector: '#horaEvento', name: 'Hora del evento', required: true},
+                { selector: '#colorAudio', name: 'Color de audio', required: true},
+                { selector: '#colorContador', name: 'Color de contador', required: true}
+            ];
+            validator = new Validator(fields, 'error');
+        }
+
+        //Guardado de inivitacion
+        function startGuardarInvitacion() {
+            var result = validator.validate();
+
+            if (result == null)
+                $('#frmGuardarInvitacion').submit();
+            else
+                showMessage(result, null);
+        }
+
+       function guardarInvitacion(formData) {
+               return ajaxPost(formData, function (data) {
+                   showMessage(data.Message, function () {
+                        window.location.replace('@Url.Action("Index", "Invitacion")');
+                   });
+               }, function (data) {
+                   showMessage(data.Message, null);
+               });
+      
+       }
+
+
+
+        //Funcionalidad de "Foto de invitación"
+        function fotoInvitacion() {
+            new ImageInput('newFoto', 'producto-foto add', null, function (imageUrl) {
+                var container = $('#newFoto').parent();
+                var image = $('#newFoto').val();
+                if (!validarExtension(image, extensionesValidasimage)) {
+                    $('#newFoto').val("");
+                    showMessage("¡La Imagen de la seccion de Invitacion no es de formato: png, gif, jpeg o jpg.!", null);
+                } else {
+                    $.post('@Url.Action("Foto")', { IdFoto: 0, Imagen: imageUrl }, function (data) {
+                        container.addClass('hidden');
+                        $('#newFoto').attr('id', '');
+                        container.parent().append(data);
+                        fotoInvitacion();
+
+                    });
+                }
+            });
+        }
+        function validarExtension(datos, extensionesValidas) {
+
+            var ruta = datos;
+            var extension = ruta.substring(ruta.lastIndexOf('.') + 1).toLowerCase();
+            var extensionValida = extensionesValidas.indexOf(extension);
+
+            if (extensionValida < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+}

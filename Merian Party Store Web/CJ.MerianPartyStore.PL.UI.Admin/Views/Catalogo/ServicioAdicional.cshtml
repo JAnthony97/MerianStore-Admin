@@ -1,0 +1,24 @@
+﻿@using CJ.MerianPartyStore.PL.UI.Admin.Models
+@model ServiciosAdicionalesModel
+
+<tr>
+    <input type="hidden" name="IdServiciosAdicionales" value="@Model.IdServiciosAdicionales" />
+    <td>
+        <input type="hidden" name="NombreServicioAdicional" value="@Model.Nombre" />
+        @Model.Nombre
+    </td>
+    <td>
+        <input type="hidden" name="PrecioServicioAdicional" value="@Model.Precio" />
+        S/ @Model.Precio | $ @((int)Math.Ceiling(Model.Precio.Value / Model.TipoCambio))
+    </td>
+    <td>
+        <input type="hidden" name="DescripcionEjemplo" value="@Model.DescripcionEjemplo" />
+        @Model.DescripcionEjemplo
+    </td>
+    <input type="hidden" name="LinkServicioAdicional" value="@Model.Link" />
+    <td><a class="button text-color-white background-color01" href="@Model.Link" target="_blank" onclick="preventLoading();" @(Model.Link==null?"disabled":"")>Previsualizar</a></td>
+    <td class="actions">
+        <a class="action-delete" onclick="deleteServicioAdicional(this)"><img src="~/Images/Icons/ic_delete.svg" class="svg" /></a>
+    </td>
+</tr>
+
