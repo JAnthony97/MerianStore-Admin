@@ -251,8 +251,6 @@
     <Content Include="Scripts\libreria.timepicker.js" />
     <Content Include="Scripts\libreria.validator.js" />
     <Content Include="Scripts\libreria.buttoninput.js" />
-    <Content Include="TemplatesInvitaciones\InvitacionPDF\Index.html" />
-    <Content Include="TemplatesInvitaciones\InvitacionVIDEO\Index.html" />
     <Content Include="Templates\RecuperarPassword.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -329,6 +327,7 @@
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Productos\" />
     <Folder Include="media\" />
+    <Folder Include="TemplatesInvitaciones\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CJ.MerianPartyStore.BL.BC\CJ.MerianPartyStore.BL.BC.csproj">

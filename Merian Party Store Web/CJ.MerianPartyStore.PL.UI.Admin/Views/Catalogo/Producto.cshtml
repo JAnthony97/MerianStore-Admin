@@ -96,15 +96,15 @@
                         </div>
                     </div>
                     <div class="form-field">
-                        <label>Datos del Producto</label>
+                        <label>¿Qué contiene la invitación?</label>
                         <div class="descripcion" id="editorDescripcion"></div>
                     </div>
                     <div class="form-field">
-                        <label>¿Cómo comprar este producto?</label>
+                        <label>Detalles del producto</label>
                         <div class="descripcion" id="editorComprar"></div>
                     </div>
                     <div class="form-field">
-                        <label>Detalles del Producto</label>
+                        <label>¿Cómo comprar este producto?</label>
                         <div class="descripcion" id="editorServicios"></div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                                 Html.RenderPartial("Foto", objFotoModel);
                             }
                         }
-                        <input type="file" id="newFoto" name="FotoFile" multiple/>
+                        <input type="file" id="newFoto" name="FotoFile" multiple />
                     </div>
                     <div class="form-field">
                         <label>Video URL YouTube (Si es que el producto no tiene variantes)</label>
@@ -501,7 +501,7 @@
 
         //Funcionalidad de "Nueva foto"
         function loadImageInput() {
-         
+
             new ImageInput('newFoto', 'producto-foto add', null, function (imageUrl) {
                 var container = $('#newFoto').parent();
                 var image = $('#newFoto').val();
@@ -528,7 +528,7 @@
                 contadorimagen++;
             });
         }
-     
+
         function validarExtension(datos, extensionesValidas) {
 
             var ruta = datos;

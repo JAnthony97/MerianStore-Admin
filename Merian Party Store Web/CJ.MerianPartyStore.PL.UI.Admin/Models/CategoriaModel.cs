@@ -15,6 +15,7 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Models
         public String Url { get; set; }
         public String Imagen { get; set; }
         public String Banner { get; set; }
+        public String FechaRegistro { get; set; }
         public List<CategoriaModel> Subcategorias { get; set; }
         public int? IdCategoriaPadre { get; set; }
         public bool Destacado { get; set; }
@@ -38,8 +39,9 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Models
 
                 if (objCategoria.Banner != null)
                     objCategoriaModel.Banner = Path.Combine(BANNER_CATEGORIA_PATH, objCategoria.Banner);
+
                 objCategoriaModel.IdCategoriaPadre = objCategoria.IdCategoriaPadre;
-         
+
 
                 if (Subcategorias)
                 {
@@ -73,7 +75,7 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Models
                     objCategoria.Banner = Banner.Replace(BANNER_CATEGORIA_PATH, "");
 
                 objCategoria.IdCategoriaPadre = IdCategoriaPadre;
-       
+
                 return objCategoria;
             }
             catch (Exception ex)

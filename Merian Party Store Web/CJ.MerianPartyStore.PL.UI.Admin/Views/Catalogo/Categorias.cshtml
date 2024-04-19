@@ -34,7 +34,7 @@
             </div>
         </header>
         <div class="subcategorias sub-items">
-            @foreach (CategoriaModel objSubcategoriaModel in objCategoriaModel.Subcategorias)
+            @foreach (CategoriaModel objSubcategoriaModel in objCategoriaModel.Subcategorias.OrderBy(s => s.IdCategoria))
             {
                 @Categoria(objSubcategoriaModel, IdCategorias)
             }

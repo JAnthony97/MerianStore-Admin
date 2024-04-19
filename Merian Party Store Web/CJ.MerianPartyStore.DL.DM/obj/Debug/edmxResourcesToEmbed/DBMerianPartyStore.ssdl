@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBMerianPartyStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="IdBanner" />
+    </Key>
+    <Property Name="IdBanner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imagen" Type="varchar" MaxLength="255" />
+    <Property Name="Destino" Type="varchar" MaxLength="255" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCategoriaPadre" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen" Type="varchar" MaxLength="250" />
+    <Property Name="Url" Type="varchar" MaxLength="100" />
+    <Property Name="Banner" Type="varchar" MaxLength="255" />
+    <Property Name="Descripcion" Type="text" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="CategoriaMenu" Type="bit" />
+  </EntityType>
+  <EntityType Name="CategoriaxProducto">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdCategoria" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="IdConfiguracion" />
+    </Key>
+    <Property Name="IdConfiguracion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Valor" Type="varchar(max)" />
+    <Property Name="Valor2" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Foto">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+    </Key>
+    <Property Name="IdFoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="Imagen" Type="varchar" MaxLength="255" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+  </EntityType>
+  <EntityType Name="FotoInvitacion">
+    <Key>
+      <PropertyRef Name="IdFotoInvitacion" />
+    </Key>
+    <Property Name="IdFotoInvitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdInvitacion" Type="int" />
+    <Property Name="Foto" Type="varchar" MaxLength="250" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+  </EntityType>
+  <EntityType Name="FotoxVarianteProducto">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+      <PropertyRef Name="IdVarianteProducto" />
+    </Key>
+    <Property Name="IdFoto" Type="int" Nullable="false" />
+    <Property Name="IdVarianteProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invitacion">
+    <Key>
+      <PropertyRef Name="IdInvitacion" />
+    </Key>
+    <Property Name="IdInvitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" MaxLength="100" />
+    <Property Name="FechaInvitacion" Type="date" />
+    <Property Name="HoraInvitacion" Type="time" Precision="7" />
+    <Property Name="Color" Type="varchar" MaxLength="10" />
+    <Property Name="TelefonoContactoInvitacion" Type="varchar" MaxLength="50" />
+    <Property Name="TelefonoContactoInvitacion2" Type="nchar" MaxLength="10" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="4000" />
+    <Property Name="UbicacionGoogleMaps" Type="varchar" MaxLength="250" />
+    <Property Name="UbicacionGoogleMaps2" Type="varchar" MaxLength="250" />
+    <Property Name="TipoInvitacion" Type="char" MaxLength="10" />
+    <Property Name="UrlPDFInvitacion" Type="varchar" MaxLength="250" />
+    <Property Name="Audio" Type="varchar" MaxLength="255" />
+    <Property Name="Fondo" Type="varchar" MaxLength="250" />
+    <Property Name="LinkMesaRegalos" Type="varchar" MaxLength="250" />
+    <Property Name="LinkCalendario" Type="varchar" MaxLength="250" />
+    <Property Name="TipoEntidadBancaria" Type="char" MaxLength="10" />
+    <Property Name="NumeroCuenta" Type="varchar" MaxLength="50" />
+    <Property Name="CCI" Type="varchar" MaxLength="50" />
+    <Property Name="CountdownColor" Type="varchar" MaxLength="7" />
+    <Property Name="Titulo" Type="varchar" MaxLength="100" />
+    <Property Name="VideoInvitacion" Type="varchar" MaxLength="250" />
+    <Property Name="ImagenItinerario" Type="varchar" MaxLength="250" />
+    <Property Name="MostrarIcono" Type="bit" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="TiempoCarga" Type="int" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="PrimerApellido" Type="varchar" MaxLength="100" />
+    <Property Name="SegundoApellido" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="Foto" Type="varchar" MaxLength="2048" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="TipoDocumento" Type="char" MaxLength="1" />
+    <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="Sexo" Type="char" MaxLength="1" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="150" />
+    <Property Name="Url" Type="varchar" MaxLength="100" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="PrecioPromocional" Type="float" />
+    <Property Name="VideoUrl" Type="varchar" MaxLength="255" />
+    <Property Name="Descripcion" Type="text" />
+    <Property Name="ComoComprar" Type="text" />
+    <Property Name="DescripcionServiciosAdicionales" Type="text" />
+    <Property Name="Recomendado" Type="bit" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="ServiciosAdicionales">
+    <Key>
+      <PropertyRef Name="IdServicioAdicionales" />
+    </Key>
+    <Property Name="IdServicioAdicionales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="IdVarianteProducto" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="250" />
+    <Property Name="DescripcionEjemplo" Type="varchar" MaxLength="100" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="Link" Type="varchar" MaxLength="250" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Eliminar" Type="bit" />
+  </EntityType>
+  <EntityType Name="ServiciosAdicionalesxVarianteProducto">
+    <Key>
+      <PropertyRef Name="IdServicioAdicional" />
+      <PropertyRef Name="IdVarianteProducto" />
+    </Key>
+    <Property Name="IdServicioAdicional" Type="int" Nullable="false" />
+    <Property Name="IdVarianteProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoVariante">
+    <Key>
+      <PropertyRef Name="IdTipoVariante" />
+    </Key>
+    <Property Name="IdTipoVariante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Tipo" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="64" />
+    <Property Name="Perfil" Type="char" MaxLength="1" />
+    <Property Name="PasswordAntiguo" Type="varchar" MaxLength="64" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Eliminado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Variante">
+    <Key>
+      <PropertyRef Name="IdVariante" />
+    </Key>
+    <Property Name="IdVariante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTipoVariante" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Color" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="VarianteProducto">
+    <Key>
+      <PropertyRef Name="IdVarianteProducto" />
+    </Key>
+    <Property Name="IdVarianteProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="Link" Type="varchar" MaxLength="250" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="PrecioPromocional" Type="float" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VariantexVarianteProducto">
+    <Key>
+      <PropertyRef Name="IdVarianteProducto" />
+      <PropertyRef Name="IdVariante" />
+    </Key>
+    <Property Name="IdVarianteProducto" Type="int" Nullable="false" />
+    <Property Name="IdVariante" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Categoria_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Categoria1" Type="Self.Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Categoria1">
+        <PropertyRef Name="IdCategoriaPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaxProducto_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="CategoriaxProducto" Type="Self.CategoriaxProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="CategoriaxProducto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaxProducto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="CategoriaxProducto" Type="Self.CategoriaxProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="CategoriaxProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Foto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="Foto" Type="Self.Foto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="Foto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FotoInvitacion_Invitacion">
+    <End Role="Invitacion" Type="Self.Invitacion" Multiplicity="0..1" />
+    <End Role="FotoInvitacion" Type="Self.FotoInvitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invitacion">
+        <PropertyRef Name="IdInvitacion" />
+      </Principal>
+      <Dependent Role="FotoInvitacion">
+        <PropertyRef Name="IdInvitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FotoxVarianteProducto_Foto">
+    <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+    <End Role="FotoxVarianteProducto" Type="Self.FotoxVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Foto">
+        <PropertyRef Name="IdFoto" />
+      </Principal>
+      <Dependent Role="FotoxVarianteProducto">
+        <PropertyRef Name="IdFoto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FotoxVarianteProducto_VarianteProducto">
+    <End Role="VarianteProducto" Type="Self.VarianteProducto" Multiplicity="1" />
+    <End Role="FotoxVarianteProducto" Type="Self.FotoxVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Principal>
+      <Dependent Role="FotoxVarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiciosAdicionales_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="ServiciosAdicionales" Type="Self.ServiciosAdicionales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="ServiciosAdicionales">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiciosAdicionalesxVarianteProducto_ServiciosAdicionales">
+    <End Role="ServiciosAdicionales" Type="Self.ServiciosAdicionales" Multiplicity="1" />
+    <End Role="ServiciosAdicionalesxVarianteProducto" Type="Self.ServiciosAdicionalesxVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosAdicionales">
+        <PropertyRef Name="IdServicioAdicionales" />
+      </Principal>
+      <Dependent Role="ServiciosAdicionalesxVarianteProducto">
+        <PropertyRef Name="IdServicioAdicional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiciosAdicionalesxVarianteProducto_VarianteProducto">
+    <End Role="VarianteProducto" Type="Self.VarianteProducto" Multiplicity="1" />
+    <End Role="ServiciosAdicionalesxVarianteProducto" Type="Self.ServiciosAdicionalesxVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Principal>
+      <Dependent Role="ServiciosAdicionalesxVarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoVariante_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="TipoVariante" Type="Self.TipoVariante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="TipoVariante">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variante_TipoVariante">
+    <End Role="TipoVariante" Type="Self.TipoVariante" Multiplicity="1" />
+    <End Role="Variante" Type="Self.Variante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoVariante">
+        <PropertyRef Name="IdTipoVariante" />
+      </Principal>
+      <Dependent Role="Variante">
+        <PropertyRef Name="IdTipoVariante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VarianteProducto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="VarianteProducto" Type="Self.VarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="VarianteProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariantexVarianteProducto_Variante">
+    <End Role="Variante" Type="Self.Variante" Multiplicity="1" />
+    <End Role="VariantexVarianteProducto" Type="Self.VariantexVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Variante">
+        <PropertyRef Name="IdVariante" />
+      </Principal>
+      <Dependent Role="VariantexVarianteProducto">
+        <PropertyRef Name="IdVariante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VariantexVarianteProducto_VarianteProducto">
+    <End Role="VarianteProducto" Type="Self.VarianteProducto" Multiplicity="1" />
+    <End Role="VariantexVarianteProducto" Type="Self.VariantexVarianteProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Principal>
+      <Dependent Role="VariantexVarianteProducto">
+        <PropertyRef Name="IdVarianteProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CategoriasDescendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCategoria" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="DBMerianPartyStoreModelStoreContainer">
+    <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoriaxProducto" EntityType="Self.CategoriaxProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Foto" EntityType="Self.Foto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FotoInvitacion" EntityType="Self.FotoInvitacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FotoxVarianteProducto" EntityType="Self.FotoxVarianteProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invitacion" EntityType="Self.Invitacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosAdicionales" EntityType="Self.ServiciosAdicionales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosAdicionalesxVarianteProducto" EntityType="Self.ServiciosAdicionalesxVarianteProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoVariante" EntityType="Self.TipoVariante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Variante" EntityType="Self.Variante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VarianteProducto" EntityType="Self.VarianteProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VariantexVarianteProducto" EntityType="Self.VariantexVarianteProducto" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Categoria_Categoria" Association="Self.FK_Categoria_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Categoria1" EntitySet="Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaxProducto_Categoria" Association="Self.FK_CategoriaxProducto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="CategoriaxProducto" EntitySet="CategoriaxProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaxProducto_Producto" Association="Self.FK_CategoriaxProducto_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="CategoriaxProducto" EntitySet="CategoriaxProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Foto_Producto" Association="Self.FK_Foto_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Foto" EntitySet="Foto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FotoInvitacion_Invitacion" Association="Self.FK_FotoInvitacion_Invitacion">
+      <End Role="Invitacion" EntitySet="Invitacion" />
+      <End Role="FotoInvitacion" EntitySet="FotoInvitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FotoxVarianteProducto_Foto" Association="Self.FK_FotoxVarianteProducto_Foto">
+      <End Role="Foto" EntitySet="Foto" />
+      <End Role="FotoxVarianteProducto" EntitySet="FotoxVarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FotoxVarianteProducto_VarianteProducto" Association="Self.FK_FotoxVarianteProducto_VarianteProducto">
+      <End Role="VarianteProducto" EntitySet="VarianteProducto" />
+      <End Role="FotoxVarianteProducto" EntitySet="FotoxVarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Usuario" Association="Self.FK_Persona_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiciosAdicionales_Producto" Association="Self.FK_ServiciosAdicionales_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="ServiciosAdicionales" EntitySet="ServiciosAdicionales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiciosAdicionalesxVarianteProducto_ServiciosAdicionales" Association="Self.FK_ServiciosAdicionalesxVarianteProducto_ServiciosAdicionales">
+      <End Role="ServiciosAdicionales" EntitySet="ServiciosAdicionales" />
+      <End Role="ServiciosAdicionalesxVarianteProducto" EntitySet="ServiciosAdicionalesxVarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiciosAdicionalesxVarianteProducto_VarianteProducto" Association="Self.FK_ServiciosAdicionalesxVarianteProducto_VarianteProducto">
+      <End Role="VarianteProducto" EntitySet="VarianteProducto" />
+      <End Role="ServiciosAdicionalesxVarianteProducto" EntitySet="ServiciosAdicionalesxVarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoVariante_Producto" Association="Self.FK_TipoVariante_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="TipoVariante" EntitySet="TipoVariante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variante_TipoVariante" Association="Self.FK_Variante_TipoVariante">
+      <End Role="TipoVariante" EntitySet="TipoVariante" />
+      <End Role="Variante" EntitySet="Variante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VarianteProducto_Producto" Association="Self.FK_VarianteProducto_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="VarianteProducto" EntitySet="VarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariantexVarianteProducto_Variante" Association="Self.FK_VariantexVarianteProducto_Variante">
+      <End Role="Variante" EntitySet="Variante" />
+      <End Role="VariantexVarianteProducto" EntitySet="VariantexVarianteProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VariantexVarianteProducto_VarianteProducto" Association="Self.FK_VariantexVarianteProducto_VarianteProducto">
+      <End Role="VarianteProducto" EntitySet="VarianteProducto" />
+      <End Role="VariantexVarianteProducto" EntitySet="VariantexVarianteProducto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

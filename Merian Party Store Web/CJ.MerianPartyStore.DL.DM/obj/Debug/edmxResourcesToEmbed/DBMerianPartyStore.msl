@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBMerianPartyStoreModelStoreContainer" CdmEntityContainer="DBMerianPartyStoreEntities">
+    <EntitySetMapping Name="Banner">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="IdBanner" ColumnName="IdBanner" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="CategoriaMenu" ColumnName="CategoriaMenu" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="IdCategoriaPadre" ColumnName="IdCategoriaPadre" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracion">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Configuracion">
+        <MappingFragment StoreEntitySet="Configuracion">
+          <ScalarProperty Name="IdConfiguracion" ColumnName="IdConfiguracion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Valor2" ColumnName="Valor2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Foto">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Foto">
+        <MappingFragment StoreEntitySet="Foto">
+          <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FotoInvitacion">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.FotoInvitacion">
+        <MappingFragment StoreEntitySet="FotoInvitacion">
+          <ScalarProperty Name="IdFotoInvitacion" ColumnName="IdFotoInvitacion" />
+          <ScalarProperty Name="IdInvitacion" ColumnName="IdInvitacion" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invitacion">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Invitacion">
+        <MappingFragment StoreEntitySet="Invitacion">
+          <ScalarProperty Name="TiempoCarga" ColumnName="TiempoCarga" />
+          <ScalarProperty Name="IdInvitacion" ColumnName="IdInvitacion" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="FechaInvitacion" ColumnName="FechaInvitacion" />
+          <ScalarProperty Name="HoraInvitacion" ColumnName="HoraInvitacion" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TelefonoContactoInvitacion" ColumnName="TelefonoContactoInvitacion" />
+          <ScalarProperty Name="TelefonoContactoInvitacion2" ColumnName="TelefonoContactoInvitacion2" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="UbicacionGoogleMaps" ColumnName="UbicacionGoogleMaps" />
+          <ScalarProperty Name="UbicacionGoogleMaps2" ColumnName="UbicacionGoogleMaps2" />
+          <ScalarProperty Name="TipoInvitacion" ColumnName="TipoInvitacion" />
+          <ScalarProperty Name="UrlPDFInvitacion" ColumnName="UrlPDFInvitacion" />
+          <ScalarProperty Name="Audio" ColumnName="Audio" />
+          <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+          <ScalarProperty Name="LinkMesaRegalos" ColumnName="LinkMesaRegalos" />
+          <ScalarProperty Name="LinkCalendario" ColumnName="LinkCalendario" />
+          <ScalarProperty Name="TipoEntidadBancaria" ColumnName="TipoEntidadBancaria" />
+          <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+          <ScalarProperty Name="CCI" ColumnName="CCI" />
+          <ScalarProperty Name="CountdownColor" ColumnName="CountdownColor" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="VideoInvitacion" ColumnName="VideoInvitacion" />
+          <ScalarProperty Name="ImagenItinerario" ColumnName="ImagenItinerario" />
+          <ScalarProperty Name="MostrarIcono" ColumnName="MostrarIcono" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="PrecioPromocional" ColumnName="PrecioPromocional" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ComoComprar" ColumnName="ComoComprar" />
+          <ScalarProperty Name="DescripcionServiciosAdicionales" ColumnName="DescripcionServiciosAdicionales" />
+          <ScalarProperty Name="Recomendado" ColumnName="Recomendado" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiciosAdicionales">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.ServiciosAdicionales">
+        <MappingFragment StoreEntitySet="ServiciosAdicionales">
+          <ScalarProperty Name="IdServicioAdicionales" ColumnName="IdServicioAdicionales" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdVarianteProducto" ColumnName="IdVarianteProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DescripcionEjemplo" ColumnName="DescripcionEjemplo" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Eliminar" ColumnName="Eliminar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoVariante">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.TipoVariante">
+        <MappingFragment StoreEntitySet="TipoVariante">
+          <ScalarProperty Name="IdTipoVariante" ColumnName="IdTipoVariante" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+          <ScalarProperty Name="PasswordAntiguo" ColumnName="PasswordAntiguo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Variante">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.Variante">
+        <MappingFragment StoreEntitySet="Variante">
+          <ScalarProperty Name="IdVariante" ColumnName="IdVariante" />
+          <ScalarProperty Name="IdTipoVariante" ColumnName="IdTipoVariante" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VarianteProducto">
+      <EntityTypeMapping TypeName="DBMerianPartyStoreModel.VarianteProducto">
+        <MappingFragment StoreEntitySet="VarianteProducto">
+          <ScalarProperty Name="IdVarianteProducto" ColumnName="IdVarianteProducto" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="PrecioPromocional" ColumnName="PrecioPromocional" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoriaxProducto" TypeName="DBMerianPartyStoreModel.CategoriaxProducto" StoreEntitySet="CategoriaxProducto">
+      <EndProperty Name="Categoria">
+        <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+      </EndProperty>
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FotoxVarianteProducto" TypeName="DBMerianPartyStoreModel.FotoxVarianteProducto" StoreEntitySet="FotoxVarianteProducto">
+      <EndProperty Name="Foto">
+        <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+      </EndProperty>
+      <EndProperty Name="VarianteProducto">
+        <ScalarProperty Name="IdVarianteProducto" ColumnName="IdVarianteProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServiciosAdicionalesxVarianteProducto" TypeName="DBMerianPartyStoreModel.ServiciosAdicionalesxVarianteProducto" StoreEntitySet="ServiciosAdicionalesxVarianteProducto">
+      <EndProperty Name="ServiciosAdicionales">
+        <ScalarProperty Name="IdServicioAdicionales" ColumnName="IdServicioAdicional" />
+      </EndProperty>
+      <EndProperty Name="VarianteProducto">
+        <ScalarProperty Name="IdVarianteProducto" ColumnName="IdVarianteProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VariantexVarianteProducto" TypeName="DBMerianPartyStoreModel.VariantexVarianteProducto" StoreEntitySet="VariantexVarianteProducto">
+      <EndProperty Name="Variante">
+        <ScalarProperty Name="IdVariante" ColumnName="IdVariante" />
+      </EndProperty>
+      <EndProperty Name="VarianteProducto">
+        <ScalarProperty Name="IdVarianteProducto" ColumnName="IdVarianteProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionName="DBMerianPartyStoreModel.Store.CategoriasDescendientes" FunctionImportName="CategoriasDescendientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBMerianPartyStoreModel.CategoriasDescendientes_Result">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

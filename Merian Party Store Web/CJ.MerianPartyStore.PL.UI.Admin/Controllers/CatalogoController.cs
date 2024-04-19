@@ -46,14 +46,14 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
 
                 //Paginación
                 TotalPages = (int)Math.Ceiling(lstProducto.Count() / (double)PAGE_SIZE);
-                lstProducto = lstProducto.OrderBy(u => u.Nombre).ThenBy(u => u.Nombre).Skip((Page.Value - 1) * PAGE_SIZE).Take(PAGE_SIZE);
+                lstProducto = lstProducto.OrderByDescending(u => u.FechaActualizacion).Skip((Page.Value - 1) * PAGE_SIZE).Take(PAGE_SIZE);
 
                 List<ProductoModel> lstProductoModel = new List<ProductoModel>();
                 foreach (Producto objProducto in lstProducto)
                     lstProductoModel.Add(ProductoModel.FromProducto(objProducto, true, true, false, false, false, true, null));
-                
+
                 //Obtener tipo de cambio
-                ViewBag.TipoCambio = Double.Parse(objConfiguracionBC.ObtenerConfiguracion(Constants.Configuracion.TIPO_CAMBIO).Valor ?? "0.00"); 
+                ViewBag.TipoCambio = Double.Parse(objConfiguracionBC.ObtenerConfiguracion(Constants.Configuracion.TIPO_CAMBIO).Valor ?? "0.00");
 
                 //Envía el filtro para que muestre dicho tab activo
                 ViewBag.Filtro = Filtro;
@@ -76,7 +76,7 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
         {
             try
             {
-                ConfiguracionBC objConfiguracionBC=new ConfiguracionBC();
+                ConfiguracionBC objConfiguracionBC = new ConfiguracionBC();
 
                 //Lista de categorias registradas
                 IQueryable<Categoria> lstCategoria = new CatalogoBC().ListarCategoriasPadre();
@@ -123,7 +123,7 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
             try
             {
                 //Validación de datos generales de categoría
-                if (!String.IsNullOrWhiteSpace(objCategoriaModel.Nombre) )
+                if (!String.IsNullOrWhiteSpace(objCategoriaModel.Nombre))
                 {
                     CatalogoBC objCatalogoBC = new CatalogoBC();
                     Categoria objCategoria = objCatalogoBC.ObtenerCategoria(objCategoriaModel.IdCategoria);
@@ -134,39 +134,39 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
                     ////Validación de URL existente
                     //if (objCategoriaConUrl == null || objCategoriaModel.IdCategoria == objCategoriaConUrl.IdCategoria)
                     //{
-                        //Guardado de imagen
-                        if (FotoFile != null)
-                        {
-                            //Elimina la imagen anterior
-                            if (objCategoria != null && !String.IsNullOrWhiteSpace(objCategoria.Imagen))
-                                new FileInfo(Path.Combine(Server.MapPath(CategoriaModel.IMAGE_PATH), objCategoria.Imagen)).Delete();
+                    //Guardado de imagen
+                    if (FotoFile != null)
+                    {
+                        //Elimina la imagen anterior
+                        if (objCategoria != null && !String.IsNullOrWhiteSpace(objCategoria.Imagen))
+                            new FileInfo(Path.Combine(Server.MapPath(CategoriaModel.IMAGE_PATH), objCategoria.Imagen)).Delete();
 
-                            //Guarda la nueva imagen
-                            objCategoriaModel.Imagen = Guid.NewGuid().ToString() + Path.GetExtension(FotoFile.FileName);
-                            Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
-                            FotoFile.SaveAs(Path.Combine(Server.MapPath(CategoriaModel.IMAGE_PATH), objCategoriaModel.Imagen));
-                        }
-                        //Guardado de banner
-                        if (BannerFile != null)
-                        {
-                            Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
-                            Directory.CreateDirectory(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH));
-                            //Elimina la imagen banner anterior
-                            if (objCategoria != null && !String.IsNullOrWhiteSpace(objCategoria.Banner))
-                                new FileInfo(Path.Combine(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH), objCategoria.Banner)).Delete();
+                        //Guarda la nueva imagen
+                        objCategoriaModel.Imagen = Guid.NewGuid().ToString() + Path.GetExtension(FotoFile.FileName);
+                        Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
+                        FotoFile.SaveAs(Path.Combine(Server.MapPath(CategoriaModel.IMAGE_PATH), objCategoriaModel.Imagen));
+                    }
+                    //Guardado de banner
+                    if (BannerFile != null)
+                    {
+                        Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
+                        Directory.CreateDirectory(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH));
+                        //Elimina la imagen banner anterior
+                        if (objCategoria != null && !String.IsNullOrWhiteSpace(objCategoria.Banner))
+                            new FileInfo(Path.Combine(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH), objCategoria.Banner)).Delete();
 
-                            //Guarda la nueva imagen banner
-                            objCategoriaModel.Banner = Guid.NewGuid().ToString() + Path.GetExtension(BannerFile.FileName);
-                            Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
-                            BannerFile.SaveAs(Path.Combine(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH), objCategoriaModel.Banner));
-                        }
-                        objCategoria = objCategoriaModel.ToCategoria();
+                        //Guarda la nueva imagen banner
+                        objCategoriaModel.Banner = Guid.NewGuid().ToString() + Path.GetExtension(BannerFile.FileName);
+                        Directory.CreateDirectory(Server.MapPath(CategoriaModel.IMAGE_PATH));
+                        BannerFile.SaveAs(Path.Combine(Server.MapPath(CategoriaModel.BANNER_CATEGORIA_PATH), objCategoriaModel.Banner));
+                    }
+                    objCategoria = objCategoriaModel.ToCategoria();
 
-                        //Guarda la categoría
-                        objCategoria.IdCategoria = objCatalogoBC.GuardarCategoria(objCategoria);
+                    //Guarda la categoría
+                    objCategoria.IdCategoria = objCatalogoBC.GuardarCategoria(objCategoria);
 
-                        objResultObject.Code = 0;
-                        objResultObject.Message = "¡La categoría se ha guardado con éxito!";
+                    objResultObject.Code = 0;
+                    objResultObject.Message = "¡La categoría se ha guardado con éxito!";
                     //}
                     //else
                     //{
@@ -392,14 +392,14 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
 
                                     }
                                 }
-                               
+
                             }
                             else
                             {
 
                                 lstVarianteProducto = new List<VarianteProducto>();
                                 //lstVarianteProducto.Add(new VarianteProducto() { Link = URLYouTube[0]??"" ,Precio=objProducto.Precio,PrecioPromocional= (objProducto.PrecioPromocional==null?null: objProducto.PrecioPromocional) });
-                                lstVarianteProducto.Add(new VarianteProducto() {Precio = objProducto.Precio });
+                                lstVarianteProducto.Add(new VarianteProducto() { Precio = objProducto.Precio });
                                 //lstServiciosAdicionales = new List<ServiciosAdicionales>();
                                 //lstServiciosAdicionales.Add(new ServiciosAdicionales() { Nombre = NombreServicioAdicional[0], Precio = PrecioServicioAdicional[0], Link = LinkServicioAdicional[0] });
 
@@ -516,9 +516,9 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Controllers
 
         public ActionResult ServicioAdicional(ServiciosAdicionalesModel objServiciosAdicionalesModel)
         {
-            ConfiguracionBC objConfiguracionBC=new ConfiguracionBC();
+            ConfiguracionBC objConfiguracionBC = new ConfiguracionBC();
             //Obtener tipo de cambio
-          //  objServiciosAdicionalesModel.TipoCambio = Double.Parse(objConfiguracionBC.ObtenerConfiguracion(Constants.Configuracion.TIPO_CAMBIO).Valor ?? "0.00");
+            //  objServiciosAdicionalesModel.TipoCambio = Double.Parse(objConfiguracionBC.ObtenerConfiguracion(Constants.Configuracion.TIPO_CAMBIO).Valor ?? "0.00");
             return PartialView(objServiciosAdicionalesModel);
         }
 

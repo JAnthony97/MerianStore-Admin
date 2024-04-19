@@ -24,9 +24,10 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Models
             {
                 ServiciosAdicionalesModel objServiciosAdicionalesModel = new ServiciosAdicionalesModel();
 
-                objServiciosAdicionalesModel.IdServiciosAdicionales = objServiciosAdicionales.IdServicioAdicionales;               
+                objServiciosAdicionalesModel.IdServiciosAdicionales = objServiciosAdicionales.IdServicioAdicionales;
                 objServiciosAdicionalesModel.IdProducto = objServiciosAdicionales.IdProducto.Value;
                 objServiciosAdicionalesModel.IdVarianteProducto = objServiciosAdicionales.IdVarianteProducto;
+                objServiciosAdicionalesModel.DescripcionEjemplo = objServiciosAdicionales.DescripcionEjemplo;
                 objServiciosAdicionalesModel.Nombre = objServiciosAdicionales.Nombre;
                 objServiciosAdicionalesModel.Precio = objServiciosAdicionales.Precio;
                 objServiciosAdicionalesModel.Link = objServiciosAdicionales.Link;
@@ -48,7 +49,7 @@ namespace CJ.MerianPartyStore.PL.UI.Admin.Models
                 objServiciosAdicionales.IdProducto = IdProducto;
                 objServiciosAdicionales.IdVarianteProducto = IdVarianteProducto;
                 objServiciosAdicionales.Nombre = Nombre;
-                objServiciosAdicionales.DescripcionEjemplo=DescripcionEjemplo; 
+                objServiciosAdicionales.DescripcionEjemplo = DescripcionEjemplo;
                 objServiciosAdicionales.Precio = Precio;
                 objServiciosAdicionales.Link = Link;
 
