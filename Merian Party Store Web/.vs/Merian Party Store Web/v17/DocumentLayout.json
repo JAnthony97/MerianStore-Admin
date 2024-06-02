@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\MerianStore-Admin\\Merian Party Store Web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|d:\\merianstore-admin\\merian party store web\\cj.merianpartystore.pl.ui.admin\\controllers\\invitacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|solutionrelative:cj.merianpartystore.pl.ui.admin\\controllers\\invitacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|d:\\merianstore-admin\\merian party store web\\cj.merianpartystore.pl.ui.admin\\views\\invitacion\\invitacionanimada.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|solutionrelative:cj.merianpartystore.pl.ui.admin\\views\\invitacion\\invitacionanimada.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|d:\\merianstore-admin\\merian party store web\\cj.merianpartystore.pl.ui.admin\\templatesinvitaciones\\invitacionanimada\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|solutionrelative:cj.merianpartystore.pl.ui.admin\\templatesinvitaciones\\invitacionanimada\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|D:\\MerianStore-Admin\\Merian Party Store Web\\cj.merianpartystore.pl.ui.admin\\controllers\\invitacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|solutionrelative:cj.merianpartystore.pl.ui.admin\\controllers\\invitacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00FB7292-267C-407B-87EA-2A3DE8674CD7}|CJ.MerianPartyStore.PL.UI.Admin\\CJ.MerianPartyStore.PL.UI.Admin.csproj|D:\\MerianStore-Admin\\Merian Party Store Web\\cj.merianpartystore.pl.ui.admin\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -56,23 +60,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InvitacionAnimada.cshtml",
+              "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Views\\Invitacion\\InvitacionAnimada.cshtml",
+              "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Views\\Invitacion\\InvitacionAnimada.cshtml",
+              "ToolTip": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Views\\Invitacion\\InvitacionAnimada.cshtml",
+              "RelativeToolTip": "CJ.MerianPartyStore.PL.UI.Admin\\Views\\Invitacion\\InvitacionAnimada.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-02T17:42:14.816Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Index.html",
-              "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionAnimada\\Index.html",
-              "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionAnimada\\Index.html",
-              "ToolTip": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionAnimada\\Index.html",
-              "RelativeToolTip": "CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionAnimada\\Index.html",
+              "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html",
+              "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html",
+              "ToolTip": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html",
+              "RelativeToolTip": "CJ.MerianPartyStore.PL.UI.Admin\\TemplatesInvitaciones\\InvitacionANIMADO\\Index.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-22T01:30:51.669Z"
+              "WhenOpened": "2024-06-02T17:40:48.807Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "InvitacionController.cs",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Controllers\\InvitacionController.cs",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Controllers\\InvitacionController.cs",
@@ -80,12 +98,11 @@
               "RelativeToolTip": "CJ.MerianPartyStore.PL.UI.Admin\\Controllers\\InvitacionController.cs",
               "ViewState": "AQIAAH8AAAAAAAAAAADgvyIBAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T01:24:56.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T01:24:56.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Producto.cshtml",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\Producto.cshtml",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\Producto.cshtml",
@@ -97,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ServicioAdicional.cshtml",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\ServicioAdicional.cshtml",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\ServicioAdicional.cshtml",
@@ -109,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Categorias.cshtml",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\Categorias.cshtml",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Views\\Catalogo\\Categorias.cshtml",
@@ -121,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ServiciosAdicionalesModel.cs",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Models\\ServiciosAdicionalesModel.cs",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Models\\ServiciosAdicionalesModel.cs",
@@ -133,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "CategoriaModel.cs",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Models\\CategoriaModel.cs",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Models\\CategoriaModel.cs",
@@ -145,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ConfiguracionModel.cs",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Models\\ConfiguracionModel.cs",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Models\\ConfiguracionModel.cs",
@@ -157,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CatalogoController.cs",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Controllers\\CatalogoController.cs",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Controllers\\CatalogoController.cs",
@@ -169,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\MerianStore-Admin\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Admin\\Web.config",
               "RelativeDocumentMoniker": "CJ.MerianPartyStore.PL.UI.Admin\\Web.config",
@@ -182,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "desktop.css",
               "DocumentMoniker": "C:\\Users\\juanz\\OneDrive\\Escritorio\\Repositorios\\Personales\\MerianStore\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Client\\css\\desktop.css",
               "ToolTip": "C:\\Users\\juanz\\OneDrive\\Escritorio\\Repositorios\\Personales\\MerianStore\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Client\\css\\desktop.css",
@@ -191,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "general.css",
               "DocumentMoniker": "C:\\Users\\juanz\\OneDrive\\Escritorio\\Repositorios\\Personales\\MerianStore\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Client\\css\\general.css",
               "ToolTip": "C:\\Users\\juanz\\OneDrive\\Escritorio\\Repositorios\\Personales\\MerianStore\\Merian Party Store Web\\CJ.MerianPartyStore.PL.UI.Client\\css\\general.css",
