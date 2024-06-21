@@ -1,27 +1,6 @@
 ﻿const parentTagSection_1 = document.querySelector('.section_1')
 const canvas = document.getElementById('logoCanvas');
 const ctx = canvas.getContext('2d');
-const biggreenLeaveImage = new Image();
-const littleStickGreenImage = new Image();
-const mediumStickGreenImage = new Image();
-const mediumStickGreenImage_1 = new Image();
-const whiteLeaveImage = new Image();
-const tinyGreenLeaveImage = new Image();
-const tinyGreenLeaveImage_2 = new Image();
-const redPointsLeaveImage = new Image();
-const roseImage = new Image();
-roseImage.src = 'rosa.png';
-biggreenLeaveImage.src = 'big_green_leave.png'
-littleStickGreenImage.src = 'little_stick_green.png'
-mediumStickGreenImage.src = 'medium_stick_green.png'
-mediumStickGreenImage_1.src = 'medium_stick_green_1.png'
-whiteLeaveImage.src = 'white_leave.png'
-tinyGreenLeaveImage.src = 'tiny_leave.png'
-tinyGreenLeaveImage_2.src = 'tiny_leave_2.png'
-redPointsLeaveImage.src = 'morado.svg'
-const angleRotation = 4; // Angulo de Rotacion de las animaciones
-
-
 
 
 const containerWidth = document.getElementById('container_canvas').clientWidth;
