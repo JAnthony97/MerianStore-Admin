@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta id="rootUrl" content="" />
+    <title>Invitaci�n</title>
+    <link href="https://localhost:44385/css/InvitacionStyles.css" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://localhost:44385/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://localhost:44385/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://localhost:44385/Favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="https://localhost:44385/Favicon/favicon.ico" />
+    <script src="../../Scripts/InvitacionAnimadaScripts.js" defer></script>
+    <script src="../../Scripts/jquery-3.6.4.min.js"></script>
+    <script src="../../Scripts/jquery-3.6.4.slim.min.js"></script>
+    <script src="../../Scripts/libreria.popup.js" type="text/javascript"></script>
+
+</head>
+<body class="page_contianer">
+    <div id="container_canvas" class="section_1">
+        <div class="audio-content">
+            <div class="audio-controllers flex-center" style="background-color:#000000">
+                <a id="audioIcon" class="ic-play-white play-pause inactive" onclick="turnOffAudio();"></a>
+                <a class="ic-music-white"></a>
+            </div>
+            <div class="audio hidden">
+                <audio id="audioInvitacion" controls autoplay loop>
+                    <source src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Audio/test.mp3" type="audio/mpeg" />
+                </audio>
+            </div>
+        </div>
+        <canvas id="logoCanvas" class="canvas_target"></canvas>
+        <p>Uno de los dias mas importantes en nuestras vidas esta por llegar, faltan:</p>
+        <div class="section_1--counter">
+            <div class="section_1--circle_counters">
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <span>
+                    <div class="section_1--background_circle">
+                    </div>
+                </span>
+            </div>
+            <div class="section_1--circle_counters">
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <span>
+                    <div class="section_1--background_circle">
+                    </div>
+                </span>
+            </div>
+            <div class="section_1--circle_counters">
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <span>
+                    <div class="section_1--background_circle">
+                    </div>
+                </span>
+            </div>
+            <div class="section_1--circle_counters">
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <aside class="section_1--counter--circle_counter_flowers">
+                    <div class="container_flower_c">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/medium_stick_green.png" alt="hoja peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/big_green_leave.png" alt="hoja verde">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/little_stick_green.png" alt="hija peque�a">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/white_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/red_points_leave.png" alt="roseta">
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/rosa.png" alt="roseta">
+                    </div>
+                </aside>
+                <span>
+                    <div class="section_1--background_circle">
+                    </div>
+                </span>
+            </div>
+        </div>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/sobre-pattern.png" alt="sobre" class="section_1--card">
+    </div>
+    <div class="section_2">
+        <canvas id="section_canvas_2"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_1">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_2">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <div>
+            <span class="section_2--background_card">
+            </span>
+        </div>
+        <div>
+            <span class="section_2--background_card">
+            </span>
+        </div>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/names.svg" alt="nombres de casados">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_3">
+        <canvas id="section_canvas_3"></canvas>
+        <aside class="center_flower_square_1">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_square_2">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_1">
+            <div class="container_flower_b">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/tiny_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_2">
+            <div class="container_flower_b_2">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/tiny_leave_2.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <div></div>
+        <div></div>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/novios.png" alt="foto de la pareja">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/married.svg" alt="nos casamos">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_4">
+        <canvas id="section_canvas_4"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_1">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_2">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <span>
+            <div class="section_2--background_card">
+            </div>
+        </span>
+        <span>
+            <div class="section_2--background_card">
+            </div>
+        </span>
+        <p></p>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_5">
+        <canvas id="section_canvas_5"></canvas>
+        <aside class="top_flower_1">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/rosa.png" alt="roseta">
+
+            </div>
+        </aside>
+        <aside class="top_flower_2">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <section>
+            <div class="section_5--container_info">
+            </div>
+        </section>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_6">
+        <canvas id="section_canvas_6"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <section>
+            <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/text_6.svg" alt="asistencia">
+        </section>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_7">
+        <canvas id="section_canvas_7"></canvas>
+        <aside class="top_flower_1">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="top_flower_2">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <section>
+            <div class="section_7--container_info">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/lugar_2.svg" alt="informacion">
+            </div>
+        </section>
+        <button id="btn_ver_mapa_religioso" onclick="popUpBodaReligiosa.show();"></button>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_8">
+        <canvas id="section_canvas_8"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <section>
+            <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/text_8_fix.svg" alt="lugar de fiesta">
+            <button id="btn_ver_mapa_civil" onclick="popUpBodaCivil.show();"></button>
+        </section>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_9">
+        <canvas id="section_canvas_9"></canvas>
+        <aside class="top_flower_1">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="top_flower_2">
+            <div class="container_flower_t">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <section>
+            <div class="section_9--description">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/text_9.svg" alt="confirmar asistencia">
+                <div>
+                </div>
+            </div>
+        </section>
+        <main>
+            <button></button>
+            <button></button>
+        </main>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_10">
+        <canvas id="section_canvas_10"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_1">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_2">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <div>
+            <span class="section_2--background_card"></span>
+        </div>
+        <div>
+            <span class="section_2--background_card"></span>
+        </div>
+        <main>
+            <button></button>
+        </main>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_11">
+        <canvas id="section_canvas_11"></canvas>
+        <aside class="center_flower_square_1">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_square_2">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_1">
+            <div class="container_flower_b">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/tiny_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_2">
+            <div class="container_flower_b_2">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/tiny_leave_2.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <div></div>
+        <div></div>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/novios.png" alt="foto de la pareja">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/table.svg" alt="regalo">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/bg_stain.svg" alt="mancha">
+        <button></button>
+    </div>
+    <div class="section_12">
+        <section>
+            <div class="carousel" data-carousel>
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-12/flores-en-conjunto.svg" alt="racimo">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-12/flores-en-conjunto.svg" alt="racimo">
+                <button class="carousel-button prev" data-carousel-button="prev">&#10092;</button>
+                <button class="carousel-button next" data-carousel-button="next">&#10093;</button>
+                <ul data-slides>
+                    <li class="slide" data-active>
+                        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-12/text_12.png" alt="Nature Image #1">
+                    </li>
+                    <li class="slide">
+                        <img src="https://source.unsplash.com/eOpewngf68w" alt="Nature Image #2">
+                    </li>
+                    <li class="slide">
+                        <img src="https://source.unsplash.com/ndN00KmbJ1c" alt="Nature Image #3">
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="section_13">
+        <canvas id="section_canvas_13"></canvas>
+        <aside class="box_flower_1">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="box_flower_2">
+            <div class="container_flower_r">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/tiny_leave.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/text_13.svg" alt="intineriario" class="img_hours">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/bg_stain.svg" alt="mancha">
+    </div>
+    <div class="section_14">
+        <aside class="center_flower_1_f">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="center_flower_2_f">
+            <div class="container_flower_c">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/medium_stick_green.png" alt="hoja pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/big_green_leave.png" alt="hoja verde">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/white_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/rosa.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_1">
+            <div class="container_flower_b">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/tiny_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <aside class="bottom_flower_square_2">
+            <div class="container_flower_b_2">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/tiny_leave_2.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/little_stick_green.png" alt="hija pequeña">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/red_points_leave.png" alt="roseta">
+                <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/white_leave.png" alt="roseta">
+            </div>
+        </aside>
+        <div>
+            <span class="section_2--background_card">
+            </span>
+        </div>
+        <div>
+            <span class="section_2--background_card">
+            </span>
+        </div>
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/bg_stain.svg" alt="mancha">
+        <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/last_img_3.svg" alt="final_invitation">
+    </div>
+    <!--POPUPS-->
+    <section id="popUpBodaReligiosa" class="popup">
+        <div class="popup-box">
+            <div class="map_invitation_container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.6069069735304!2d-56.04831632519997!3d-28.55153286366248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9455cfe0c9ab1b9f%3A0xa7ce5178c4df2809!2sPlaza%20Colon!5e0!3m2!1ses-419!2sar!4v1716045920742!5m2!1ses-419!2sar" width="400" height="300" style="border:0;width:100%;height:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="form-actions">
+                <a class="button btn-small text-color-white background-color01 " onclick="popUpBodaReligiosa.hide();">Cerrar</a>
+            </div>
+        </div>
+    </section>
+    <section id="popUpBodaCivil" class="popup">
+        <div class="popup-box">
+            <div class="map_invitation_container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.6371576843126!2d-77.02544652579336!3d-12.068467442303463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c890b4f44b1b%3A0x452d52e5045df58e!2sEstadio%20Alejandro%20Villanueva!5e0!3m2!1ses-419!2sar!4v1716046778497!5m2!1ses-419!2sar" width="400" height="300" style="border:0;width:100%;height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="form-actions">
+                <a class="button btn-small text-color-white background-color01 " onclick="popUpBodaCivil.hide();">Cerrar</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        const popUpBodaReligiosa = new Popup('popUpBodaReligiosa');
+        const popUpBodaCivil = new Popup('popUpBodaCivil')
+        //VOLUMEN DEL AUDIO
+        document.getElementById("audioInvitacion").volume = 0.2;
+
+        //APAGAR AUDIO
+        function turnOffAudio() {
+            if ($('#audioIcon').hasClass('inactive')) {
+                $('#audioIcon').removeClass('inactive');
+                $('#audioIcon').addClass('ic-pause-white');
+                document.getElementById("audioInvitacion").play();
+            }
+            else {
+                $('#audioIcon').addClass('inactive');
+                document.getElementById("audioInvitacion").pause();
+                $('#audioIcon').removeClass('ic-pause-white');
+
+            }
+        }
+    </script>
+</body>
+</html>
