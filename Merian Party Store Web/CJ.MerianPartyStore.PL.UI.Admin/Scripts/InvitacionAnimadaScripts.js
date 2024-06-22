@@ -2,7 +2,6 @@
 const canvas = document.getElementById('logoCanvas');
 const ctx = canvas.getContext('2d');
 
-
 const containerWidth = document.getElementById('container_canvas').clientWidth;
 const deviceHeight = window.innerHeight
 canvas.width = Math.floor(containerWidth > 420 ? 420 : containerWidth);
@@ -561,7 +560,7 @@ animate_section_10()
 let executeTextSection_10 = false
 const btnAction = document.querySelector('.section_10 > main > button')
 btnAction.addEventListener('click', () => {
-    window.open('gift_inv.pdf', '_blank')
+    window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
 })
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_10_canvas.getBoundingClientRect().top + parent_section_10_canvas.offsetHeight / 2;
@@ -590,7 +589,7 @@ const canvas_section_11 = document.getElementById('section_canvas_11');
 let executeTextSection_11 = false
 const btnToAction = document.querySelector('.section_11 > button')
 btnToAction.addEventListener('click', () => {
-    window.open('gift_inv.pdf', '_blank')
+    window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
 })
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_11_canvas.getBoundingClientRect().top + parent_section_11_canvas.offsetHeight / 2;
