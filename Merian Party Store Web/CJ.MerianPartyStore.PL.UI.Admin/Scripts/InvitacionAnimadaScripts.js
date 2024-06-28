@@ -734,6 +734,16 @@ function tiempoRestante(fechaObjetivo) {
     let tiempoObjetivo = fechaObjetivo.getTime();
     let diferencia = tiempoObjetivo - tiempoActual;
 
+    // Si la diferencia es negativa o cero, mostrar 0 en todos los campos
+    if (diferencia <= 0) {
+        return {
+            dias: 0,
+            horas: 0,
+            minutos: 0,
+            segundos: 0
+        };
+    }
+
     let diasRestantes = Math.floor(diferencia / (1000 * 60 * 60 * 24));
     let horasRestantes = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutosRestantes = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
@@ -747,16 +757,15 @@ function tiempoRestante(fechaObjetivo) {
     };
 }
 
-
-// Función para actualizar los divs con el tiempo restante
+// Resto del código para actualizar el contador en el HTML sigue igual
 function updateCounter() {
     let currentTime = tiempoRestante(fechaObjetivo);
     let divs = document.querySelectorAll('.section_1--background_circle');
 
-    divs[0].innerHTML = `<p  style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.dias}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;">dias</p>`;//Dias
-    divs[1].innerHTML = `<p  style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.horas}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;">horas</p>`;//Horas
-    divs[2].innerHTML = `<p  style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.minutos}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;">min</p>`; //Minutos
-    divs[3].innerHTML = `<p  style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.segundos}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;">seg</p>`;//Segundos
+    divs[0].innerHTML = `<p style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.dias}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;padding-bottom: 5px;">dias</p>`; // Días
+    divs[1].innerHTML = `<p style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.horas}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;padding-bottom: 5px;">horas</p>`; // Horas
+    divs[2].innerHTML = `<p style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.minutos}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;padding-bottom: 5px;">min</p>`; // Minutos
+    divs[3].innerHTML = `<p style="width: fit-content; height: 18px;font-size: 14px;display:flex;justify-content: center;align-items: center;margin-top:10px;">${currentTime.segundos}</p>` + `<p style="width: fit-content; height: 12px;font-size: 14px;display:flex;justify-content: center;align-items: center;padding-bottom: 5px;">seg</p>`; // Segundos
 }
 
 // Actualizar el contador cada segundo
@@ -764,6 +773,7 @@ setInterval(updateCounter, 1000);
 
 // Llamar a actualizarContador() una vez para mostrar el tiempo inicial
 updateCounter();
+
 const buttons = document.querySelectorAll("[data-carousel-button]")
 
 buttons.forEach(button => {
