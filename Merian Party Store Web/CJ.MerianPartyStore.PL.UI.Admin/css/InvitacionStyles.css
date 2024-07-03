@@ -3,7 +3,7 @@
 @import url('https://fonts.cdnfonts.com/css/carneys-gallery-script-demo-ver');
 
 :root {
-    --color-01: #B46668;
+    --color-01: #87068b;
     --color-02: #FCE4DA;
     --color-03: #DE9A87;
     --gray-color: #D4D9DB;
@@ -13,10 +13,6 @@
     --white-color: #ffffff;
     --melon-color: #FBF3F0;
 }
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&display=swap');
-@import url('https://fonts.cdnfonts.com/css/carneys-gallery-script-demo-ver');
-
 * {
     margin: 0;
     padding: 0;
@@ -1532,7 +1528,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: 200ms opacity linear-in-out;
+    transition: 200ms opacity linear;
     transition-delay: 200ms;
 }
 
@@ -2492,7 +2488,7 @@
         top: 50%;
         left: 50%;
         background: #f2f2f2;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 5px 0px #87068b;
         border-radius: 10px;
         display: block;
         justify-content: space-around;
@@ -2504,7 +2500,7 @@
         font-family: "Cormorant Infant", serif;
         font-weight: bold;
         font-style: normal;
-        font-size:20px;
+        font-size: 20px;
         -o-transform: translate(-50%, -50%) scale(0.95);
     }
 
