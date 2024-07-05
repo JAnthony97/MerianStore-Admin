@@ -246,10 +246,9 @@ window.addEventListener("scroll", function () {
         animateImages[1].classList.add('img_bg_stain_2')
         sectionVisibility.classList.add('scale_section_5')
         canvasVisibility.classList.add('canvas_section_3')
+        console.log(animateImages)
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
-        animateImagesFlower[2].style.opacity = '1';
-        animateImagesFlower[3].style.opacity = '1';
         executeTextSection_5 = true
     }
 });
@@ -340,8 +339,6 @@ window.addEventListener("scroll", function () {
         imageInvitationAnimate.classList.add('scale_section_6_img')
         imageAnimateFlower[0].style.opacity = '1';
         imageAnimateFlower[1].style.opacity = '1';
-        imageAnimateFlower[2].style.opacity = '1';
-        imageAnimateFlower[3].style.opacity = '1';
         executeTextSection_6 = true
     }
 });

@@ -2562,6 +2562,7 @@
     .button{
         background-color: var(--color-01);
         color: var(--white-color);
+        cursor:pointer;
     }
 
     .button.btn-icon {
