@@ -962,11 +962,7 @@
         top: 83%;
         left: 48%;
         transform: translate(-50%, -50%);
-        border-radius: 15px/50%;
-        background: url('../Images/Invitacion/FotoInvitacion/Slice-8/boton-ver-mapa.svg');
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
+        border-radius: 15px/50%;                        
         border: none;
         cursor: pointer;
         filter: drop-shadow(6px 6px 8px #c1c1cd);
