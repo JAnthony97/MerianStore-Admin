@@ -883,11 +883,7 @@
     top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 15px/50%;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-7/boton-ver-mapa.svg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    border-radius: 15px/50%;    
     border: none;
     cursor: pointer;
     filter: drop-shadow(6px 6px 8px #565657);
@@ -2607,15 +2603,15 @@
             background-size: 100%;
         }
 .ic-play-white {
-    background-image: url('../Images/Icons/ic_play_white.svg');
+    background-image: url('../Images/Invitacion/FotoInvitacion/Slice-1/ic_play_white.svg');
 }
 
 .ic-pause-white {
-    background-image: url('../Images/Icons/ic_pause_white.svg');
+    background-image: url('../Images/Invitacion/FotoInvitacion/Slice-1/ic_pause_white.svg');
 }
 
 .ic-music-white {
-    background-image: url('../Images/Icons/ic_music_white.svg');
+    background-image: url('../Images/Invitacion/FotoInvitacion/Slice-1/ic_music_white.svg');
 }
 .flex-center {
     display: flex;

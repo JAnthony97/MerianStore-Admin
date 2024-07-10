@@ -246,7 +246,6 @@ window.addEventListener("scroll", function () {
         animateImages[1].classList.add('img_bg_stain_2')
         sectionVisibility.classList.add('scale_section_5')
         canvasVisibility.classList.add('canvas_section_3')
-        console.log(animateImages)
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
         executeTextSection_5 = true
