@@ -1,16 +1,4 @@
-﻿
-:root {
-    --color-01: #87068b;
-    --color-02: #FCE4DA;
-    --color-03: #DE9A87;
-    --gray-color: #D4D9DB;
-    --gray-claro-color: #F9F9F9;
-    --gray-oscuro-color: #545454;
-    --black-color: #000000;
-    --white-color: #ffffff;
-    --melon-color: #FBF3F0;
-}
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -2548,11 +2536,11 @@
         left: 0;
     }
 
-    .button{
-        background-color: var(--color-01);
-        color: var(--white-color);
-        cursor:pointer;
-    }
+.button {
+    background-color: #87068b;
+    color: #ffffff;
+    cursor: pointer;
+}
 
     .button.btn-icon {
         background-size: auto 55%;
