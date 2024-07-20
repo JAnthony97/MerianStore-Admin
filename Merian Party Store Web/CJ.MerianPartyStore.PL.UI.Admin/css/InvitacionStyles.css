@@ -1,4 +1,6 @@
-﻿* {
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&display=swap');
+@import url('https://fonts.cdnfonts.com/css/carneys-gallery-script-demo-ver');
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,7 +36,7 @@
 
 .section_1 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -136,7 +138,7 @@
     width: calc(100% - 3px);
     height: calc(100% - 3px);
     border-radius: 50%;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -206,7 +208,7 @@
 
 .section_2 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -250,7 +252,7 @@
     width: calc(100% - 1px);
     height: calc(100% - 1px);
     border-radius: 50%;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -338,7 +340,7 @@
 
 .section_3 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-3/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-3/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -478,7 +480,7 @@
 
 .section_4 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-4/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-4/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -620,7 +622,7 @@
 
 .section_5 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-5/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-5/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -700,7 +702,7 @@
 
 .section_6 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-6/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-6/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -794,7 +796,7 @@
 
 .section_7 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-7/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-7/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -882,7 +884,7 @@
 
 .section_8 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-8/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-8/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -965,7 +967,7 @@
 
 .section_9 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-9/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-9/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -1108,7 +1110,7 @@
 
 .section_10 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-10/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-10/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -1216,7 +1218,7 @@
 
 .section_11 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-11/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-11/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -1278,7 +1280,7 @@
 }
 
 .section_12 {
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-12/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-12/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -1307,7 +1309,7 @@
 
 .section_13 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-13/fondo-arriba.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-13/fondo-arriba.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
@@ -1350,7 +1352,7 @@
 
 .section_14 {
     position: relative;
-    background: url('../Images/Invitacion/FotoInvitacion/Slice-14/fondo-abajo.svg');
+    background: url('../Images/Invitacion/FotoInvitacion/Slice-14/fondo-abajo.png');
     background-size: 200%;
     background-repeat: no-repeat;
     background-position: center;
