@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width" />
     <meta id="rootUrl" content="" />
     <title>Invitacion</title>
-    <link href="https://localhost:44385/css/InvitacionStyles.css" rel="stylesheet" type="text/css">
     <link rel="apple-touch-icon" sizes="180x180" href="https://localhost:44385/Favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://localhost:44385/Favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://localhost:44385/Favicon/favicon-16x16.png">
@@ -18,7 +17,2649 @@
     <script src="../../Scripts/jquery-3.6.4.min.js"></script>
     <script src="../../Scripts/jquery-3.6.4.slim.min.js"></script>
     <script src="../../Scripts/libreria.popup.js" type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/carneys-gallery-script-demo-ver');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .page_contianer {
+            display: flex;
+            height: 1400svh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+            .page_contianer > div {
+                width: min(430px, 100%);
+                height: 100vh;
+                margin: auto;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .canvas_target {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .section_1 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_1 > p {
+                position: absolute;
+                top: 55px;
+                text-transform: uppercase;
+                margin-inline: auto;
+                width: 95%;
+                height: fit-content;
+                font-size: 18px;
+                text-align: center;
+                font-family: "Cormorant Infant", serif;
+                font-weight: 300;
+                font-style: normal;
+            }
+
+        .section_1--card {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 70%;
+            display: block;
+            object-fit: cover;
+            overflow: visible;
+        }
+
+        .section_1--counter {
+            width: 100%;
+            position: absolute;
+            top: 26%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 150px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+            .section_1--counter > div {
+                width: 70px;
+                height: 70px;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                position: relative;
+                background-image: linear-gradient(white,rgb(255, 255, 255)),linear-gradient(90deg,#9b5a01, #cbac44 );
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+            }
+
+        .section_1--circle_counters > aside:nth-child(1) {
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 45%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .section_1--circle_counters > aside:nth-child(2) {
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 60%;
+            left: 10%;
+            transform: translate(-50%, -50%) rotateZ(170deg);
+            z-index: 2;
+        }
+
+        .section_1--counter--circle_counter_flowers > div:nth-child(1) {
+            transform: scale(0.25) rotateZ(15deg);
+        }
+
+        .section_1--counter > div > span {
+            width: calc(100% - 4px);
+            display: block;
+            height: calc(100% - 4px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 0.5px solid transparent;
+            border-radius: 50%;
+            position: relative;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section_1--background_circle {
+            width: calc(100% - 3px);
+            height: calc(100% - 3px);
+            border-radius: 50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Carneys Gallery Script Demo Ver', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+            .section_1--background_circle > p:nth-child(2) {
+                font-family: "Cormorant Infant", serif;
+                font-style: italic;
+                margin-top: 10px;
+            }
+
+        .circle_times_animation_1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle_times_animation_2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle_times_animation_3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle_times_animation_4 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes scaleframe {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleStain {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        .section_2 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .section_2 > canvas {
+                opacity: 0;
+                z-index: 3;
+            }
+
+            .section_2 > img {
+                opacity: 0;
+            }
+
+            .section_2 > aside {
+                opacity: 0;
+                transition: opacity 8s linear;
+            }
+
+            .section_2 > p {
+                opacity: 0;
+            }
+
+        .section_2_text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation: fadeInScale 8s ease-in-out forwards;
+            width: 190px;
+            height: 190px;
+            background: transparent;
+        }
+
+        .section_2--background_card {
+            display: block;
+            width: calc(100% - 1px);
+            height: calc(100% - 1px);
+            border-radius: 50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-2/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.4); /* Escala inicial y centrado */
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1); /* Escala final y centrado */
+            }
+        }
+
+        .scale_section_2 {
+            animation-name: scaleframe;
+            animation-duration: 7s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes scaleOuterCircle {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .section_2-outer_circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation-name: scaleOuterCircle;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -1;
+        }
+
+        @keyframes scaleInnerCircle {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .section_2-inner_circle {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)scale(0.4);
+            animation-name: scaleInnerCircle;
+            animation-duration: 2.4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section_3 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-3/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .section_3 > img {
+                opacity: 0;
+            }
+
+            .section_3 > aside {
+                opacity: 0;
+                transition: opacity 4s linear;
+            }
+
+        @keyframes fadeCanvas3 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .canvas_section_3 {
+            opacity: 1;
+            animation-name: fadeCanvas3;
+            animation-duration: 7s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            z-index: 3;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .section_3--recent_wedding {
+            position: absolute;
+            opacity: 0;
+            width: 80%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            animation-name: fadeInText;
+            animation-duration: 2.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes scaleSquares {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.4) rotateZ(-45deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+            }
+        }
+
+        @keyframes scaleSquares_rotate {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotateZ(-5deg) scale(0.4) rotateZ(-45deg); 
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotateZ(-5deg) scale(1) rotateZ(0deg);
+            }
+        }
+
+        @keyframes scaleImage {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.2) rotateZ(-30deg); 
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotateZ(0deg); 
+            }
+        }
+
+        .img_wedding {
+            position: absolute;
+            top: calc(50% + 145px - 230px);
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.2) rotateZ(-30deg);
+            width: 290px;
+            height: 290px;
+            animation-name: scaleImage;
+            animation-duration: 6s;
+            animation-timing-function: ease-in;
+            animation-fill-mode: forwards;
+            z-index: 1;
+        }
+
+        .first_square {
+            position: absolute;
+            top: calc(50% + 145px - 230px);
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4) rotateZ(-45deg);
+            animation: scaleSquares 2.5s ease-in-out forwards;
+            width: 310px;
+            height: 310px;
+            border: 3px solid;
+            border-image-source: linear-gradient(90deg,#cbac44 70%,white 76%,#cbac44 );
+            border-image-slice: 1;
+        }
+
+        .second_square {
+            position: absolute;
+            top: calc(50% + 145px - 230px);
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(-5deg) scale(0.4) rotateZ(-45deg);
+            animation: scaleSquares_rotate 3s ease-in-out forwards;
+            width: 310px;
+            height: 310px;
+            border: 3px solid;
+            border-image-source: linear-gradient(90deg,#cbac44,white 16%,#cbac44 25%);
+            border-image-slice: 1;
+        }
+
+        .section_4 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -4;
+        }
+
+            .section_4 > canvas {
+                opacity: 0;
+                z-index: 1;
+            }
+
+            .section_4 > img {
+                opacity: 0;
+            }
+
+            .section_4 > aside {
+                opacity: 0;
+                transition: opacity 4s linear;
+            }
+
+            .section_4 > p {
+                opacity: 0;
+            }
+
+        @keyframes scalePhrase {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.25;
+            }
+
+            75% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.75;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .phrase_bible {
+            width: 260px;
+            height: 260px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-4/prober.svg');
+            background-size: 120%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #fcead5;
+            z-index: -1;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation: scalePhrase 3.8s linear forwards;
+        }
+
+        .section_4-outer_circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation-name: scaleOuterCircle;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -2;
+        }
+
+        .section_4-inner_circle {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation-name: scaleInnerCircle;
+            animation-duration: 2.4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -2;
+        }
+
+        @keyframes scaleframe_section4 {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .scale_section_4 {
+            animation-name: scaleframe_section4;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes scaleframe_section8 {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(0.7);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .section_5 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_5 > canvas {
+                opacity: 1;
+                z-index: 2;
+            }
+
+            .section_5 > img {
+                opacity: 0;
+            }
+
+            .section_5 > aside {
+                opacity: 0;
+                transition: opacity 3s linear;
+            }
+
+            .section_5 > section {
+                position: absolute;
+                width: 90%;
+                height: 80%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+                outline: 2px solid #9b5a01;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+                opacity: 0;
+            }
+
+        @keyframes scaleframe_section_5 {
+            0% {
+                opacity: 0;
+                background-size: 40%;
+            }
+
+            100% {
+                opacity: 1;
+                background-size: 120%;
+            }
+        }
+
+        .section_5--container_info {
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            border: 2px solid #9b5a01;
+            animation-name: scaleframe_section_5;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-5/text_5.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 40%;
+        }
+
+        @keyframes scaleframe_section5 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .scale_section_5 {
+            animation-name: scaleframe_section5;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_6 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-6/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @keyframes scaleframe_section6 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleframe_section_6 {
+            0% {
+                opacity: 0;
+                transform: scale(0.4);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .scale_section_6 {
+            animation-name: scaleframe_section6;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .scale_section_6_img {
+            animation-name: scaleframe_section_6;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_6 > section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .section_6 > section > img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                opacity: 0;
+            }
+
+        .section_6 > canvas {
+            z-index: 2;
+        }
+
+        .section_6 > aside {
+            opacity: 0;
+            transition: opacity 3s linear;
+        }
+
+        @keyframes scaleframe_section7 {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.4);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes fadeCanvas_section7 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .section_7 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-7/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_7 > canvas {
+                z-index: 2;
+            }
+
+        .canvas_section_7 {
+            opacity: 1;
+            animation-name: fadeCanvas3;
+            animation-duration: 7s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_7 > img {
+            opacity: 0;
+        }
+
+        .section_7 > aside {
+            opacity: 0;
+            transition: opacity 8s linear;
+        }
+
+        .section_7 > section {
+            position: absolute;
+            width: 90%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            outline: 2px solid #9b5a01;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .section_7--container_info {
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            border: 2px solid #9b5a01;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 100%;
+            z-index: 2;
+        }
+
+            .section_7--container_info > img {
+                display: block;
+                width: 100%;
+                height: 95%;
+                margin-left: 10px;
+                transform: scale(0.4);
+                object-fit: contain;
+            }
+
+        .section_7 > button {
+            opacity: 0;
+        }
+
+        .section_7--button-check {
+            width: 120px;
+            height: 60px;
+            margin-inline: auto;
+            margin-top: 5%;
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px/50%;
+            border: none;
+            cursor: pointer;
+            filter: drop-shadow(6px 6px 8px #565657);
+            z-index: 2;
+            opacity: 1;
+            animation-name: fadeCanvas3;
+            animation-duration: 7s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_8 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-8/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @keyframes scalecanvas_section_8 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .section_8 > canvas {
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .section_8 > img {
+            opacity: 0;
+        }
+
+        .section_8 > aside {
+            opacity: 0;
+            transition: opacity 8s linear;
+        }
+
+        .section_8 > section {
+            position: absolute;
+            width: 80%;
+            height: 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 100%;
+            z-index: 2;
+            overflow: visible;
+            opacity: 0;
+        }
+
+            .section_8 > section > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .section_8 > section > button {
+                position: absolute;
+                width: 140px;
+                height: 80px;
+                margin-inline: auto;
+                margin-bottom: 100%;
+                top: 83%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                border-radius: 15px/50%;
+                border: none;
+                cursor: pointer;
+                filter: drop-shadow(6px 6px 8px #c1c1cd);
+            }
+
+        .scale_section_8 {
+            animation-name: scaleframe_section8;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .scale_section_8_canvas {
+            animation-name: scalecanvas_section_8;
+            animation-duration: 7.6s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_9 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @keyframes fade_section_9 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade_section_9_img {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.4);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .section_9 > canvas {
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .section_9 > img {
+            opacity: 0;
+        }
+
+        .section_9 > aside {
+            opacity: 0;
+            transition: opacity 8s linear;
+        }
+
+        .animate_section_9_canvas {
+            animation-name: fade_section_9;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_9 > section {
+            position: absolute;
+            width: 90%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            outline: 2px solid #9b5a01;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .animate_section_9 {
+            animation-name: fade_section_9;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_9--description {
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            border: 2px solid #9b5a01;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 70% 30%;
+        }
+
+            .section_9--description > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                margin-top: 60px;
+                transform: scale(0.4);
+            }
+
+            .section_9--description > div {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
+
+                .section_9--description > div > button {
+                    width: 120px;
+                    height: 60px;
+                    border-radius: 15px/50%;
+                    background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/btn_bg.svg');
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    border: none;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    filter: drop-shadow(6px 6px 8px #565657);
+                }
+
+        .section_9 > main {
+            position: absolute;
+            width: 70%;
+            height: 160px;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .section_9--btn_check {
+            width: 120px;
+            height: 60px;
+            border-radius: 15px/50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-9/btn_bg.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            filter: drop-shadow(6px 6px 8px #565657);
+            animation-name: fade_section_9;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_10 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_10 > canvas {
+                opacity: 0;
+                z-index: 2;
+            }
+
+            .section_10 > img {
+                opacity: 0;
+            }
+
+            .section_10 > aside {
+                opacity: 0;
+                transition: opacity 8s linear;
+            }
+
+            .section_10 > section {
+                position: absolute;
+                width: 80%;
+                height: 60%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 30% 50% 20%;
+                z-index: 1;
+            }
+
+        .phrase_section_10 {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/text_10.svg');
+            background-size: 120%;
+            background-repeat: no-repeat;
+            background-position: 50% 60%;
+            background-color: rgba(255, 99, 71, 0.181);
+            transform: translate(-50%, -50%) scale(0.4);
+            animation: scalePhrase 3.8s linear forwards;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+            z-index: 3;
+        }
+
+            .phrase_section_10 > button {
+                filter: drop-shadow(6px 6px 8px #565657);
+                width: 120px;
+                height: 60px;
+                border-radius: 15px/50%;
+                background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-10/btn_bg.svg');
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                border: none;
+                margin-bottom: 40px;
+                cursor: pointer;
+            }
+
+        .section_10-outer_circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation-name: scaleOuterCircle;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: 1;
+        }
+
+        .section_10-inner_circle {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)scale(0.4);
+            animation-name: scaleInnerCircle;
+            animation-duration: 2.4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: 1;
+        }
+
+        .section_11 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_11 > canvas {
+                opacity: 0;
+                z-index: 2;
+            }
+
+            .section_11 > img {
+                opacity: 0;
+            }
+
+            .section_11 > aside {
+                opacity: 0;
+                transition: opacity 8s linear;
+            }
+
+        .section_11--recent_wedding {
+            position: absolute;
+            opacity: 0;
+            width: 80%;
+            height: 80%;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation-name: fadeInText;
+            animation-duration: 2.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_11 > button {
+            opacity: 0;
+        }
+
+        .section_11--btn_check {
+            position: absolute;
+            filter: drop-shadow(6px 6px 8px #565657);
+            bottom: 5%;
+            width: 120px;
+            height: 60px;
+            border-radius: 15px/50%;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-11/btn_bg.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+            animation-name: fadeInText;
+            animation-duration: 2.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_12 {
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-12/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+
+            .section_12 > section {
+                width: 80%;
+                height: 80%;
+                outline: 2px solid #9b5a01;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+            }
+
+        .section_12_animation {
+            animation-name: fade_section_9;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_13 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-13/fondo-arriba.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_13 > canvas {
+                opacity: 0;
+            }
+
+            .section_13 > aside {
+                opacity: 0;
+                transition: opacity 8s linear;
+            }
+
+        .img_hours {
+            opacity: 0;
+        }
+
+        .section_13--animate_img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            object-fit: contain;
+            z-index: 2;
+            animation-name: fade_section_9_img;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_13--canvas_animate {
+            animation-name: fade_section_9;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .section_14 {
+            position: relative;
+            background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-14/fondo-abajo.png');
+            background-size: 200%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+            .section_14 > div {
+                z-index: 1;
+            }
+
+            .section_14 > canvas {
+                z-index: 2;
+            }
+
+            .section_14 > aside {
+                opacity: 0;
+                transition: opacity 8s linear;
+            }
+
+            .section_14 > img {
+                z-index: 1;
+                opacity: 0;
+            }
+
+        .section_14-outer_circle {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            top: calc(50% - 65px);
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.4);
+            animation-name: scaleOuterCircle;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -1;
+        }
+
+        .section_14-inner_circle {
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            top: calc(50% - 65px);
+            left: 50%;
+            transform: translate(-50%, -50%)scale(0.4);
+            animation-name: scaleInnerCircle;
+            animation-duration: 2.4s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(white,white),linear-gradient(90deg,#9b5a01, #cbac44 );
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeInImg_14 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .section_14--img_invitation {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 220px;
+            height: 90%;
+            object-fit: cover;
+            animation-name: fadeInImg_14;
+            animation-duration: 2.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .img_bg_stain_1 {
+            position: absolute;
+            top: 2%;
+            right: 5%;
+            width: 230px;
+            height: 230px;
+            opacity: 0.8;
+            animation-name: scaleStain;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .img_bg_stain_2 {
+            position: absolute;
+            bottom: 2%;
+            left: 5%;
+            width: 230px;
+            height: 230px;
+            opacity: 0.8;
+            animation-name: scaleStain;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        /* Carrusel */
+
+
+        .carousel {
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            border: 2px solid #9b5a01;
+            position: relative;
+        }
+
+            .carousel > img:nth-child(1) {
+                width: 100%;
+                position: absolute;
+                height: 80px;
+                top: 0%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+            }
+
+            .carousel > img:nth-child(2) {
+                width: 100%;
+                position: absolute;
+                height: 80px;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotateZ(180deg);
+                z-index: 2;
+            }
+
+            .carousel > ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: 200ms opacity linear;
+            transition-delay: 200ms;
+        }
+
+            .slide > img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .slide[data-active] {
+                opacity: 1;
+                z-index: 1;
+                transition-delay: 0ms;
+            }
+
+        .carousel-button {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            z-index: 2;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, .5);
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: rgb(0, 0, 0);
+        }
+
+            .carousel-button:hover,
+            .carousel-button:focus {
+                color: white;
+                background-color: rgba(0, 0, 0, .2);
+            }
+
+            .carousel-button:focus {
+                outline: 1px solid black;
+            }
+
+            .carousel-button.prev {
+                left: 1rem;
+            }
+
+            .carousel-button.next {
+                right: 1rem;
+            }
+
+        .box_flower_1 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: 10px;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .box_flower_2 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            right: 10px;
+            bottom: 0;
+            transform: rotateZ(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_1 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% + 105px);
+            top: calc(50% - 105px);
+            transform: translate(-50%, -50%) rotateZ(365deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_1_f {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% + 125px);
+            top: calc(50% - 65px - 120px);
+            transform: translate(-50%, -50%) rotateZ(5deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_2_f {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% - 125px);
+            top: calc(50% - 65px + 120px);
+            transform: translate(-50%, -50%) rotateZ(190deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_2 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% - 105px);
+            top: calc(50% + 105px);
+            transform: translate(-50%, -50%) rotateZ(185deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_square_1 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% - 90px);
+            top: calc(50% - 225px);
+            transform: translate(-50%, -50%) rotateZ(300deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .center_flower_square_2 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: calc(50% + 90px);
+            top: calc(50% + 55px);
+            transform: translate(-50%, -50%) rotateZ(120deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .bottom_flower_square_1 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            left: 60px;
+            top: calc(100% - 100px);
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            overflow: visible;
+        }
+
+        .bottom_flower_square_2 {
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            right: -50px;
+            top: calc(100% - 90px);
+            transform: translate(-50%, -50%) rotateZ(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            overflow: visible;
+        }
+
+        .top_flower_1 {
+            position: absolute;
+            width: 50%;
+            height: 15%;
+            left: 50%;
+            top: 10%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            overflow: visible;
+        }
+
+        .top_flower_2 {
+            position: absolute;
+            width: 50%;
+            height: 15%;
+            left: 50%;
+            top: 90%;
+            transform: translate(-50%, -50%) rotateZ(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            overflow: visible;
+        }
+
+        .top_flower_1 > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        .bottom_flower_square_1 > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        .bottom_flower_square_2 > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        .center_flower_1 > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        .box_flower_1 > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        @keyframes rotate_center_medium {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(75deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(85deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+        }
+
+        @keyframes rotate_center_big {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(100deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(95deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(100deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(105deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(100deg);
+            }
+        }
+
+        @keyframes rotate_center_little {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(50deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(45deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(50deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(55deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(50deg);
+            }
+        }
+
+        @keyframes rotate_center_white {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(75deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(85deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(80deg);
+            }
+        }
+
+        .container_flower_c > img:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: calc(50% + 40px);
+            left: calc(50% + 40px);
+            transform: translate(-50%, -50%) rotateZ(80deg);
+            animation: rotate_center_medium 3s infinite linear;
+        }
+
+        .container_flower_c > img:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% + 20px);
+            left: calc(50% + 20px);
+            transform: translate(-50%, -50%) rotateZ(100deg);
+            animation: rotate_center_big 3s infinite linear;
+        }
+
+        .container_flower_c > img:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 50px);
+            transform: translate(-50%, -50%) rotateZ(50deg);
+            animation: rotate_center_little 3s infinite linear;
+        }
+
+        .container_flower_c > img:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% - 25px);
+            left: calc(50% - 25px);
+            transform: translate(-50%, -50%) rotateZ(80deg);
+            animation: rotate_center_white 3s infinite linear;
+        }
+
+        .container_flower_c > img:nth-child(5) {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% - 25px);
+            left: calc(50% - 25px);
+            transform: translate(-50%, -50%) rotateZ(80deg);
+            animation: rotate_center_white 3s infinite linear;
+        }
+
+        .container_flower_c > img:last-child {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(100deg);
+        }
+
+        @keyframes rotate_big_green {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(90deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(85deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(90deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(95deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(90deg);
+            }
+        }
+
+        @keyframes rotate_big_green_2 {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(340deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(345deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(340deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(335deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(340deg);
+            }
+        }
+
+        @keyframes rotate_white_left {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(-5deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(5deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+        }
+
+        @keyframes rotate_white_rigth {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(195deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(205deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+        }
+
+        @keyframes rotate_medium_rigth {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(20deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(15deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(20deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(25deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(20deg);
+            }
+        }
+
+        @keyframes rotate_medium_left {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(150deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(145deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(150deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(155deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(150deg);
+            }
+        }
+
+        @keyframes rotate_tiny {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(250deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(245deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(250deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(255deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(250deg);
+            }
+        }
+
+        @keyframes rotate_little {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(280deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(275deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(280deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(285deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(280deg);
+            }
+        }
+
+        @keyframes rotate_red_points {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(235deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(245deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+        }
+
+        @keyframes rotate_bottom_little {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(235deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(245deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(240deg);
+            }
+        }
+
+        @keyframes rotate_bottom_little_2 {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(330deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(335deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(330deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(325deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(330deg);
+            }
+        }
+
+        @keyframes rotate_bottom_tiny {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(195deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(205deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(200deg);
+            }
+        }
+
+        @keyframes rotate_bottom_white {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(220deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateZ(215deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateZ(220deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateZ(225deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(220deg);
+            }
+        }
+
+        .container_flower_r > img:nth-child(1) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: calc(50% - 30px);
+            left: calc(50% + 65px);
+            transform: translate(-50%, -50%) rotateZ(20deg);
+            animation: rotate_medium_rigth 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(2) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: calc(50% + 70px);
+            left: calc(50% - 15px);
+            transform: translate(-50%, -50%) rotateZ(150deg);
+            animation: rotate_medium_left 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: calc(50% );
+            left: calc(50% + 65px);
+            transform: translate(-50%, -50%) rotateZ(250deg);
+            animation: rotate_tiny 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% + 20px);
+            left: calc(50% - 35px);
+            transform: translate(-50%, -50%) rotateZ(0deg);
+            animation: rotate_white_left 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(5) {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: calc(50% - 30px);
+            left: calc(50% + 30px);
+            transform: translate(-50%, -50%) rotateZ(200deg);
+            animation: rotate_white_rigth 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(6) {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: calc(50% + 40px);
+            left: calc(50% + 15px);
+            transform: translate(-50%, -50%) rotateZ(280deg);
+            animation: rotate_little 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(7) {
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            top: calc(50% + 20px);
+            left: calc(50% + 5px);
+            transform: translate(-50%, -50%) rotateZ(90deg);
+            animation: rotate_big_green 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(8) {
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            top: calc(50% - 30px);
+            left: calc(50% - 5px);
+            transform: translate(-50%, -50%) rotateZ(340deg);
+            animation: rotate_big_green_2 3s infinite linear;
+        }
+
+        .container_flower_r > img:nth-child(9) {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: calc(50% + 30px);
+            left: calc(50% + 55px);
+            transform: translate(-50%, -50%) rotateZ(240deg);
+            animation: rotate_red_points 3s infinite linear;
+        }
+
+        .container_flower_r > img:last-child {
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(170deg);
+        }
+
+        .container_flower_b > img:nth-child(1) {
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: calc(50% + 30px);
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(240deg);
+            animation: rotate_bottom_little 3s infinite linear;
+        }
+
+        .container_flower_b > img:nth-child(2) {
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: calc(50% - 10px);
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(200deg);
+            animation: rotate_bottom_tiny 3s infinite linear;
+        }
+
+        .container_flower_b > img:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_b > img:last-child {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_b_2 > img:nth-child(1) {
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: calc(50% + 30px);
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(330deg);
+            animation: rotate_bottom_little_2 3s infinite linear;
+        }
+
+        .container_flower_b_2 > img:nth-child(2) {
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: calc(50% - 10px);
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(200deg);
+            animation: rotate_bottom_tiny 3s infinite linear;
+        }
+
+        .container_flower_b_2 > img:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_b_2 > img:last-child {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_t > img:nth-child(1) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: calc(50% + 10px);
+            left: calc(50% - 50px);
+            transform: translate(-50%, -50%) rotateZ(200deg);
+            animation: rotate_bottom_tiny 3s infinite linear;
+        }
+
+        .container_flower_t > img:nth-child(2) {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: calc(50% + 10px);
+            left: calc(50% + 50px);
+            transform: translate(-50%, -50%) rotateZ(240deg);
+            animation: rotate_bottom_little 3s infinite linear;
+        }
+
+        .container_flower_t > img:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 15px);
+            transform: translate(-50%, -50%) rotateZ(240deg);
+            animation: rotate_bottom_little 3s infinite linear;
+        }
+
+        .container_flower_t > img:nth-child(4) {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: calc(50% - 15px);
+            left: calc(50% + 20px);
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_t > img:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: calc(50% - 15px);
+            left: calc(50% + 20px);
+            transform: translate(-50%, -50%) rotateZ(220deg);
+            animation: rotate_bottom_white 3s infinite linear;
+        }
+
+        .container_flower_t > img:last-child {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(60deg);
+        }
+        /*Popup modal mapa*/
+        .popup {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 200;
+            text-align: center;
+        }
+
+            .popup:before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+
+            .popup.active {
+                opacity: 1;
+                pointer-events: all;
+                backdrop-filter: blur(5px);
+            }
+
+            .popup .popup-box {
+                width: min(85%,650px);
+                height: min(60%,500px);
+                padding: 20px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                background: #f2f2f2;
+                box-shadow: 0px 0px 5px 0px #87068b;
+                border-radius: 10px;
+                display: block;
+                justify-content: space-around;
+                align-items: center;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%) scale(0.95);
+                -ms-transform: translate(-50%, -50%) scale(0.95);
+                -moz-transform: translate(-50%, -50%) scale(0.95);
+                font-family: "Cormorant Infant", serif;
+                font-weight: bold;
+                font-style: normal;
+                font-size: 20px;
+                -o-transform: translate(-50%, -50%) scale(0.95);
+            }
+
+            .popup.active .popup-box {
+                transform: translate(-50%, -50%) scale(1);
+                -webkit-transform: translate(-50%, -50%) scale(1);
+                -ms-transform: translate(-50%, -50%) scale(1);
+                -moz-transform: translate(-50%, -50%) scale(1);
+                -o-transform: translate(-50%, -50%) scale(1);
+            }
+
+            .popup .form-actions {
+                margin-left: auto;
+                margin-right: 10px;
+                width: fit-content;
+                height: fit-content;
+            }
+
+            .popup .title {
+                margin-bottom: 20px;
+                font-size: 0.7em;
+            }
+
+            .popup .text {
+                font-size: 0.7em;
+            }
+
+        .map_invitation_container {
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+
+        .button {
+            width: 25px;
+            height: 25px;
+            position: relative;
+            display: inline-block;
+            border-radius: 20px;
+            font-size: 1.125rem;
+            font-family: "Cormorant Infant", serif;
+            border-radius: 50%;
+        }
+
+            .button.big {
+                height: 50px;
+                line-height: 50px;
+                padding: 0 30px;
+                border-radius: 8px;
+            }
+
+            .button:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        .button {
+            background-color: #87068b;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+            .button.btn-icon {
+                background-size: auto 55%;
+                background-position: 12px center;
+                background-repeat: no-repeat;
+                padding-left: 42px;
+            }
+
+            .button.big.btn-icon {
+                background-position: 25px center;
+                padding-left: 65px;
+            }
+        /*Css Audio*/
+        .hidden {
+            display: none;
+        }
+
+        .audio-content {
+            position: absolute;
+            top: 18px;
+            left: 16px;
+            z-index: 2;
+            width: 74px;
+        }
+
+            .audio-content .audio-controllers {
+                border-radius: 32px;
+                padding: 4px;
+                gap: 5px;
+                border: 1px solid #ffffff;
+            }
+
+        .audio-controllers a {
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .audio-content .audio-controllers .play-pause.ic-pause-white {
+            background-size: 160%;
+        }
+
+        .audio-content .audio-controllers .play-pause.inactive {
+            background-image: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/ic_play_white.svg');
+            background-size: 100%;
+        }
+
+        .ic-play-white {
+            background-image: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/ic_play_white.svg');
+        }
+
+        .ic-pause-white {
+            background-image: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/ic_pause_white.svg');
+        }
+
+        .ic-music-white {
+            background-image: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/ic_music_white.svg');
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 30em) {
+            .audio-content {
+                position: absolute;
+                top: 10px;
+                left: 12px;
+                z-index: 2;
+                width: initial;
+            }
+
+                .audio-content .audio-controllers {
+                    border-radius: 32px;
+                    padding: 10px;
+                    gap: 10px;
+                    border: 2px solid #ffffff;
+                }
+
+                    .audio-content .audio-controllers a {
+                        width: 30px;
+                        height: 25px;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                    }
+        }
+    </style>
 </head>
 <body class="page_contianer">
     <div id="container_canvas" class="section_1">
@@ -606,10 +3247,10 @@
                         <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-12/text_12.png" alt="Nature Image #1">
                     </li>
                     <li class="slide">
-                        <img src="https://source.unsplash.com/eOpewngf68w" alt="Nature Image #2">
+                        <img src="https://www.worldofwanderlust.com/wp-content/uploads/2014/09/IMG_0159.jpg" alt="Nature Image #2">
                     </li>
                     <li class="slide">
-                        <img src="https://source.unsplash.com/ndN00KmbJ1c" alt="Nature Image #3">
+                        <img src="https://www.worldofwanderlust.com/wp-content/uploads/2014/09/IMG_0159.jpg" alt="Nature Image #3">
                     </li>
                 </ul>
             </div>
