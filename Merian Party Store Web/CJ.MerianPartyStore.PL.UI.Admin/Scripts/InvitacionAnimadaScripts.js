@@ -7,9 +7,7 @@ const deviceHeight = window.innerHeight
 canvas.width = Math.floor(containerWidth > 420 ? 420 : containerWidth);
 canvas.height = Math.floor(deviceHeight);
 
-let angleLeaveCircles = 0;
 
-let angle = 0;  // Ángulo inicial de rotación
 
 /*Seccion 2, otro canvas aparte */
 const parent_section_2_canvas = document.querySelector('.section_2');
@@ -24,7 +22,6 @@ const centerX = Math.floor(canvas_section_2.width / 2);
 const centerY = Math.floor(canvas_section_2.height / 2);
 
 
-let angleLeave = 0;
 function animate_1() {
     section_2_ctx.clearRect(0, 0, canvas_section_2.width, canvas_section_2.height);
 
@@ -74,7 +71,6 @@ function animate_1() {
     section_2_ctx.stroke();
     section_2_ctx.restore();
 
-    angleLeave += 0.1; // Incrementar el ángulo para la animación
 
     requestAnimationFrame(animate_1);
 }
@@ -193,7 +189,6 @@ function animate_section_4() {
 
 
 
-    angleLeave += 1; // Incrementar el ángulo para la  animación
 
     requestAnimationFrame(animate_section_4);
 }
@@ -232,7 +227,6 @@ const get_height_section_5 = parent_section_5_canvas.offsetHeight;
 
 canvas_section_5.width = get_width_section_5 > 420 ? 420 : get_width_section_5;
 canvas_section_5.height = deviceHeight
-let angleRotationSection5 = 5;
 
 let executeTextSection_5 = false
 window.addEventListener("scroll", function () {
@@ -315,7 +309,6 @@ function animate_section_6() {
     section_6_ctx.restore();
     //Rosa Esquina
 
-    angleLeave += 1;
 
     requestAnimationFrame(animate_section_6);
 
@@ -343,15 +336,7 @@ window.addEventListener("scroll", function () {
 });
 // Seccion 7
 const parent_section_7_canvas = document.querySelector('.section_7');
-const canvas_section_7 = document.getElementById('section_canvas_7');
-const section_7_ctx = canvas_section_7.getContext('2d');
 
-
-const get_width_section_7 = parent_section_7_canvas.offsetWidth;
-const get_height_section_7 = parent_section_7_canvas.offsetHeight;
-
-canvas_section_7.width = get_width_section_7 > 420 ? 420 : get_width_section_7;
-canvas_section_7.height = deviceHeight;
 
 let executeTextSection_7 = false
 window.addEventListener("scroll", function () {
@@ -456,7 +441,6 @@ window.addEventListener("scroll", function () {
 });
 //Seccion 9
 const parent_section_9_canvas = document.querySelector('.section_9');
-const canvas_section_9 = document.getElementById('section_canvas_9');
 
 let executeTextSection_9 = false
 const btnChecks = document.querySelectorAll('.section_9 > main > button')
@@ -554,10 +538,7 @@ function animate_section_10() {
 }
 animate_section_10()
 let executeTextSection_10 = false
-const btnAction = document.querySelector('.section_10 > main > button')
-btnAction.addEventListener('click', () => {
-    window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
-})
+
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_10_canvas.getBoundingClientRect().top + parent_section_10_canvas.offsetHeight / 2;
     const animateCanvas = this.document.querySelector('.section_10 > canvas')
@@ -580,13 +561,9 @@ window.addEventListener("scroll", function () {
 });
 //Seccion 11
 const parent_section_11_canvas = document.querySelector('.section_11');
-const canvas_section_11 = document.getElementById('section_canvas_11');
 
 let executeTextSection_11 = false
-const btnToAction = document.querySelector('.section_11 > button')
-btnToAction.addEventListener('click', () => {
-    window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
-})
+
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_11_canvas.getBoundingClientRect().top + parent_section_11_canvas.offsetHeight / 2;
     const bothSquares = this.document.querySelectorAll('.section_11 > div')
@@ -722,7 +699,7 @@ window.addEventListener("scroll", function () {
     }
 });
 
-const fechaObjetivo = new Date(2024, 5, 28);
+const fechaObjetivo = new Date(2024, 8, 28);
 
 function tiempoRestante(fechaObjetivo) {
     let fechaActual = new Date();
