@@ -65,7 +65,7 @@
 
             .section_1 > p {
                 position: absolute;
-                top: 55px;
+                top: 60px;
                 text-transform: uppercase;
                 margin-inline: auto;
                 width: 95%;
@@ -211,7 +211,9 @@
             0% {
                 opacity: 0;
             }
-
+            50% {
+                opacity: 0;
+            }
             100% {
                 opacity: 1;
             }
@@ -226,7 +228,15 @@
                 opacity: 0.8;
             }
         }
+        @keyframes scaleS_2 {
+            0% {
+                transform:scale(1.05);
+            }
 
+            100% {
+                transform: scale(1);
+            }
+        }
         .section_2 {
             position: relative;
             background: url('https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/fondo-abajo.png');
@@ -238,7 +248,9 @@
             justify-content: center;
             align-items: center;
         }
-
+        .section_resize {
+            animation: scaleS_2 4s linear forwards;
+        }
             .section_2 > canvas {
                 opacity: 0;
                 z-index: 3;
@@ -250,7 +262,7 @@
 
             .section_2 > aside {
                 opacity: 0;
-                transition: opacity 8s linear;
+                transition: opacity 2s linear;
             }
 
             .section_2 > p {
@@ -293,7 +305,7 @@
 
         .scale_section_2 {
             animation-name: scaleframe;
-            animation-duration: 7s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -376,7 +388,7 @@
 
             .section_3 > aside {
                 opacity: 0;
-                transition: opacity 4s linear;
+                transition: opacity 2s linear;
             }
 
         @keyframes fadeCanvas3 {
@@ -519,7 +531,7 @@
 
             .section_4 > aside {
                 opacity: 0;
-                transition: opacity 4s linear;
+                transition: opacity 2s linear;
             }
 
             .section_4 > p {
@@ -609,7 +621,7 @@
             }
 
             50% {
-                opacity: 1;
+                opacity: 0;
             }
 
             100% {
@@ -619,7 +631,7 @@
 
         .scale_section_4 {
             animation-name: scaleframe_section4;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -660,7 +672,7 @@
 
             .section_5 > aside {
                 opacity: 0;
-                transition: opacity 3s linear;
+                transition: opacity 2s linear;
             }
 
             .section_5 > section {
@@ -708,7 +720,9 @@
             0% {
                 opacity: 0;
             }
-
+            50%{
+                opacity:0;
+            }
             100% {
                 opacity: 1;
             }
@@ -716,7 +730,7 @@
 
         .scale_section_5 {
             animation-name: scaleframe_section5;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -733,7 +747,9 @@
             0% {
                 opacity: 0;
             }
-
+            50%{
+                opacity:0;
+            }
             100% {
                 opacity: 1;
             }
@@ -753,14 +769,14 @@
 
         .scale_section_6 {
             animation-name: scaleframe_section6;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
 
         .scale_section_6_img {
             animation-name: scaleframe_section_6;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -770,8 +786,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            width: 80%;
-            height: 80%;
+            width: 85%;
+            height: 85%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -790,7 +806,7 @@
 
         .section_6 > aside {
             opacity: 0;
-            transition: opacity 3s linear;
+            transition: opacity 2s linear;
         }
 
         @keyframes scaleframe_section7 {
@@ -841,7 +857,7 @@
 
         .section_7 > aside {
             opacity: 0;
-            transition: opacity 8s linear;
+            transition: opacity 2s linear;
         }
 
         .section_7 > section {
@@ -915,7 +931,9 @@
             0% {
                 opacity: 0;
             }
-
+            50%{
+                opacity:0;
+            }
             100% {
                 opacity: 1;
             }
@@ -932,7 +950,7 @@
 
         .section_8 > aside {
             opacity: 0;
-            transition: opacity 8s linear;
+            transition: opacity 2s linear;
         }
 
         .section_8 > section {
@@ -974,14 +992,14 @@
 
         .scale_section_8 {
             animation-name: scaleframe_section8;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
 
         .scale_section_8_canvas {
             animation-name: scalecanvas_section_8;
-            animation-duration: 7.6s;
+            animation-duration: 3s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -998,7 +1016,9 @@
             0% {
                 opacity: 0;
             }
-
+            50%{
+                opacity:0.5;
+            }
             100% {
                 opacity: 1;
             }
@@ -1027,12 +1047,12 @@
 
         .section_9 > aside {
             opacity: 0;
-            transition: opacity 8s linear;
+            transition: opacity 2s linear;
         }
 
         .animate_section_9_canvas {
             animation-name: fade_section_9;
-            animation-duration: 2s;
+            animation-duration: 3.5s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -1148,7 +1168,7 @@
 
             .section_10 > aside {
                 opacity: 0;
-                transition: opacity 8s linear;
+                transition: opacity 2s linear;
             }
 
             .section_10 > section {
@@ -1256,7 +1276,7 @@
 
             .section_11 > aside {
                 opacity: 0;
-                transition: opacity 8s linear;
+                transition: opacity 2s linear;
             }
 
         .section_11--recent_wedding {
@@ -1342,7 +1362,7 @@
 
             .section_13 > aside {
                 opacity: 0;
-                transition: opacity 8s linear;
+                transition: opacity 2s linear;
             }
 
         .img_hours {
@@ -1389,7 +1409,7 @@
 
             .section_14 > aside {
                 opacity: 0;
-                transition: opacity 8s linear;
+                transition: opacity 2s linear;
             }
 
             .section_14 > img {
@@ -1442,7 +1462,12 @@
             0% {
                 opacity: 0;
             }
-
+            50%{
+                opacity:0.3;
+            }
+            75%{
+                opacity:0.6;
+            }
             100% {
                 opacity: 1;
             }
@@ -1457,7 +1482,7 @@
             height: 90%;
             object-fit: cover;
             animation-name: fadeInImg_14;
-            animation-duration: 2.5s;
+            animation-duration: 3.5s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
         }
@@ -2587,7 +2612,7 @@
 
         .audio-content {
             position: absolute;
-            top: 18px;
+            top: 10px;
             left: 16px;
             z-index: 2;
             width: 74px;
@@ -2662,7 +2687,7 @@
     </style>
 </head>
 <body class="page_contianer">
-    <div id="container_canvas" class="section_1">
+    <div  class="section_1">
         <div class="audio-content">
             <div class="audio-controllers flex-center" style="background-color: #87068b">
                 <a id="audioIcon" class="ic-play-white play-pause inactive" onclick="turnOffAudio();"></a>

@@ -1,13 +1,8 @@
-﻿const parentTagSection_1 = document.querySelector('.section_1')
+﻿
+const parentTagSection_1 = document.querySelector('.section_1')
 const canvas = document.getElementById('logoCanvas');
 const ctx = canvas.getContext('2d');
-
-const containerWidth = document.getElementById('container_canvas').clientWidth;
 const deviceHeight = window.innerHeight
-canvas.width = Math.floor(containerWidth > 420 ? 420 : containerWidth);
-canvas.height = Math.floor(deviceHeight);
-
-
 
 /*Seccion 2, otro canvas aparte */
 const parent_section_2_canvas = document.querySelector('.section_2');
@@ -93,6 +88,7 @@ window.addEventListener("scroll", function () {
         allImageAnimateFlower[1].style.opacity = '1';
         allImageAnimateFlower[2].style.opacity = '1';
         allImageAnimateFlower[3].style.opacity = '1';
+        parent_section_2_canvas.classList.add('section_resize')
         executeTextSection_2 = true
     }
 });
@@ -212,6 +208,7 @@ window.addEventListener("scroll", function () {
         animateImagesFlower[1].style.opacity = '1';
         animateImagesFlower[2].style.opacity = '1';
         animateImagesFlower[3].style.opacity = '1';
+        parent_section_4_canvas.classList.add('section_resize')
         executeTextSection_4 = true
     }
 });
@@ -242,6 +239,7 @@ window.addEventListener("scroll", function () {
         canvasVisibility.classList.add('canvas_section_3')
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
+        parent_section_5_canvas.classList.add('section_resize')
         executeTextSection_5 = true
     }
 });
@@ -331,6 +329,7 @@ window.addEventListener("scroll", function () {
         imageInvitationAnimate.classList.add('scale_section_6_img')
         imageAnimateFlower[0].style.opacity = '1';
         imageAnimateFlower[1].style.opacity = '1';
+        parent_section_6_canvas.classList.add('section_resize')
         executeTextSection_6 = true
     }
 });
@@ -356,6 +355,7 @@ window.addEventListener("scroll", function () {
         imageInvitation.classList.add('scale_section_6_img')
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
+        parent_section_7_canvas.classList.add('section_resize')
         executeTextSection_7 = true
     }
 });
@@ -436,6 +436,7 @@ window.addEventListener("scroll", function () {
         animateImages[1].classList.add('img_bg_stain_2')
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
+        parent_section_8_canvas.classList.add('section_resize')
         executeTextSection_8 = true
     }
 });
@@ -467,6 +468,7 @@ window.addEventListener("scroll", function () {
         centerImage.classList.add('scale_section_6_img')
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
+        parent_section_9_canvas.classList.add('section_resize')
         executeTextSection_9 = true
     }
 });
@@ -556,6 +558,7 @@ window.addEventListener("scroll", function () {
         btnAction.classList.add('phrase_section_10--btn_check')
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
+        parent_section_10_canvas.classList.add('section_resize')
         executeTextSection_10 = true
     }
 });
@@ -583,6 +586,7 @@ window.addEventListener("scroll", function () {
         animateImagesFlower[1].style.opacity = '1'
         animateImagesFlower[2].style.opacity = '1'
         animateImagesFlower[3].style.opacity = '1'
+        parent_section_11_canvas.classList.add('section_resize')
         executeTextSection_11 = true
     }
 });
@@ -673,6 +677,7 @@ window.addEventListener("scroll", function () {
         animateCanvas.classList.add('section_13--canvas_animate')
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
+        parent_section_13_canvas.classList.add('section_resize')
         executeTextSection_13 = true
     }
 });
@@ -695,6 +700,7 @@ window.addEventListener("scroll", function () {
         animateImagesFlower[1].style.opacity = '1'
         animateImagesFlower[2].style.opacity = '1'
         animateImagesFlower[3].style.opacity = '1'
+        parent_section_14_canvas.classList.add('section_resize')
         executeTextSection_14 = true
     }
 });
@@ -765,4 +771,5 @@ buttons.forEach(button => {
         delete activeSlide.dataset.active
     })
 })
+
 
