@@ -1226,7 +1226,7 @@
             background-size: 120%;
             background-repeat: no-repeat;
             background-position: 50% 60%;
-            background-color: rgba(255, 99, 71, 0.181);
+            background-color: rgba(255, 99, 71, 0.1);
             transform: translate(-50%, -50%) scale(0.4);
             animation: scalePhrase 3.8s linear forwards;
             display: flex;
@@ -1649,7 +1649,7 @@
         .lines_top_1 {
             position: absolute;
             width: 120%;
-            height: 3px;
+            height: 2px;
             transform: rotateZ(18deg);
             z-index: 3;
             top: 80px;
@@ -1661,7 +1661,7 @@
         .lines_top_2 {
             position: absolute;
             width: 120%;
-            height: 3px;
+            height: 2px;
             transform: rotateZ(-10deg);
             z-index: 3;
             top: 80px;
@@ -1673,7 +1673,7 @@
         .lines_top_3 {
             position: absolute;
             width: 120%;
-            height: 3px;
+            height: 2px;
             transform: rotateZ(-13deg);
             z-index: 3;
             bottom: 80px;
@@ -1685,7 +1685,7 @@
         .lines_top_4 {
             position: absolute;
             width: 120%;
-            height: 3px;
+            height: 2px;
             transform: rotateZ(18deg);
             z-index: 3;
             bottom: 80px;
@@ -2902,8 +2902,8 @@
     </div>
     <div>
         <div class="section_2">
-            <hr  />
-            <hr  />
+            <hr />
+            <hr />
             <hr />
             <hr />
             <aside class="box_flower_1">
@@ -3015,7 +3015,7 @@
     </div>
     <div>
         <div class="section_4">
-            <hr  />
+            <hr />
             <hr />
             <hr />
             <hr />
@@ -3277,7 +3277,7 @@
     <div>
         <div class="section_10">
             <hr />
-            <hr  />
+            <hr />
             <hr />
             <hr />
             <aside class="box_flower_1">
@@ -3335,7 +3335,7 @@
                 <span class="section_2--background_card"></span>
             </div>
             <main>
-                <button></button>
+                <button onclick="popUpInformacion.show();"></button>
             </main>
             <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/bg_stain.svg" alt="mancha">
             <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/bg_stain.svg" alt="mancha">
@@ -3386,7 +3386,7 @@
             <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/table.svg" alt="regalo">
             <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/bg_stain.svg" alt="mancha">
             <img src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Slice-1/bg_stain.svg" alt="mancha">
-            <button></button>
+            <button onclick="popUpInformacion_2.show();"></button>
         </div>
 
     </div>
@@ -3529,9 +3529,34 @@
             </div>
         </div>
     </section>
+    <section id="popUpInformacion" class="popup">
+        <div class="popup-box">
+            <div class="form-actions">
+                <a class="button btn-small text-color-white background-color01 " onclick="popUpInformacion.hide();">X</a>
+            </div>
+            <p style="padding-bottom: 10px;">Como llegar al evento</p>
+            <div class="map_invitation_container">
+                <iframe src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf" width="400" height="300" style="border:0;width:100%;height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    <section id="popUpInformacion_2" class="popup">
+        <div class="popup-box">
+            <div class="form-actions">
+                <a class="button btn-small text-color-white background-color01 " onclick="popUpInformacion_2.hide();">X</a>
+            </div>
+            <p style="padding-bottom: 10px;">Como llegar al evento</p>
+            <div class="map_invitation_container">
+                <iframe src="https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf" width="400" height="300" style="border:0;width:100%;height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
     <script defer>
         const popUpBodaReligiosa = new Popup('popUpBodaReligiosa');
         const popUpBodaCivil = new Popup('popUpBodaCivil')
+        const popUpInformacion = new Popup('popUpInformacion')
+        const popUpInformacion_2 = new Popup('popUpInformacion_2')
+
         //VOLUMEN DEL AUDIO
         document.getElementById("audioInvitacion").volume = 0.2;
 
@@ -3549,14 +3574,8 @@
 
             }
         }
-        const btnAction = document.querySelector('.section_10 > main > button')
-        btnAction.addEventListener('click', () => {
-            window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
-        })
-        const btnToAction = document.querySelector('.section_11 > button')
-        btnToAction.addEventListener('click', () => {
-            window.open('https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf', '_blank')
-        })
+
+        
     </script>
 </body>
 </html>

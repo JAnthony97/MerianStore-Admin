@@ -242,6 +242,7 @@ window.addEventListener("scroll", function () {
     const linesAnimate = this.document.querySelectorAll('.section_10 hr')
     const bothCircles = this.document.querySelectorAll('.section_10 > div')
     const textAnimate = this.document.querySelector('.section_10 > main')
+    const btnAction = this.document.querySelector('.section_10 > main > button')
     const animateImagesFlower = this.document.querySelectorAll('.section_10 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_10) {
         animateImages[0].classList.add('img_bg_stain_1')
@@ -270,6 +271,7 @@ window.addEventListener("scroll", function () {
     const bothSquares = this.document.querySelectorAll('.section_11 > div')
     const animateImages = this.document.querySelectorAll('.section_11 > img')
     const animateImagesFlower = this.document.querySelectorAll('.section_11 > aside')
+    const btnToAction = this.document.querySelector('.section_11 > button')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_11) {
         bothSquares[0].classList.add('first_square')
         bothSquares[1].classList.add('second_square')
