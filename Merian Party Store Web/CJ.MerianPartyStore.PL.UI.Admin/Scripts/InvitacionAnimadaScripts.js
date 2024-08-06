@@ -6,84 +6,24 @@ const deviceHeight = window.innerHeight
 
 /*Seccion 2, otro canvas aparte */
 const parent_section_2_canvas = document.querySelector('.section_2');
-const canvas_section_2 = document.getElementById('section_canvas_2');
-const section_2_ctx = canvas_section_2.getContext("2d");
-
-const get_width_section_2 = parent_section_2_canvas.clientWidth;
-canvas_section_2.width = Math.floor(get_width_section_2 > 420 ? 420 : get_width_section_2);
-canvas_section_2.height = Math.floor(deviceHeight);
-
-const centerX = Math.floor(canvas_section_2.width / 2);
-const centerY = Math.floor(canvas_section_2.height / 2);
-
-
-function animate_1() {
-    section_2_ctx.clearRect(0, 0, canvas_section_2.width, canvas_section_2.height);
-
-    // Primera Linea
-    section_2_ctx.strokeStyle = '#9b5a01';
-    section_2_ctx.lineWidth = 2;
-    section_2_ctx.save();
-    section_2_ctx.translate(0, 80);
-    section_2_ctx.rotate(-10 * Math.PI / 180);
-    section_2_ctx.beginPath();
-    section_2_ctx.moveTo(0, 0);
-    section_2_ctx.lineTo(650, 0);
-    section_2_ctx.stroke();
-    section_2_ctx.restore();
-
-    // Segunda línea
-    section_2_ctx.strokeStyle = '#9b5a01';
-    section_2_ctx.lineWidth = 2;
-    section_2_ctx.save();
-    section_2_ctx.translate(0, 0);
-    section_2_ctx.rotate(18 * Math.PI / 180);
-    section_2_ctx.beginPath();
-    section_2_ctx.moveTo(0, 0);
-    section_2_ctx.lineTo(650, 0);
-    section_2_ctx.stroke();
-    section_2_ctx.restore();
-    // Tercera linea
-    section_2_ctx.strokeStyle = '#9b5a01';
-    section_2_ctx.lineWidth = 2;
-    section_2_ctx.save();
-    section_2_ctx.translate(0, centerY * 2);
-    section_2_ctx.rotate(-13 * Math.PI / 180);
-    section_2_ctx.beginPath();
-    section_2_ctx.moveTo(0, 0);
-    section_2_ctx.lineTo(650, 0);
-    section_2_ctx.stroke();
-    section_2_ctx.restore();
-    //Cuarta Linea
-    section_2_ctx.strokeStyle = '#9b5a01';
-    section_2_ctx.lineWidth = 2;
-    section_2_ctx.save();
-    section_2_ctx.translate(0, centerY * 2 - 140);
-    section_2_ctx.rotate(18 * Math.PI / 180);
-    section_2_ctx.beginPath();
-    section_2_ctx.moveTo(0, 0);
-    section_2_ctx.lineTo(650, 0);
-    section_2_ctx.stroke();
-    section_2_ctx.restore();
-
-
-    requestAnimationFrame(animate_1);
-}
-animate_1()
 
 let executeTextSection_2 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_2_canvas.getBoundingClientRect().top + parent_section_2_canvas.offsetHeight / 2;
     const bothCircles = this.document.querySelectorAll('.section_2 > div')
+    const linesAnimate = this.document.querySelectorAll('.section_2 hr')
     const allImageAnimate = this.document.querySelectorAll('.section_2 > img')
     const allImageAnimateFlower = this.document.querySelectorAll('.section_2 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_2) {
-        canvas_section_2.classList.add('scale_section_2');
         allImageAnimate[0].classList.add('section_2_text')
         bothCircles[0].classList.add('section_2-outer_circle')
         bothCircles[1].classList.add('section_2-inner_circle')
         allImageAnimate[1].classList.add('img_bg_stain_1')
         allImageAnimate[2].classList.add('img_bg_stain_2')
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         allImageAnimateFlower[0].style.opacity = '1';
         allImageAnimateFlower[1].style.opacity = '1';
         allImageAnimateFlower[2].style.opacity = '1';
@@ -123,87 +63,28 @@ window.addEventListener("scroll", function () {
 });
 // Seccion 4 
 const parent_section_4_canvas = document.querySelector('.section_4');
-const canvas_section_4 = document.getElementById('section_canvas_4');
-const section_4_ctx = canvas_section_4.getContext('2d');
-
-
-const get_width_section_4 = parent_section_4_canvas.offsetWidth;
-const get_height_section_4 = parent_section_4_canvas.offsetHeight;
-
-canvas_section_4.width = get_width_section_4 > 420 ? 420 : get_width_section_4;
-canvas_section_4.height = deviceHeight
-
-
-function animate_section_4() {
-    section_4_ctx.clearRect(0, 0, canvas_section_4.width, canvas_section_4.height);
-
-    section_4_ctx.strokeStyle = '#9b5a01';
-    section_4_ctx.lineWidth = 2;
-    section_4_ctx.save();
-    section_4_ctx.translate(0, 80);
-    section_4_ctx.rotate(-10 * Math.PI / 180);
-    section_4_ctx.beginPath();
-    section_4_ctx.moveTo(0, 0);
-    section_4_ctx.lineTo(650, 0);
-    section_4_ctx.stroke();
-    section_4_ctx.restore();
-
-    // Segunda línea
-    section_4_ctx.strokeStyle = '#9b5a01';
-    section_4_ctx.lineWidth = 2;
-    section_4_ctx.save();
-    section_4_ctx.translate(0, 0);
-    section_4_ctx.rotate(18 * Math.PI / 180);
-    section_4_ctx.beginPath();
-    section_4_ctx.moveTo(0, 0);
-    section_4_ctx.lineTo(650, 0);
-    section_4_ctx.stroke();
-    section_4_ctx.restore();
-    // Tercera linea
-    section_4_ctx.strokeStyle = '#9b5a01';
-    section_4_ctx.lineWidth = 2;
-    section_4_ctx.save();
-    section_4_ctx.translate(0, centerY * 2);
-    section_4_ctx.rotate(-13 * Math.PI / 180);
-    section_4_ctx.beginPath();
-    section_4_ctx.moveTo(0, 0);
-    section_4_ctx.lineTo(650, 0);
-    section_4_ctx.stroke();
-    section_4_ctx.restore();
-    //Cuarta Linea
-    section_4_ctx.strokeStyle = '#9b5a01';
-    section_4_ctx.lineWidth = 2;
-    section_4_ctx.save();
-    section_4_ctx.translate(0, centerY * 2 - 140);
-    section_4_ctx.rotate(18 * Math.PI / 180);
-    section_4_ctx.beginPath();
-    section_4_ctx.moveTo(0, 0);
-    section_4_ctx.lineTo(650, 0);
-    section_4_ctx.stroke();
-    section_4_ctx.restore();
 
 
 
 
-
-    requestAnimationFrame(animate_section_4);
-}
-animate_section_4();
 let executeTextSection_4 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_4_canvas.getBoundingClientRect().top + parent_section_4_canvas.offsetHeight / 2;
     const textAnimate = document.querySelector('.section_4 > p')
+    const linesAnimate = this.document.querySelectorAll('.section_4 hr')
     const bothCircles = this.document.querySelectorAll('.section_4 > span')
-    const canvasVisibility = this.document.querySelector('.section_4 > canvas')
     const animateImages = this.document.querySelectorAll('.section_4 > img')
     const animateImagesFlower = this.document.querySelectorAll('.section_4 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_4) {
         bothCircles[0].classList.add('section_4-outer_circle')
         bothCircles[1].classList.add('section_4-inner_circle')
         textAnimate.classList.add('phrase_bible')
-        canvasVisibility.classList.add('scale_section_4')
         animateImages[0].classList.add('img_bg_stain_1')
         animateImages[1].classList.add('img_bg_stain_2')
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
         animateImagesFlower[2].style.opacity = '1';
@@ -246,89 +127,24 @@ window.addEventListener("scroll", function () {
 
 // Seccion 6
 const parent_section_6_canvas = document.querySelector('.section_6');
-const canvas_section_6 = document.getElementById('section_canvas_6');
-const section_6_ctx = canvas_section_6.getContext('2d');
-
-
-const get_width_section_6 = parent_section_6_canvas.offsetWidth;
-
-
-canvas_section_6.width = get_width_section_6 > 420 ? 420 : get_width_section_6;
-canvas_section_6.height = deviceHeight;
-
-
-function animate_section_6() {
-    section_6_ctx.clearRect(0, 0, canvas_section_6.width, canvas_section_6.height);
-
-    // Primera Linea
-    section_6_ctx.strokeStyle = '#9b5a01';
-    section_6_ctx.lineWidth = 2;
-    section_6_ctx.save();
-    section_6_ctx.translate(0, 80);
-    section_6_ctx.rotate(-10 * Math.PI / 180);
-    section_6_ctx.beginPath();
-    section_6_ctx.moveTo(0, 0);
-    section_6_ctx.lineTo(650, 0);
-    section_6_ctx.stroke();
-    section_6_ctx.restore();
-
-    // Segunda línea
-    section_6_ctx.strokeStyle = '#9b5a01';
-    section_6_ctx.lineWidth = 2;
-    section_6_ctx.save();
-    section_6_ctx.translate(0, 0);
-    section_6_ctx.rotate(18 * Math.PI / 180);
-    section_6_ctx.beginPath();
-    section_6_ctx.moveTo(0, 0);
-    section_6_ctx.lineTo(650, 0);
-    section_6_ctx.stroke();
-    section_6_ctx.restore();
-    // Tercera linea
-    section_6_ctx.strokeStyle = '#9b5a01';
-    section_6_ctx.lineWidth = 2;
-    section_6_ctx.save();
-    section_6_ctx.translate(0, centerY * 2);
-    section_6_ctx.rotate(-13 * Math.PI / 180);
-    section_6_ctx.beginPath();
-    section_6_ctx.moveTo(0, 0);
-    section_6_ctx.lineTo(650, 0);
-    section_6_ctx.stroke();
-    section_6_ctx.restore();
-    //Cuarta Linea
-    section_6_ctx.strokeStyle = '#9b5a01';
-    section_6_ctx.lineWidth = 2;
-    section_6_ctx.save();
-    section_6_ctx.translate(0, centerY * 2 - 140);
-    section_6_ctx.rotate(18 * Math.PI / 180);
-    section_6_ctx.beginPath();
-    section_6_ctx.moveTo(0, 0);
-    section_6_ctx.lineTo(650, 0);
-    section_6_ctx.stroke();
-    section_6_ctx.restore();
-    //Rosa Esquina
-
-
-    requestAnimationFrame(animate_section_6);
-
-
-}
-animate_section_6()
-
 
 let executeTextSection_6 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_6_canvas.getBoundingClientRect().top + parent_section_6_canvas.offsetHeight / 2;
-    const animateCanvas = this.document.querySelector('.section_6 > canvas')
     const imageAnimate = this.document.querySelectorAll('.section_6 > img')
+    const linesAnimate = this.document.querySelectorAll('.section_6 hr')
     const imageAnimateFlower = this.document.querySelectorAll('.section_6 > aside')
     const imageInvitationAnimate = this.document.querySelector('.section_6 > section > img')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_6) {
         imageAnimate[0].classList.add('img_bg_stain_1')
         imageAnimate[1].classList.add('img_bg_stain_2')
-        animateCanvas.classList.add('scale_section_6')
         imageInvitationAnimate.classList.add('scale_section_6_img')
         imageAnimateFlower[0].style.opacity = '1';
         imageAnimateFlower[1].style.opacity = '1';
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         parent_section_6_canvas.classList.add('section_resize')
         executeTextSection_6 = true
     }
@@ -362,78 +178,23 @@ window.addEventListener("scroll", function () {
 
 //Seccion 8
 const parent_section_8_canvas = document.querySelector('.section_8');
-const canvas_section_8 = document.getElementById('section_canvas_8');
-const section_8_ctx = canvas_section_8.getContext('2d');
 
 
-const get_width_section_8 = parent_section_8_canvas.offsetWidth;
-
-
-canvas_section_8.width = get_width_section_8 > 420 ? 420 : get_width_section_8;
-canvas_section_8.height = deviceHeight;
-
-function animate_section_8() {
-    section_8_ctx.clearRect(0, 0, canvas_section_8.width, canvas_section_8.height);
-    section_8_ctx.strokeStyle = '#9b5a01';
-    section_8_ctx.lineWidth = 2;
-    section_8_ctx.save();
-    section_8_ctx.translate(0, 80);
-    section_8_ctx.rotate(-10 * Math.PI / 180);
-    section_8_ctx.beginPath();
-    section_8_ctx.moveTo(0, 0);
-    section_8_ctx.lineTo(650, 0);
-    section_8_ctx.stroke();
-    section_8_ctx.restore();
-
-    // Segunda línea
-    section_8_ctx.strokeStyle = '#9b5a01';
-    section_8_ctx.lineWidth = 2;
-    section_8_ctx.save();
-    section_8_ctx.translate(0, 0);
-    section_8_ctx.rotate(18 * Math.PI / 180);
-    section_8_ctx.beginPath();
-    section_8_ctx.moveTo(0, 0);
-    section_8_ctx.lineTo(650, 0);
-    section_8_ctx.stroke();
-    section_8_ctx.restore();
-    // Tercera linea
-    section_8_ctx.strokeStyle = '#9b5a01';
-    section_8_ctx.lineWidth = 2;
-    section_8_ctx.save();
-    section_8_ctx.translate(0, centerY * 2);
-    section_8_ctx.rotate(-13 * Math.PI / 180);
-    section_8_ctx.beginPath();
-    section_8_ctx.moveTo(0, 0);
-    section_8_ctx.lineTo(650, 0);
-    section_8_ctx.stroke();
-    section_8_ctx.restore();
-    //Cuarta Linea
-    section_8_ctx.strokeStyle = '#9b5a01';
-    section_8_ctx.lineWidth = 2;
-    section_8_ctx.save();
-    section_8_ctx.translate(0, centerY * 2 - 140);
-    section_8_ctx.rotate(18 * Math.PI / 180);
-    section_8_ctx.beginPath();
-    section_8_ctx.moveTo(0, 0);
-    section_8_ctx.lineTo(650, 0);
-    section_8_ctx.stroke();
-    section_8_ctx.restore();
-
-    requestAnimationFrame(animate_section_8)
-}
-animate_section_8()
 let executeTextSection_8 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_8_canvas.getBoundingClientRect().top + parent_section_8_canvas.offsetHeight / 2;
     const animateSection = this.document.querySelector('.section_8 > section')
-    const animateCanvas = this.document.querySelector('.section_8 > canvas')
     const animateImages = this.document.querySelectorAll('.section_8 > img')
+    const linesAnimate = this.document.querySelectorAll('.section_8 hr')
     const animateImagesFlower = this.document.querySelectorAll('.section_8 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0) {
         animateSection.classList.add('scale_section_8')
-        animateCanvas.classList.add('scale_section_8_canvas')
         animateImages[0].classList.add('img_bg_stain_1')
         animateImages[1].classList.add('img_bg_stain_2')
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
         parent_section_8_canvas.classList.add('section_resize')
@@ -454,12 +215,10 @@ btnChecks[1].addEventListener('click', () => {
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_9_canvas.getBoundingClientRect().top + parent_section_9_canvas.offsetHeight / 2;
     const animateSection = this.document.querySelector('.section_9 > section')
-    const animateCanvas = this.document.querySelector('.section_9 > canvas')
     const animateImages = this.document.querySelectorAll('.section_9 > img')
     const animateImagesFlower = this.document.querySelectorAll('.section_9 > aside')
     const centerImage = this.document.querySelector('.section_9--description > img')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_9) {
-        animateCanvas.classList.add('animate_section_9_canvas')
         animateSection.classList.add('animate_section_9')
         animateImages[0].classList.add('img_bg_stain_1')
         animateImages[1].classList.add('img_bg_stain_2')
@@ -474,82 +233,17 @@ window.addEventListener("scroll", function () {
 });
 //Seccion 10
 const parent_section_10_canvas = document.querySelector('.section_10');
-const canvas_section_10 = document.getElementById('section_canvas_10');
-const section_10_ctx = canvas_section_10.getContext('2d');
 
-
-const get_width_section_10 = parent_section_10_canvas.offsetWidth;
-const get_height_section_10 = parent_section_10_canvas.offsetHeight;
-
-canvas_section_10.width = get_width_section_10 > 420 ? 420 : get_width_section_10;
-canvas_section_10.height = deviceHeight;
-function animate_section_10() {
-    section_10_ctx.clearRect(0, 0, canvas_section_10.width, canvas_section_10.height);
-    // Primera Linea
-    section_10_ctx.strokeStyle = '#9b5a01';
-    section_10_ctx.lineWidth = 2;
-    section_10_ctx.save();
-    section_10_ctx.translate(0, 80);
-    section_10_ctx.rotate(-10 * Math.PI / 180);
-    section_10_ctx.beginPath();
-    section_10_ctx.moveTo(0, 0);
-    section_10_ctx.lineTo(650, 0);
-    section_10_ctx.stroke();
-    section_10_ctx.restore();
-
-    // Segunda línea
-    section_10_ctx.strokeStyle = '#9b5a01';
-    section_10_ctx.lineWidth = 2;
-    section_10_ctx.save();
-    section_10_ctx.translate(0, 0);
-    section_10_ctx.rotate(18 * Math.PI / 180);
-    section_10_ctx.beginPath();
-    section_10_ctx.moveTo(0, 0);
-    section_10_ctx.lineTo(650, 0);
-    section_10_ctx.stroke();
-    section_10_ctx.restore();
-    // Tercera linea
-    section_10_ctx.strokeStyle = '#9b5a01';
-    section_10_ctx.lineWidth = 2;
-    section_10_ctx.save();
-    section_10_ctx.translate(0, centerY * 2);
-    section_10_ctx.rotate(-13 * Math.PI / 180);
-    section_10_ctx.beginPath();
-    section_10_ctx.moveTo(0, 0);
-    section_10_ctx.lineTo(650, 0);
-    section_10_ctx.stroke();
-    section_10_ctx.restore();
-    //Cuarta Linea
-    section_10_ctx.strokeStyle = '#9b5a01';
-    section_10_ctx.lineWidth = 2;
-    section_10_ctx.save();
-    section_10_ctx.translate(0, centerY * 2 - 140);
-    section_10_ctx.rotate(18 * Math.PI / 180);
-    section_10_ctx.beginPath();
-    section_10_ctx.moveTo(0, 0);
-    section_10_ctx.lineTo(650, 0);
-    section_10_ctx.stroke();
-    section_10_ctx.restore();
-
-
-
-
-
-
-    requestAnimationFrame(animate_section_10)
-}
-animate_section_10()
 let executeTextSection_10 = false
 
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_10_canvas.getBoundingClientRect().top + parent_section_10_canvas.offsetHeight / 2;
-    const animateCanvas = this.document.querySelector('.section_10 > canvas')
     const animateImages = this.document.querySelectorAll('.section_10 > img')
+    const linesAnimate = this.document.querySelectorAll('.section_10 hr')
     const bothCircles = this.document.querySelectorAll('.section_10 > div')
     const textAnimate = this.document.querySelector('.section_10 > main')
     const animateImagesFlower = this.document.querySelectorAll('.section_10 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_10) {
-        animateCanvas.classList.add('animate_section_9_canvas')
         animateImages[0].classList.add('img_bg_stain_1')
         animateImages[1].classList.add('img_bg_stain_2')
         bothCircles[0].classList.add('section_10-outer_circle')
@@ -558,6 +252,10 @@ window.addEventListener("scroll", function () {
         btnAction.classList.add('phrase_section_10--btn_check')
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         parent_section_10_canvas.classList.add('section_resize')
         executeTextSection_10 = true
     }
@@ -570,11 +268,9 @@ let executeTextSection_11 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_11_canvas.getBoundingClientRect().top + parent_section_11_canvas.offsetHeight / 2;
     const bothSquares = this.document.querySelectorAll('.section_11 > div')
-    const animateCanvas = this.document.querySelector('.section_11 > canvas')
     const animateImages = this.document.querySelectorAll('.section_11 > img')
     const animateImagesFlower = this.document.querySelectorAll('.section_11 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0 && !executeTextSection_11) {
-        animateCanvas.classList.add('scale_section_2');
         bothSquares[0].classList.add('first_square')
         bothSquares[1].classList.add('second_square')
         animateImages[0].classList.add('img_wedding')
@@ -603,78 +299,21 @@ window.addEventListener("scroll", function () {
     }
 });
 const parent_section_13_canvas = document.querySelector('.section_13');
-const canvas_section_13 = document.getElementById('section_canvas_13');
-const section_13_ctx = canvas_section_13.getContext('2d');
 
-
-const get_width_section_13 = parent_section_13_canvas.offsetWidth;
-
-
-canvas_section_13.width = get_width_section_13 > 420 ? 420 : get_width_section_13;
-canvas_section_13.height = deviceHeight;
-
-function animate_section_13() {
-    section_13_ctx.clearRect(0, 0, canvas_section_13.width, canvas_section_13.height);
-    // Primera Linea
-    section_13_ctx.strokeStyle = '#9b5a01';
-    section_13_ctx.lineWidth = 2;
-    section_13_ctx.save();
-    section_13_ctx.translate(0, 80);
-    section_13_ctx.rotate(-10 * Math.PI / 180);
-    section_13_ctx.beginPath();
-    section_13_ctx.moveTo(0, 0);
-    section_13_ctx.lineTo(650, 0);
-    section_13_ctx.stroke();
-    section_13_ctx.restore();
-
-    // Segunda línea
-    section_13_ctx.strokeStyle = '#9b5a01';
-    section_13_ctx.lineWidth = 2;
-    section_13_ctx.save();
-    section_13_ctx.translate(0, 0);
-    section_13_ctx.rotate(18 * Math.PI / 180);
-    section_13_ctx.beginPath();
-    section_13_ctx.moveTo(0, 0);
-    section_13_ctx.lineTo(650, 0);
-    section_13_ctx.stroke();
-    section_13_ctx.restore();
-    // Tercera linea
-    section_13_ctx.strokeStyle = '#9b5a01';
-    section_13_ctx.lineWidth = 2;
-    section_13_ctx.save();
-    section_13_ctx.translate(0, centerY * 2);
-    section_13_ctx.rotate(-13 * Math.PI / 180);
-    section_13_ctx.beginPath();
-    section_13_ctx.moveTo(0, 0);
-    section_13_ctx.lineTo(650, 0);
-    section_13_ctx.stroke();
-    section_13_ctx.restore();
-    //Cuarta Linea
-    section_13_ctx.strokeStyle = '#9b5a01';
-    section_13_ctx.lineWidth = 2;
-    section_13_ctx.save();
-    section_13_ctx.translate(0, centerY * 2 - 140);
-    section_13_ctx.rotate(18 * Math.PI / 180);
-    section_13_ctx.beginPath();
-    section_13_ctx.moveTo(0, 0);
-    section_13_ctx.lineTo(650, 0);
-    section_13_ctx.stroke();
-    section_13_ctx.restore();
-
-    requestAnimationFrame(animate_section_13)
-}
-animate_section_13()
 let executeTextSection_13 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_13_canvas.getBoundingClientRect().top + parent_section_13_canvas.offsetHeight / 2;
-    const animateCanvas = this.document.querySelector('.section_13 > canvas')
     const animateImages = this.document.querySelectorAll('.section_13 > img')
+    const linesAnimate = this.document.querySelectorAll('.section_13 hr')
     const animateImagesFlower = this.document.querySelectorAll('.section_13 > aside')
     if (box2Top <= window.innerHeight && box2Top >= 0) {
         animateImages[0].classList.add('section_13--animate_img')
         animateImages[1].classList.add('img_bg_stain_1')
         animateImages[2].classList.add('img_bg_stain_2')
-        animateCanvas.classList.add('section_13--canvas_animate')
+        linesAnimate[0].classList.add('lines_top_1');
+        linesAnimate[1].classList.add('lines_top_2');
+        linesAnimate[2].classList.add('lines_top_3');
+        linesAnimate[3].classList.add('lines_top_4');
         animateImagesFlower[0].style.opacity = '1'
         animateImagesFlower[1].style.opacity = '1'
         parent_section_13_canvas.classList.add('section_resize')
