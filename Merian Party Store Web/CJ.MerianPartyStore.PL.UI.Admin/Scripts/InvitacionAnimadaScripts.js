@@ -1,8 +1,7 @@
 ﻿
 const parentTagSection_1 = document.querySelector('.section_1')
-const canvas = document.getElementById('logoCanvas');
-const ctx = canvas.getContext('2d');
-const deviceHeight = window.innerHeight
+
+
 
 /*Seccion 2, otro canvas aparte */
 const parent_section_2_canvas = document.querySelector('.section_2');
@@ -96,20 +95,11 @@ window.addEventListener("scroll", function () {
 
 //Seccion 5
 const parent_section_5_canvas = document.querySelector('.section_5');
-const canvas_section_5 = document.getElementById('section_canvas_5');
-const section_5_ctx = canvas_section_5.getContext('2d');
 
-
-const get_width_section_5 = parent_section_5_canvas.offsetWidth;
-const get_height_section_5 = parent_section_5_canvas.offsetHeight;
-
-canvas_section_5.width = get_width_section_5 > 420 ? 420 : get_width_section_5;
-canvas_section_5.height = deviceHeight
 
 let executeTextSection_5 = false
 window.addEventListener("scroll", function () {
     const box2Top = parent_section_5_canvas.getBoundingClientRect().top + parent_section_5_canvas.offsetHeight / 2;
-    const canvasVisibility = this.document.querySelector('.section_5 > canvas')
     const sectionVisibility = this.document.querySelector('.section_5 > section')
     const animateImages = this.document.querySelectorAll('.section_5 > img')
     const animateImagesFlower = this.document.querySelectorAll('.section_5 > aside')
@@ -117,7 +107,6 @@ window.addEventListener("scroll", function () {
         animateImages[0].classList.add('img_bg_stain_1')
         animateImages[1].classList.add('img_bg_stain_2')
         sectionVisibility.classList.add('scale_section_5')
-        canvasVisibility.classList.add('canvas_section_3')
         animateImagesFlower[0].style.opacity = '1';
         animateImagesFlower[1].style.opacity = '1';
         parent_section_5_canvas.classList.add('section_resize')
@@ -412,5 +401,100 @@ buttons.forEach(button => {
         delete activeSlide.dataset.active
     })
 })
+// Primer PDF
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
+const pdfViewer = document.querySelector("#pdf-viewer");
+const canvas = document.querySelector("#pdf-canvas");
+const annotationsContainer = document.querySelector("#pdf-annotations");
+const context = canvas.getContext('2d');
+const linkService = new pdfjsViewer.PDFLinkService({
+    externalLinkTarget: pdfjsViewer.LinkTarget.SELF
+});
 
+async function renderPage1(pdf, pageNumber, scale) {
+    const page = await pdf.getPage(pageNumber);
+    const annotations = await page.getAnnotations();
+    if (!scale) scale = 1;
+    const viewport = page.getViewport({ scale: scale });
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    pdfViewer.style.width = canvas.width + "px";
+    pdfViewer.style.height = canvas.height + "px";
+    page.render({
+        canvasContext: context, viewport: viewport
+    });
+    annotationsContainer.style.left = canvas.offsetLeft + "px";
+    annotationsContainer.style.top = canvas.offsetTop + "px"; // Corrección aquí
+    pdfjsLib.AnnotationLayer.render({
+        viewport: viewport.clone({ dontFlip: true }),
+        div: annotationsContainer,
+        annotations: annotations,
+        page: page,
+        linkService: linkService,
+    });
+}
 
+function start1() {
+    let pdfFile = 'https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf';
+    let scale = 0.8;
+    let pageNumber = 1;
+    let params = new URLSearchParams(window.location.search.substring(1));
+    params.has("f") && (pdfFile = params.get("f"));
+    params.has("n") && (pageNumber = Math.abs(parseInt(params.get("n"))) || 1);
+    pdfjsLib.getDocument(pdfFile).promise.then((pdf) => {
+        if (pdf.numPages < pageNumber) {
+            pageNumber = pdf.numPages;
+        }
+        renderPage1(pdf, pageNumber, scale);
+    });
+}
+start1();
+
+// Segundo PDF
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
+const pdfViewer_2 = document.querySelector("#pdf-viewer_2");
+const canvas_2 = document.querySelector("#pdf-canvas_2");
+const annotationsContainer_2 = document.querySelector("#pdf-annotations_2");
+const context_2 = canvas_2.getContext('2d');
+const linkService_2 = new pdfjsViewer.PDFLinkService({
+    externalLinkTarget: pdfjsViewer.LinkTarget.SELF
+});
+
+async function renderPage2(pdf, pageNumber, scale) {
+    const page = await pdf.getPage(pageNumber);
+    const annotations = await page.getAnnotations();
+    if (!scale) scale = 1;
+    const viewport = page.getViewport({ scale: scale });
+    canvas_2.width = viewport.width;
+    canvas_2.height = viewport.height;
+    pdfViewer_2.style.width = canvas_2.width + "px";
+    pdfViewer_2.style.height = canvas_2.height + "px";
+    page.render({
+        canvasContext: context_2, viewport: viewport
+    });
+    annotationsContainer_2.style.left = canvas_2.offsetLeft + "px";
+    annotationsContainer_2.style.top = canvas_2.offsetTop + "px"; // Corrección aquí
+    pdfjsLib.AnnotationLayer.render({
+        viewport: viewport.clone({ dontFlip: true }),
+        div: annotationsContainer_2,
+        annotations: annotations,
+        page: page,
+        linkService: linkService_2,
+    });
+}
+
+function start2() {
+    let pdfFile = 'https://localhost:44385/Images/Invitacion/FotoInvitacion/Documentos/Pdf/gift_inv.pdf';
+    let scale = 0.8;
+    let pageNumber = 1;
+    let params = new URLSearchParams(window.location.search.substring(1));
+    params.has("f") && (pdfFile = params.get("f"));
+    params.has("n") && (pageNumber = Math.abs(parseInt(params.get("n"))) || 1);
+    pdfjsLib.getDocument(pdfFile).promise.then((pdf) => {
+        if (pdf.numPages < pageNumber) {
+            pageNumber = pdf.numPages;
+        }
+        renderPage2(pdf, pageNumber, scale);
+    });
+}
+start2();
